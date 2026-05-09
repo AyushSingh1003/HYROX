@@ -141,6 +141,15 @@ function phaseForWeek(week: number, totalWeeks: number) {
   return 1;
 }
 
+function phaseWeekNumber(week: number, totalWeeks: number) {
+  const phase = phaseForWeek(week, totalWeeks);
+  let count = 0;
+  for (let currentWeek = 1; currentWeek <= week; currentWeek += 1) {
+    if (phaseForWeek(currentWeek, totalWeeks) === phase) count += 1;
+  }
+  return count;
+}
+
 function isDeloadWeek(level: TrainingLevel, week: number, totalWeeks: number) {
   if (week >= totalWeeks - 1) return false;
   const cadence = level === "expert" ? 5 : level === "absolute-beginner" ? 3 : 4;
@@ -292,10 +301,24 @@ function benchmarkModifier(level: TrainingLevel, week: number, phase: number) {
     scale,
     note: [
       `Level scaling: ${levelLabels[level]} uses ${scale.reps} of the benchmark volume with ${scale.load}.`,
+      `Coach rationale: ${phaseCoachingRationale(phase)}`,
       `Week ${week} progression: ${phase === 4 ? "tapered rehearsal" : week % 4 === 0 ? "deload technique version" : `density step ${step}`}.`,
       "Score the session: total time, run quality after stations, breathing control, and notes for the next progression."
     ]
   };
+}
+
+function phaseCoachingRationale(phase: number) {
+  if (phase === 1) {
+    return "base phase builds repeatable mechanics, aerobic durability, trunk control, and station confidence before chasing intensity";
+  }
+  if (phase === 2) {
+    return "build phase increases threshold exposure, station density, and compromised running while preserving repeatable pacing";
+  }
+  if (phase === 3) {
+    return "peak phase prioritizes race-order simulations, transition discipline, doubles execution, and finish-time prediction";
+  }
+  return "taper phase lowers fatigue, keeps neuromuscular sharpness, and rehearses rhythm without creating soreness";
 }
 
 function benchmarkTitle(title: string, week: number) {
@@ -373,13 +396,36 @@ function hyrox347Simulation(level: TrainingLevel, week: number, phase: number, a
   ], answers, { goals });
 }
 
-function featuredSaturday(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers, goals: string[], weakness: string, partnerCue: string) {
-  const rotation = (week - 1) % 5;
-  if (rotation === 0) return runSquatBurpeeLadder(level, week, phase, answers, goals);
-  if (rotation === 1) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
-  if (rotation === 2) return allEnginesNoBrakes(level, week, phase, answers, goals);
-  if (rotation === 3) return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
-  return gritProtocol(level, week, phase, answers, goals);
+function featuredSaturday(level: TrainingLevel, week: number, phase: number, phaseWeek: number, answers: OnboardingAnswers, goals: string[], weakness: string, partnerCue: string) {
+  const phaseSlot = ((phaseWeek - 1) % 5) + 1;
+
+  if (phase === 1) {
+    if (phaseSlot === 1) return runSquatBurpeeLadder(level, week, phase, answers, goals);
+    if (phaseSlot === 2) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
+    if (phaseSlot === 3) return allEnginesNoBrakes(level, week, phase, answers, goals);
+    if (phaseSlot === 4) return gritProtocol(level, week, phase, answers, goals);
+    return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
+  }
+
+  if (phase === 2) {
+    if (phaseSlot === 1) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
+    if (phaseSlot === 2) return gritProtocol(level, week, phase, answers, goals);
+    if (phaseSlot === 3) return allEnginesNoBrakes(level, week, phase, answers, goals);
+    if (phaseSlot === 4) return runSquatBurpeeLadder(level, week, phase, answers, goals);
+    return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
+  }
+
+  if (phase === 3) {
+    if (phaseSlot === 1) return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
+    if (phaseSlot === 2) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
+    if (phaseSlot === 3) return allEnginesNoBrakes(level, week, phase, answers, goals);
+    if (phaseSlot === 4) return gritProtocol(level, week, phase, answers, goals);
+    return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
+  }
+
+  if (phaseSlot === 1) return runSquatBurpeeLadder(level, week, phase, answers, goals);
+  if (phaseSlot === 2) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
+  return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
 }
 
 function workout(
@@ -427,7 +473,7 @@ function workout(
   };
 }
 
-function levelSessions(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers): DailyWorkout[] {
+function levelSessions(level: TrainingLevel, week: number, phase: number, phaseWeek: number, answers: OnboardingAnswers): DailyWorkout[] {
   const paces = paceGuide(level, answers);
   const weakness = stationFocus(answers, week);
   const secondary = secondaryStation(answers, week);
@@ -461,7 +507,7 @@ function levelSessions(level: TrainingLevel, week: number, phase: number, answer
         { title: "Bike/Row/Walk", items: [`${25 + step * 5} min Zone 2`, `Every ${6 - Math.min(step, 2)} min add 30 sec slightly faster`, "No breath holding"] },
         { title: "Mobility", items: ["Hips 2 min/side", "Calves 2 min/side", "Ankles 2 min/side", "Thoracic rotation 2x8/side"] }
       ], answers),
-      featuredSaturday(level, week, phase, answers, baseGoals, weakness, partnerCue)
+      featuredSaturday(level, week, phase, phaseWeek, answers, baseGoals, weakness, partnerCue)
     ],
     beginner: [
       workout(`gen-${week}-1`, week, phase, "Monday", "Aerobic Base + Core", "Running durability and trunk control", 55, "easy", [
@@ -476,7 +522,7 @@ function levelSessions(level: TrainingLevel, week: number, phase: number, answer
         { title: "Run", items: [`${phase <= 1 ? `${3 + step} x ${3 + step} min comfortably hard` : `${4 + step} x 800m threshold`}`, "2 min easy jog recovery", `Target: ${paces.threshold}`, isBenchmarkWeek ? "Benchmark: compare average pace to last threshold session" : "Stay controlled; last rep should be repeatable"], timer: { mode: "interval", workSeconds: phase <= 1 ? (180 + step * 60) : 300, restSeconds: 120, rounds: phase <= 1 ? 3 + step : 4 + step } },
         { title: "Breathing", items: ["Use 3:3 rhythm early", "Shift to 2:2 only when effort rises"] }
       ], answers),
-      featuredSaturday(level, week, phase, answers, baseGoals, weakness, partnerCue),
+      featuredSaturday(level, week, phase, phaseWeek, answers, baseGoals, weakness, partnerCue),
       workout(`gen-${week}-5`, week, phase, "Sunday", "Full Rest", "Absorb training", 20, "recovery", [
         { title: "Recovery Only", items: ["Easy walk optional", "Mobility 10 min", "Hydration and meal prep", "No intense training"] }
       ], answers, { warmup: [], cooldown: [] })
@@ -503,7 +549,7 @@ function levelSessions(level: TrainingLevel, week: number, phase: number, answer
         { title: "Strength", items: [`Trap bar deadlift ${3 + step}x5`, `Bench press ${3 + step}x6`, `Pull-ups ${3 + step}x8`, `Push press ${2 + step}x8`, `Farmer carry ${3 + step}x40m`] },
         { title: `Compromised Running - ${3 + step} rounds`, items: [`${400 + step * 100}m SkiErg`, `${600 + step * 200}m run at HYROX pace`, `Station focus: ${weakness}`, `Secondary station: ${secondary}`], timer: { mode: "interval", workSeconds: 360 + step * 60, restSeconds: 90, rounds: 3 + step } }
       ], answers),
-      featuredSaturday(level, week, phase, answers, [...baseGoals, ...(doubles ? doublesSplits : ["Solo strategy: never sprint transitions; win by preserving run pace"])], weakness, partnerCue)
+      featuredSaturday(level, week, phase, phaseWeek, answers, [...baseGoals, ...(doubles ? doublesSplits : ["Solo strategy: never sprint transitions; win by preserving run pace"])], weakness, partnerCue)
     ],
     expert: [
       workout(`gen-${week}-1`, week, phase, "Monday", "Aerobic Reset + Strides", "Absorb load while maintaining speed", 70, "easy", [
@@ -526,7 +572,7 @@ function levelSessions(level: TrainingLevel, week: number, phase: number, answer
         { title: "Stations", items: [`Heavy sled push ${5 + step} x 12.5m`, `Sled pull ${5 + step} x 12.5m`, `Farmer carry ${4 + step} x 40m`, `Sandbag lunge ${3 + step} x 25m`, `Wall balls in planned sets focused on ${weakness}`] },
         { title: "Compromised Finish", items: [`${2 + step} rounds: 500m row, ${15 + step * 5} wall balls, 400m run`, `Secondary station: ${secondary}`] }
       ], answers),
-      featuredSaturday(level, week, phase, answers, [...baseGoals, ...(doubles ? doublesSplits : ["Solo strategy: hold back through sled pull, attack from farmer carry onward"])], weakness, partnerCue),
+      featuredSaturday(level, week, phase, phaseWeek, answers, [...baseGoals, ...(doubles ? doublesSplits : ["Solo strategy: hold back through sled pull, attack from farmer carry onward"])], weakness, partnerCue),
       workout(`gen-${week}-7`, week, phase, "Sunday", "Recovery Only", "Maintain tissue quality", 30, "recovery", [
         { title: "Recovery", items: ["Zone 1 walk or bike only", "Mobility 20 min", "Breathing reset 5 min", "No strength loading"] }
       ], answers, { warmup: [], cooldown: [] })
@@ -590,7 +636,8 @@ export function generateTrainingPlan(answers: OnboardingAnswers): GeneratedTrain
     const phase = phaseForWeek(weekNumber, weeks);
     const isTaper = phase === 4;
     const isDeload = isDeloadWeek(level, weekNumber, weeks);
-    const rawWorkouts = levelSessions(level, weekNumber, phase, answers);
+    const phaseWeek = phaseWeekNumber(weekNumber, weeks);
+    const rawWorkouts = levelSessions(level, weekNumber, phase, phaseWeek, answers);
     const workouts = applyWeekModifiers(
       compressForTrainingDays(rawWorkouts, level, answers.availableTrainingDays),
       level,
