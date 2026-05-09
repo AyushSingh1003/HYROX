@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "HYROX Elite",
+    "slug": "hyrox-elite",
+    "scheme": "hyroxelite",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hyrox.elite"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-notifications"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
+

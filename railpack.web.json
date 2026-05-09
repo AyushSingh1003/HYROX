@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "steps": {
+    "install": {
+      "commands": [
+        "npm ci"
+      ]
+    },
+    "build": {
+      "inputs": [
+        {
+          "step": "install"
+        }
+      ],
+      "commands": [
+        "npm run build --workspace @hyrox/shared",
+        "npm run build --workspace @hyrox/web"
+      ]
+    }
+  },
+  "deploy": {
+    "inputs": [
+      {
+        "step": "build"
+      }
+    ],
+    "startCommand": "sh -c 'npm run start --workspace @hyrox/web -- -p ${PORT:-3000}'"
+  }
+}

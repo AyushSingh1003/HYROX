@@ -1,0 +1,30 @@
+{
+  "name": "hyrox-elite-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "HYROX Delhi 2026 elite doubles prep platform with web, API, and Expo iOS app.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @hyrox/web",
+    "dev:web": "npm run dev --workspace @hyrox/web",
+    "dev:api": "npm run dev --workspace @hyrox/api",
+    "dev:mobile": "npm run start --workspace @hyrox/mobile",
+    "build": "npm run build --workspace @hyrox/shared && npm run build --workspace @hyrox/web && npm run build --workspace @hyrox/api",
+    "typecheck": "npm run build --workspace @hyrox/shared && npm run typecheck --workspace @hyrox/shared && npm run typecheck --workspace @hyrox/web && npm run typecheck --workspace @hyrox/api && npm run typecheck --workspace @hyrox/mobile",
+    "lint": "npm run lint --workspace @hyrox/web",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "prisma": "^6.19.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3"
+  }
+}

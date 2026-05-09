@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run build --workspace @hyrox/shared && npm run build --workspace @hyrox/web",
+  "installCommand": "npm ci && npx prisma generate",
+  "framework": "nextjs",
+  "outputDirectory": "apps/web/.next"
+}

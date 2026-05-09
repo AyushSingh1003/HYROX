@@ -1,0 +1,17 @@
+node_modules
+.next
+.expo
+dist
+build
+*.tsbuildinfo
+.env
+.env.local
+.neon
+.neonctl
+.DS_Store
+coverage
+apps/api/data/*.json
+!.gitkeep
+
+.vercel
+Untitled document*.docx

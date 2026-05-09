@@ -1,0 +1,265 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String             @id @default(cuid())
+  name              String
+  email             String             @unique
+  passwordHash      String
+  age               Int?
+  weight            Float?
+  goalTime          String?
+  runningPace       String?
+  hyroxCategory     String?
+  eventName         String?
+  eventLocation     String?
+  eventDate         DateTime?
+  profileImage      String?
+  bio               String?
+  thresholdPace     String?
+  hydrationTarget   Float?
+  calorieTarget     Float?
+  proteinTarget     Float?
+  carbTarget        Float?
+  fatTarget         Float?
+  createdAt         DateTime           @default(now())
+  completedWorkouts CompletedWorkout[]
+  recovery          RecoveryEntry[]
+  simulations       Simulation[]
+  nutrition         NutritionEntry[]
+  workoutOverrides  WorkoutOverride[]
+  athleteProfile    AthleteProfile?
+  onboarding        OnboardingResponse?
+  raceGoals         RaceGoal[]
+  trainingPlans     TrainingPlan[]
+}
+
+model AthleteProfile {
+  id                       String   @id @default(cuid())
+  userId                   String   @unique
+  sex                      String?
+  height                   Float?
+  current5kPace            String?
+  weeklyRunningVolume      Float?
+  strengthExperience       String?
+  hyroxExperience          String?
+  trainingLevel            String   @default("moderate")
+  availableTrainingDays    Int      @default(4)
+  equipmentAccess          Json
+  injuryHistory            String?
+  weakestStations          Json
+  sleepHours               Float?
+  recoveryQuality          String?
+  nutritionConsistency     String?
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+  user                     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model OnboardingResponse {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  answers   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model RaceGoal {
+  id             String   @id @default(cuid())
+  userId         String
+  category       String
+  raceName       String?
+  raceDate       DateTime
+  targetGoalTime String?
+  priority       String   @default("A")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model TrainingPlan {
+  id             String   @id @default(cuid())
+  userId         String
+  title          String
+  level          String
+  raceCategory   String
+  goalRaceDate   DateTime
+  targetGoalTime String?
+  weeksUntilRace Int
+  summary        String
+  priorities     Json
+  phases         Json
+  weeks          Json
+  source         String   @default("generated")
+  active         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Workout {
+  id          String             @id
+  phase       Int
+  week        Int
+  day         String
+  title       String
+  description String
+  duration    Int
+  intensity   String
+  exercises   Exercise[]
+}
+
+model Exercise {
+  id           String   @id @default(cuid())
+  workoutId    String
+  workout      Workout  @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  exerciseName String
+  reps         String?
+  sets         String?
+  distance     String?
+  timer        Json?
+  instructions Json?
+  video        Json?
+  pacing       String?
+  notes        String?
+  sortOrder    Int      @default(0)
+}
+
+model ExerciseInstruction {
+  id             String   @id @default(cuid())
+  exerciseName   String
+  instructions   Json
+  coachingNotes  Json
+  pacingGuidance Json
+  commonMistakes Json
+  recoveryTips   Json
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model VideoResource {
+  id           String   @id @default(cuid())
+  exerciseName String
+  title        String
+  youtubeId    String
+  thumbnail    String
+  url          String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model TimerConfig {
+  id              String   @id @default(cuid())
+  userId          String?
+  workoutId       String?
+  mode            String
+  workSeconds     Int?
+  restSeconds     Int?
+  rounds          Int?
+  durationSeconds Int?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CompletedWorkout {
+  id             String   @id @default(cuid())
+  userId         String
+  workoutId      String
+  completed      Boolean  @default(false)
+  status         String   @default("completed")
+  completionTime Int?
+  notes          String?
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workoutId])
+}
+
+model RecoveryEntry {
+  id           String   @id @default(cuid())
+  userId       String
+  date         DateTime
+  sleep        Float
+  hydration    Float
+  soreness     Float
+  hrv          Float?
+  fatigueScore Float
+  stress       Float?
+  score        Int
+  label        String
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Simulation {
+  id             String   @id @default(cuid())
+  userId         String
+  date           DateTime
+  type           String
+  totalTime      String
+  stationTimes   Json
+  transitionTime String?
+  notes          String?
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Benchmark {
+  id        String   @id @default(cuid())
+  userId    String?
+  week      Int?
+  title     String
+  targets   Json
+  createdAt DateTime @default(now())
+}
+
+model FoodItem {
+  id           String   @id @default(cuid())
+  name         String
+  brand        String?
+  servingSize  String?
+  calories     Float
+  protein      Float
+  carbs        Float
+  fats         Float
+  sodium       Float
+  hydration    Float
+  electrolytes Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model NutritionEntry {
+  id          String   @id @default(cuid())
+  userId      String
+  foodName    String
+  quantity    String
+  mealTiming  String
+  calories    Float
+  protein     Float
+  carbs       Float
+  fats        Float
+  sodium      Float
+  hydration   Float
+  electrolytes Float
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WorkoutOverride {
+  id        String   @id @default(cuid())
+  userId    String
+  workoutId String
+  patch     Json
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workoutId])
+}

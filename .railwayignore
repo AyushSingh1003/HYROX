@@ -1,0 +1,17 @@
+node_modules
+**/node_modules
+.next
+**/.next
+.expo
+**/.expo
+dist
+**/dist
+build
+**/build
+.env
+.env.*
+.DS_Store
+coverage
+apps/api/data
+*.log
+Untitled document*.docx
