@@ -66,6 +66,10 @@ export function TrainingPlanner() {
           <span className="chip green">Phase {week.phase}</span>
         </div>
         <p className="muted">{week.intent}</p>
+        <div className="chip-row" style={{ marginTop: 12 }}>
+          {week.expectedTrainingLoad ? <span className="chip green">Load: {week.expectedTrainingLoad}</span> : null}
+          {week.recoveryEmphasis ? <span className="chip">Recovery: {week.recoveryEmphasis}</span> : null}
+        </div>
       </section>
 
       <section className="grid grid-2" style={{ marginTop: 16 }}>
