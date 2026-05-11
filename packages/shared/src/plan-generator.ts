@@ -1,450 +1,330 @@
 import type { DailyWorkout, GeneratedTrainingPlan, OnboardingAnswers, TrainingLevel, TrainingWeek } from "./types.js";
 
+type ProgramMeta = {
+  title: string;
+  who: string;
+  days: string;
+  goal: { individual: string; doubles: string };
+  philosophy: string;
+  priorities: string[];
+};
+
+type StationProgression = {
+  ski: string[];
+  sledPush: string[];
+  sledPull: string[];
+  burpee: string[];
+  row: string[];
+  farmerCarry: string[];
+  lunges: string[];
+  wallBall: string[];
+  runPace?: string[];
+  weeklyRunVolume?: string[];
+};
+
 const levelLabels: Record<TrainingLevel, string> = {
   "absolute-beginner": "Absolute Beginner",
   beginner: "Beginner",
   moderate: "Moderate",
-  expert: "Expert"
+  expert: "Expert / Elite"
 };
 
-const levelPriorities: Record<TrainingLevel, string[]> = {
-  "absolute-beginner": [
-    "Consistency, movement quality, and injury prevention",
-    "Walk-run aerobic development",
-    "Bodyweight and basic dumbbell strength",
-    "Low-pressure HYROX station familiarity"
-  ],
-  beginner: [
-    "Aerobic base and foundational strength",
-    "Gradual threshold exposure",
-    "Basic HYROX circuits and station technique",
-    "Controlled compromised running"
-  ],
-  moderate: [
-    "Threshold running",
-    "Compromised running",
-    "Station efficiency",
-    "Race simulations and progressive overload"
-  ],
-  expert: [
-    "Advanced threshold and VO2 max development",
-    "High-specificity compromised running",
-    "Frequent simulations and station split optimization",
-    "Performance taper and race execution precision"
-  ]
+const programMeta: Record<TrainingLevel, ProgramMeta> = {
+  "absolute-beginner": {
+    title: "Absolute Beginner HYROX Finish Program",
+    who: "Never done HYROX, may be new to structured training, cannot yet run 5km continuously, and needs to finish without quitting.",
+    days: "3 structured days per week in weeks 1-6, optional 4th recovery day from week 7 onward.",
+    goal: { individual: "2:00-2:30", doubles: "1:45-2:15" },
+    philosophy: "Build movement patterns, aerobic base, station confidence, and injury resistance before chasing pace or load.",
+    priorities: [
+      "Full-body strength frequency instead of a bro split",
+      "Walk-run aerobic development and time on feet",
+      "Technique-only station exposure across all 8 HYROX stations",
+      "Complete every race station without surprises"
+    ]
+  },
+  beginner: {
+    title: "Beginner HYROX Completion Program",
+    who: "Some gym experience, can run 5km without stopping, limited HYROX exposure, and wants a respectable finish.",
+    days: "4 structured days per week.",
+    goal: { individual: "1:30-1:50", doubles: "1:25-1:45" },
+    philosophy: "Build a real aerobic base, introduce threshold running, progress all 8 stations, and learn compromised running.",
+    priorities: [
+      "Lower and upper compound strength without excess isolation",
+      "One dedicated HYROX conditioning block each week",
+      "Friday running development from Zone 2 to race-pace rehearsal",
+      "Simulation progression from simple formats to 85% race format"
+    ]
+  },
+  moderate: {
+    title: "Moderate HYROX Competitive Program",
+    who: "Completed HYROX or has a year of hybrid training, can run 5km under 25 minutes, and can train 5 days per week.",
+    days: "5 structured days per week.",
+    goal: { individual: "1:10-1:25", doubles: "1:05-1:20" },
+    philosophy: "Introduce the bro-split mechanical pairings at reduced HYROX volume while prioritizing threshold running and race-weight station progressions.",
+    priorities: [
+      "Lower body before Session C",
+      "Upper/back work before Session B",
+      "Chest/push work before Session A",
+      "50%, 70%, and 90% simulation schedule with week 4 and week 8 deloads"
+    ]
+  },
+  expert: {
+    title: "Expert / Elite HYROX Race-Specific Program",
+    who: "Experienced HYROX competitor, regular hybrid athlete, comfortable at race weight, and targeting sub-70 individual or 1:05-1:15 doubles.",
+    days: "5 gym days plus optional Zone 2 add-on and Saturday simulation/run.",
+    goal: { individual: "Sub-70", doubles: "1:05-1:15" },
+    philosophy: "Use the full bro-split plus Sessions A/B/C/W to relentlessly serve the fixed HYROX race format.",
+    priorities: [
+      "Chest plus Session A: sled push, burpee broad jump, devil press",
+      "Back plus Session B: SkiErg, sled pull, row, run-off-row",
+      "Arms plus Session W: wall ball, burpee, grip and elbow resilience",
+      "Legs plus Session C: full station circuit with compromised 1km runs",
+      "Race-weight specificity by week 9, full simulation week 7, 90% simulation week 9"
+    ]
+  }
 };
 
-const finishRanges: Record<TrainingLevel, { conservative: string; realistic: string; stretch: string }> = {
-  "absolute-beginner": { conservative: "3:30+", realistic: "2:45-3:15", stretch: "2:20-2:45" },
-  beginner: { conservative: "2:20", realistic: "1:55-2:10", stretch: "1:45-1:55" },
-  moderate: { conservative: "1:45", realistic: "1:25-1:35", stretch: "1:15-1:25" },
-  expert: { conservative: "1:12", realistic: "1:05-1:10", stretch: "Sub-1:05" }
-};
-
-const phaseTitles = [
-  "Base Engine + Structural Capacity",
-  "Build Phase",
+const phases = [
+  "Foundation / Base",
+  "Build",
   "Peak HYROX Specificity",
-  "Taper"
+  "Taper / Race Week"
 ];
 
-const stationTargets: Record<TrainingLevel, string[]> = {
+const stationProgressions: Record<TrainingLevel, StationProgression> = {
+  "absolute-beginner": {
+    ski: ["4x100m", "4x150m", "4x200m", "3x300m", "3x400m", "3x500m", "3x600m", "3x750m", "3x750m technique", "2x500m", "2x500m", "2x500m taper"],
+    sledPush: ["2x10m light", "2x10m light", "3x15m", "3x15m moderate", "3x20m", "3x20m race-ish", "3x25m", "3x25m race weight", "3x25m race weight", "2x15m taper", "2x15m taper", "2x15m taper"],
+    sledPull: ["2x10m light", "2x10m light", "3x15m", "3x15m moderate", "3x20m", "3x20m race-ish", "3x25m", "3x25m race weight", "3x25m race weight", "2x15m taper", "2x15m taper", "2x15m taper"],
+    burpee: ["3x5 reps", "3x8 reps", "3x10 reps", "3x12 reps", "3x15 reps", "3x15 reps", "4x15 reps", "3x20 reps", "3x20 reps", "2x15 taper", "2x15 taper", "2x15 taper"],
+    row: ["4x100m", "4x200m", "3x300m", "3x400m", "3x500m", "2x500m", "3x500m", "2x750m", "2x750m", "1x500m taper", "1x500m taper", "1x500m taper"],
+    farmerCarry: ["3x30m moderate", "3x40m", "3x50m", "3x60m", "3x75m", "3x100m", "3x150m", "3x200m", "3x200m", "2x100m taper", "2x100m taper", "2x100m taper"],
+    lunges: ["3x10m bodyweight", "3x15m bodyweight", "3x20m light", "3x30m light", "3x40m moderate", "3x50m", "3x60m", "3x75m", "3x75m", "2x40m taper", "2x40m taper", "2x40m taper"],
+    wallBall: ["3x10 / 4kg", "3x12", "3x15", "3x15 / 6kg", "3x20", "3x20", "4x20", "3x25", "3x25", "2x20 taper", "2x20 taper", "2x20 taper"]
+  },
+  beginner: {
+    ski: ["3x200m", "3x250m", "3x300m", "3x400m", "4x300m", "4x400m", "3x500m", "3x600m", "1x750m + 2x500m", "1x1000m", "1x1000m", "500m taper"],
+    sledPush: ["3x15m light", "3x20m", "3x20m moderate", "3x25m", "3x30m moderate", "3x30m heavier", "3x40m", "3x50m race weight", "3x50m race weight", "3x50m race weight", "2x25m race weight", "2x25m taper"],
+    sledPull: ["3x15m light", "3x20m", "3x20m moderate", "3x25m", "3x25m race weight", "3x25m", "3x25m", "3x25m", "3x25m", "3x25m", "2x20m", "2x20m taper"],
+    burpee: ["3x10", "3x12", "3x15", "4x15", "3x20", "4x20", "3x25", "4x25", "4x25", "4x25", "2x20", "2x20 taper"],
+    row: ["3x300m", "3x400m", "3x500m", "3x500m", "3x600m", "3x700m", "2x750m", "1x1000m", "1x1000m", "1x1000m", "2x500m", "2x500m taper"],
+    farmerCarry: ["3x50m moderate", "3x75m", "3x75m heavier", "3x100m", "3x125m", "3x150m", "3x175m", "3x200m", "3x200m", "3x200m", "2x100m", "2x100m taper"],
+    lunges: ["3x15m light", "3x20m", "3x30m moderate", "3x40m", "3x50m", "3x60m", "3x75m", "3x100m", "3x100m", "3x100m", "2x50m", "2x50m taper"],
+    wallBall: ["3x15 / 6kg", "3x20", "3x25", "3x25 / 9kg", "4x20", "4x25", "3x30", "4x25", "4x25", "4x25", "2x25", "2x25 taper"]
+  },
+  moderate: {
+    ski: ["300m", "400m", "500m", "400m deload", "600m", "700m", "750m", "750m deload", "1000m", "1000m", "1000m", "500m taper"],
+    sledPush: ["20m / 80kg", "20m / 100kg", "30m / 120kg", "20m / 80kg deload", "30m / 140kg", "40m / 152kg", "50m / 152kg", "30m / 152kg deload", "50m / 152kg", "50m / 152kg", "50m / 152kg", "20m / 152kg taper"],
+    sledPull: ["20m / 60kg", "20m / 80kg", "25m / 90kg", "20m / 80kg deload", "25m / 95kg", "25m / 103kg", "25m / 103kg", "20m / 103kg deload", "25m / 103kg", "25m / 103kg", "25m / 103kg", "15m / 103kg taper"],
+    burpee: ["15m", "20m", "30m", "20m deload", "40m", "50m", "60m", "40m deload", "80m", "80m", "80m", "30m taper"],
+    row: ["400m", "500m", "600m", "400m deload", "600m", "750m", "1000m", "750m deload", "1000m", "1000m", "1000m", "500m taper"],
+    farmerCarry: ["50m / 20kg", "75m / 22kg", "100m / 22kg", "50m / 22kg deload", "125m / 24kg", "150m / 24kg", "175m / 24kg", "100m / 24kg deload", "200m / 24kg", "200m / 24kg", "200m / 24kg", "75m / 24kg taper"],
+    lunges: ["20m / 15kg", "30m / 15kg", "40m / 20kg", "20m / 15kg deload", "50m / 20kg", "60m / 20kg", "80m / 20kg", "60m / 20kg deload", "100m / 20kg", "100m / 20kg", "100m / 20kg", "30m / 20kg taper"],
+    wallBall: ["20 / 6kg", "25 / 6kg", "30 / 9kg", "20 / 6kg deload", "40 / 9kg", "50 / 9kg", "60 / 9kg", "40 / 9kg deload", "80 / 9kg", "100 / 9kg", "100 / 9kg", "30 / 9kg taper"]
+  },
+  expert: {
+    ski: ["500m", "500m", "500m", "750m", "750m", "750m", "1000m", "1000m", "1000m", "1000m", "1000m", "500m taper"],
+    sledPush: ["20m / 120kg", "20m / 120kg", "30m / 140kg", "30m / 140kg", "50m / 152kg", "50m / 152kg", "50m / 152kg", "50m / 152kg", "50m / 152kg", "50m / 152kg", "50m / 152kg", "20m / 152kg taper"],
+    sledPull: ["20m / 80kg", "20m / 80kg", "25m / 90kg", "25m / 95kg", "25m / 103kg", "25m / 103kg", "25m / 103kg", "25m / 103kg", "25m / 103kg", "25m / 103kg", "25m / 103kg", "20m / 103kg taper"],
+    burpee: ["20m", "20m", "30m", "40m", "40m", "50m", "60m", "60m", "80m", "80m", "80m", "20m taper"],
+    row: ["500m", "500m", "500m", "500m", "750m", "750m", "750m", "1000m", "1000m", "1000m", "1000m", "500m taper"],
+    farmerCarry: ["50m / 20kg", "50m / 20kg", "100m / 22kg", "100m / 22kg", "150m / 24kg", "150m / 24kg", "150m / 24kg", "200m / 24kg", "200m / 24kg", "200m / 24kg", "200m / 24kg", "50m / 24kg taper"],
+    lunges: ["20m / 15kg", "20m / 15kg", "40m / 15kg", "40m / 15kg", "60m / 20kg", "60m / 20kg", "80m / 20kg", "80m / 20kg", "100m / 20kg", "100m / 20kg", "100m / 20kg", "20m / 20kg taper"],
+    wallBall: ["30 / 6kg", "30 / 6kg", "30 / 6kg", "40 / 6kg", "40 / 9kg", "40 / 9kg", "60 / 9kg", "80 / 9kg", "80 / 9kg", "100 / 9kg", "100 / 9kg", "30 / 9kg taper"],
+    runPace: ["5:20/km", "5:18/km", "5:15/km", "5:15/km", "5:08/km", "5:05/km", "5:02/km", "5:00/km", "4:58/km", "4:55/km", "4:55/km", "4:50/km"],
+    weeklyRunVolume: ["15km", "15km", "16km", "16km", "18km", "18km", "19km", "20km", "21km", "22km", "22km", "10km taper"]
+  }
+};
+
+const breathingProtocol = [
+  "Crocodile breathing: 5 min before sleep or after sessions, breathe into the belly against the floor.",
+  "Box breathing 4-4-4-4 before and after sessions.",
+  "Diaphragm expansion with a resistance band around the lower ribs: 3x10 deep lateral breaths.",
+  "Nasal-only warmup jog for the first 5-10 min of running sessions.",
+  "Running rhythm: 3:3 on easy runs, 2:2 during threshold and race pace.",
+  "Forced exhale after every station: 3 complete exhales before starting the next run.",
+  "Side stitch rescue: exhale forcefully on the opposite foot strike, press into the stitch, and keep moving."
+];
+
+const nutritionProtocol = [
+  "Hydration: 35-45ml/kg/day.",
+  "Sodium: 3-5g/day depending on sweat rate and climate; use the higher end for hot race environments.",
+  "Protein: 1.8-2.2g/kg/day.",
+  "Sessions longer than 60 min: 500-750ml fluid/hour, 500-900mg sodium/hour, and 30-60g carbs/hour.",
+  "Normal training days: 4-7g carbs/kg; heavy simulation days: 7-9g/kg; 48 hours pre-race: 8-10g/kg.",
+  "Post-workout within 30 min: 30-40g protein plus fast carbs and sodium.",
+  "Useful foods: chicken breast, white rice, banana, eggs, oats, whey, Greek yogurt, salmon, pasta, sweet potato, white bread, honey, sports drinks, electrolyte tabs."
+];
+
+const recoveryProtocol = [
+  "Track resting heart rate, sleep quality, and readiness every morning.",
+  "If resting heart rate is more than 5 bpm above baseline, reduce session intensity by 30%.",
+  "If resting heart rate is 8-10 bpm above baseline, consider rest.",
+  "Foam roll 10-15 min from week 5 onward: glutes, IT band, calves, thoracic spine, hip flexors.",
+  "Use a cold shower after hard sessions; expert athletes may use 10 min ice bath after simulations.",
+  "No alcohol on training nights; prioritize a cool, dark room and consistent wake time."
+];
+
+const doublesStrategy = [
+  "SkiErg: Athlete A 60%, partner 40%.",
+  "Sled Push: Athlete A 65-70%, partner 30-35%.",
+  "Sled Pull: Athlete A 60%, partner 40%.",
+  "Burpee Broad Jumps: alternate every 10 reps.",
+  "Row: partner 55%, Athlete A 45%.",
+  "Farmer Carry: Athlete A 65%, partner 35%.",
+  "Lunges: alternate every 20m.",
+  "Wall Balls: Athlete A 55-60%, partner 40-45%.",
+  "Run every 1km leg together; Athlete A never runs ahead in legs 1-5 and helps pull the partner through legs 6-8.",
+  "No mid-station discussions; one partner always works while the other resets breathing."
+];
+
+const runningPaces: Record<TrainingLevel, string[]> = {
   "absolute-beginner": [
-    "Runs: 8:00-10:00/km or run-walk",
-    "SkiErg: 7:00-9:00",
-    "Sled Push: controlled completion",
-    "Sled Pull: controlled completion",
-    "Burpee Broad Jumps: 10:00-14:00",
-    "Row: 6:00-8:00",
-    "Farmer Carry: 4:00-6:00",
-    "Sandbag Lunges: 8:00-12:00",
-    "Wall Balls: 8:00-14:00"
+    "Zone 2 easy: conversational walk-jog; no fixed pace target.",
+    "Race target: complete all running legs, 6:30-8:00/km is acceptable."
   ],
   beginner: [
-    "Runs: 6:30-7:45/km",
-    "SkiErg: 5:30-7:00",
-    "Sled Push: 5:00-7:00",
-    "Sled Pull: 5:00-7:00",
-    "Burpee Broad Jumps: 7:00-10:00",
-    "Row: 5:00-6:30",
-    "Farmer Carry: 3:00-4:30",
-    "Sandbag Lunges: 6:00-9:00",
-    "Wall Balls: 6:00-10:00"
+    "Zone 2 easy: 6:30-7:30/km or conversational.",
+    "Threshold: 5:45-6:15/km.",
+    "Race target: 5:45-6:30/km."
   ],
   moderate: [
-    "Runs: 4:45-5:45/km depending on station fatigue",
-    "SkiErg: 4:15-5:15",
-    "Sled Push: 3:00-4:30",
-    "Sled Pull: 3:30-5:00",
-    "Burpee Broad Jumps: 4:45-6:30",
-    "Row: 4:15-5:15",
-    "Farmer Carry: 2:15-3:15",
-    "Sandbag Lunges: 4:30-6:30",
-    "Wall Balls: 4:30-7:00"
+    "Zone 2 easy: 5:45-6:30/km.",
+    "Threshold: 5:00-5:30/km.",
+    "VO2max intervals: 4:45-5:10/km.",
+    "Race target: 5:00-5:20/km."
   ],
   expert: [
-    "Runs: 3:55-4:35/km depending on station fatigue",
-    "SkiErg: 3:35-4:10",
-    "Sled Push: 2:15-3:00",
-    "Sled Pull: 2:30-3:20",
-    "Burpee Broad Jumps: 3:30-4:45",
-    "Row: 3:35-4:15",
-    "Farmer Carry: 1:30-2:10",
-    "Sandbag Lunges: 3:15-4:30",
-    "Wall Balls: 3:00-4:30"
+    "Athlete A Zone 2: 5:35-6:05/km; threshold: 4:20-4:35/km; VO2max: 3:55-4:10/km; race target: 5:00-5:10/km.",
+    "Partner Zone 2: 6:00-6:40/km; threshold: 4:50-5:05/km; VO2max: 4:20-4:40/km; race target: 5:15-5:30/km."
   ]
 };
 
-const doublesSplits = [
-  "SkiErg: stronger puller 55-65%, partner 35-45%",
-  "Sled Push: stronger lower-body athlete 60-70%, partner 30-40%",
-  "Sled Pull: split by rope rhythm; swap before grip degrades",
-  "Burpee Broad Jumps: alternate every 8-12 reps or 10m",
-  "Row: stronger aerobic athlete 50-60%, partner 40-50%",
-  "Farmer Carry: stronger grip athlete 60-70%, partner 30-40%",
-  "Sandbag Lunges: alternate every 20m unless one athlete is clearly stronger",
-  "Wall Balls: small planned sets, usually 15/10 or 20/10 based on fatigue"
-];
-
-const stationRotation = [
-  "SkiErg",
-  "Sled Push",
-  "Sled Pull",
-  "Burpee Broad Jumps",
-  "Row",
-  "Farmer Carry",
-  "Sandbag Lunges",
-  "Wall Balls"
-];
-
-function daysBetween(start: Date, end: Date) {
-  return Math.ceil((end.getTime() - start.getTime()) / 86_400_000);
+function phaseForWeek(week: number) {
+  if (week <= 3) return 1;
+  if (week <= 8) return 2;
+  if (week <= 10) return 3;
+  return 4;
 }
 
-function weeksUntil(date: string) {
-  const target = new Date(`${date}T00:00:00`);
-  if (Number.isNaN(target.getTime())) return 8;
-  return Math.max(1, Math.ceil(daysBetween(new Date(), target) / 7));
-}
-
-function phaseForWeek(week: number, totalWeeks: number) {
-  if (totalWeeks < 6) return week >= totalWeeks - 1 ? 4 : 3;
-  if (totalWeeks <= 12) {
-    if (week > totalWeeks - 2) return 4;
-    if (week > Math.round(totalWeeks * 0.66)) return 3;
-    if (week > Math.round(totalWeeks * 0.34)) return 2;
-    return 1;
+function phaseTitle(level: TrainingLevel, week: number) {
+  if (level === "absolute-beginner") {
+    if (week <= 3) return "Foundation";
+    if (week <= 6) return "Base Building";
+    if (week <= 9) return "Development";
+    if (week === 10) return "Deload";
+    if (week === 11) return "Pre-Race Prep";
+    return "Race Week";
   }
-  if (week > totalWeeks - 2) return 4;
-  if (week > Math.round(totalWeeks * 0.72)) return 3;
-  if (week > Math.round(totalWeeks * 0.45)) return 2;
-  return 1;
+  if (week === 4) return "Base Deload";
+  if (week === 8) return "Build Deload";
+  if (week === 12) return "Race Week Taper";
+  return phases[phaseForWeek(week) - 1];
 }
 
-function phaseWeekNumber(week: number, totalWeeks: number) {
-  const phase = phaseForWeek(week, totalWeeks);
-  let count = 0;
-  for (let currentWeek = 1; currentWeek <= week; currentWeek += 1) {
-    if (phaseForWeek(currentWeek, totalWeeks) === phase) count += 1;
+function weekLoad(level: TrainingLevel, week: number) {
+  if (week === 12) return "Low";
+  if ((level !== "absolute-beginner" && [4, 8].includes(week)) || (level === "absolute-beginner" && week === 10)) return "Reduced";
+  if (level === "expert" && [7, 9, 10, 11].includes(week)) return "Very high";
+  if (level === "expert") return "High";
+  if (level === "absolute-beginner") return week >= 7 ? "Low-moderate" : "Low";
+  return "Moderate";
+}
+
+function weekIntent(level: TrainingLevel, week: number) {
+  if (level === "absolute-beginner") {
+    if (week <= 3) return "Learn all 8 movement patterns, build run-walk consistency, and keep intensity low.";
+    if (week <= 6) return "Increase station distances and weights slightly, introduce station-to-run combinations, and practice breathing drills.";
+    if (week <= 9) return "Combine stations in simple circuits and develop basic compromised running.";
+    if (week === 10) return "Deload by reducing volume about 40% while preserving movement quality.";
+    if (week === 11) return "Practice short, sharp race-prep sessions and finalize strategy.";
+    return "Race week: rest, light movement, carb load, hydrate, and arrive fresh.";
   }
-  return count;
+  if (week === 4) return "Base deload: reduce volume about 40%, keep movement crisp, no simulation.";
+  if (week === 8) return "Build deload: reduce volume about 40%, preserve rhythm, and prepare for peak work.";
+  if (week === 12) return "Race week taper: prime movement, protect the nervous system, carb load, and execute.";
+  if (week <= 3) return "Build base strength, station mechanics, aerobic volume, and breathing discipline.";
+  if (week <= 6) return "Increase threshold exposure, station volume, and compromised running density.";
+  if (week <= 10) return "Prioritize race-specific station loads, simulations, split recording, and pacing precision.";
+  return "Absorb the peak block and keep confidence high without chasing soreness.";
 }
 
-function isDeloadWeek(level: TrainingLevel, week: number, totalWeeks: number) {
-  if (week >= totalWeeks - 1) return false;
-  const cadence = level === "expert" ? 5 : level === "absolute-beginner" ? 3 : 4;
-  return week % cadence === 0;
-}
-
-function exertion(level: TrainingLevel, phase: number) {
-  const table: Record<TrainingLevel, string[]> = {
-    "absolute-beginner": ["RPE 3-5", "RPE 4-6", "RPE 5-7", "RPE 3-5"],
-    beginner: ["RPE 4-6", "RPE 5-7", "RPE 6-8", "RPE 3-5"],
-    moderate: ["RPE 5-7", "RPE 6-8", "RPE 7-9", "RPE 3-6"],
-    expert: ["RPE 6-8", "RPE 7-9", "RPE 8-9", "RPE 4-6"]
-  };
-  return table[level][phase - 1];
-}
-
-function buildStep(week: number) {
-  const cycle = ((week - 1) % 4) + 1;
-  return cycle === 4 ? 2 : cycle;
-}
-
-function stationFocus(answers: OnboardingAnswers, week: number) {
-  const selected = answers.weakestStations.length ? answers.weakestStations : stationRotation;
-  return selected[(week - 1) % selected.length] ?? stationRotation[(week - 1) % stationRotation.length];
-}
-
-function secondaryStation(answers: OnboardingAnswers, week: number) {
-  return stationRotation[(week + 2) % stationRotation.length];
-}
-
-function progressionNote(week: number, phase: number) {
-  const step = buildStep(week);
-  if (phase === 4) return "Taper progression: reduce fatigue while preserving movement rhythm";
-  if (week % 4 === 0) return "Deload progression: lower volume, cleaner reps, no maximal efforts";
-  if (phase === 1) return `Base progression: week ${step} adds controlled aerobic and strength capacity`;
-  if (phase === 2) return `Build progression: week ${step} increases threshold volume and compromised running density`;
-  return `Peak progression: week ${step} raises race specificity, transition precision, and simulation demand`;
-}
-
-function paceGuide(level: TrainingLevel, answers: OnboardingAnswers) {
-  const easy = answers.easyRunPace || answers.current5kPace || {
-    "absolute-beginner": "brisk walk to 8:00-10:00/km jog",
-    beginner: "6:30-7:45/km",
-    moderate: "5:15-6:05/km",
-    expert: "4:35-5:15/km"
-  }[level];
-  const threshold = answers.current5kPace || {
-    "absolute-beginner": "short jog intervals only",
-    beginner: "5:45-6:30/km",
-    moderate: "4:20-4:45/km",
-    expert: "3:45-4:10/km"
-  }[level];
+function stationBlock(level: TrainingLevel, week: number): DailyWorkout["blocks"][number] {
+  const p = stationProgressions[level];
+  const i = week - 1;
   return {
-    easy,
-    threshold: answers.currentHyroxFinishTime ? `slightly faster than current HYROX run pace (${threshold})` : threshold,
-    vo2: level === "expert" ? "3K-5K effort, full control" : level === "moderate" ? "5K effort, never all-out" : "short controlled pickups",
-    race: answers.targetGoalTime ? `pace for ${answers.targetGoalTime}` : "controlled HYROX race effort"
+    title: "Station Progressions",
+    items: [
+      `SkiErg: ${p.ski[i]}`,
+      `Sled Push: ${p.sledPush[i]}`,
+      `Sled Pull: ${p.sledPull[i]}`,
+      `Burpee Broad Jump: ${p.burpee[i]}`,
+      `Row: ${p.row[i]}`,
+      `Farmer Carry: ${p.farmerCarry[i]}`,
+      `Sandbag Lunges: ${p.lunges[i]}`,
+      `Wall Balls: ${p.wallBall[i]}`,
+      ...(p.runPace ? [`Run pace target: ${p.runPace[i]}`] : []),
+      ...(p.weeklyRunVolume ? [`Weekly run volume target: ${p.weeklyRunVolume[i]}`] : [])
+    ]
   };
+}
+
+function sharedWarmup(level: TrainingLevel) {
+  if (level === "absolute-beginner" || level === "beginner") {
+    return [
+      "2 min easy walk",
+      "3 min dynamic leg swings, arm circles, and hip circles",
+      "2 min activation: 10 glute bridges and 10 bodyweight squats",
+      "3 min movement prep: 5 inchworms, 5 push-ups, 10 high-knee marches"
+    ];
+  }
+  return [
+    "3 min easy jog",
+    "3 min dynamic drills: leg swings, hip circles, thoracic rotation, arm circles",
+    "2 min activation: glute bridges, band walks if available, 10 inchworms",
+    "3 min movement prep: 5 squat jumps, 5 explosive push-ups, 10 high knees",
+    "For runs add 4x20 sec strides; for strength add 2 warmup sets of the primary movement"
+  ];
+}
+
+function sharedCooldown() {
+  return [
+    "5 min easy walk or jog until heart rate is below 65% max",
+    "5 min static stretching: hip flexor, hamstring, quad, calf, chest opener",
+    "5 min breathing: 5 deep belly breaths with 4 sec inhale, 2 sec hold, 6 sec exhale x 3 sets",
+    "After hard simulations add 10 min continuous walk, protein plus carbs within 45 min, and legs elevated for 20 min"
+  ];
 }
 
 function substitutions(answers: OnboardingAnswers) {
   const equipment = new Set(answers.equipmentAccess.map((item) => item.toLowerCase()));
   return [
-    equipment.has("skierg") ? "SkiErg available: use normal ski prescriptions" : "No SkiErg: use banded lat pulldowns, high pulls, or Assault Bike intervals",
-    equipment.has("rowerg") ? "RowErg available: use normal row prescriptions" : "No RowErg: use bike, run, or kettlebell swing intervals",
-    equipment.has("sled") ? "Sled available: use normal push and pull prescriptions" : "No sled: use heavy treadmill pushes, prowler alternative, or heavy backward drags",
-    equipment.has("wall ball") || equipment.has("wall ball setup") ? "Wall ball available: use wall ball progression" : "No wall ball: use thrusters or med-ball front squats"
+    equipment.has("skierg") ? "SkiErg available: use normal ski prescriptions." : "No SkiErg: use banded lat pulldowns, high pulls, or assault bike intervals.",
+    equipment.has("rowerg") ? "RowErg available: use normal row prescriptions." : "No RowErg: use bike, running, or kettlebell swing intervals.",
+    equipment.has("sled") ? "Sled available: use normal push and pull prescriptions." : "No sled: use heavy treadmill pushes, prowler alternative, heavy backward drags, cable rows, or battle rope pulls.",
+    equipment.has("wall ball") || equipment.has("wall ball setup") ? "Wall ball available: use wall ball progressions." : "No wall ball: use thrusters or med-ball front squats."
   ];
-}
-
-function sharedWarmup(level: TrainingLevel) {
-  if (level === "absolute-beginner") {
-    return [
-      "5-8 min brisk walk or bike",
-      "Dynamic ankles, hips, calves, and thoracic rotations",
-      "Two easy practice sets before loading any station"
-    ];
-  }
-  return [
-    "8-12 min easy aerobic warmup",
-    "Leg swings, skips, lunges, high knees, and thoracic rotations",
-    "Two progressive prep sets before the first hard block"
-  ];
-}
-
-function sharedRecovery(level: TrainingLevel, answers: OnboardingAnswers) {
-  const sleep = answers.sleepHours ? `Sleep target: at least ${Math.max(7.5, answers.sleepHours)} hours` : "Sleep target: 7.5-9 hours";
-  return [
-    sleep,
-    "Post-workout: protein plus carbs within 60 min",
-    "Hydration: 35-45 ml/kg/day plus electrolytes on hard or hot sessions",
-    level === "expert" ? "Use HRV/resting HR trends to reduce volume if readiness drops" : "Reduce volume if soreness or fatigue changes running mechanics"
-  ];
-}
-
-function sharedNutrition(level: TrainingLevel, answers: OnboardingAnswers) {
-  const protein = answers.weight ? `${Math.round(answers.weight * 1.8)}-${Math.round(answers.weight * 2.2)}g protein/day` : "Protein: 1.8-2.2 g/kg/day";
-  return [
-    protein,
-    level === "absolute-beginner" ? "Carbs around sessions; do not underfuel new training stress" : "Carbs higher on threshold, compromised running, and simulation days",
-    "Long sessions: 30-60g carbs/hour and 500-900mg sodium/hour",
-    "Race week: 48 hours carb emphasis, lower fiber, lower spicy/fatty foods"
-  ];
-}
-
-function levelScale(level: TrainingLevel, phase: number) {
-  const table: Record<TrainingLevel, { run: string; reps: string; load: string; cap: string; rounds: number; intensity: DailyWorkout["intensity"] }> = {
-    "absolute-beginner": {
-      run: phase <= 1 ? "walk-jog" : "easy jog",
-      reps: "35-50%",
-      load: "bodyweight or very light dumbbells",
-      cap: "35-40 min",
-      rounds: phase >= 3 ? 2 : 1,
-      intensity: "moderate"
-    },
-    beginner: {
-      run: "controlled run",
-      reps: "60-75%",
-      load: "light-moderate loads",
-      cap: "40-45 min",
-      rounds: phase >= 2 ? 2 : 1,
-      intensity: "moderate-hard"
-    },
-    moderate: {
-      run: "HYROX effort",
-      reps: "85-100%",
-      load: "race-practice loads where technique stays clean",
-      cap: "45-55 min",
-      rounds: phase >= 2 ? 3 : 2,
-      intensity: phase >= 3 ? "race" : "hard"
-    },
-    expert: {
-      run: "race pace or slightly faster",
-      reps: "100-115%",
-      load: "race loads or slightly heavy",
-      cap: "strict race cap",
-      rounds: phase >= 2 ? 3 : 2,
-      intensity: "race"
-    }
-  };
-  return table[level];
-}
-
-function benchmarkModifier(level: TrainingLevel, week: number, phase: number) {
-  const step = buildStep(week);
-  const scale = levelScale(level, phase);
-  return {
-    step,
-    scale,
-    note: [
-      `Level scaling: ${levelLabels[level]} uses ${scale.reps} of the benchmark volume with ${scale.load}.`,
-      `Coach rationale: ${phaseCoachingRationale(phase)}`,
-      `Week ${week} progression: ${phase === 4 ? "tapered rehearsal" : week % 4 === 0 ? "deload technique version" : `density step ${step}`}.`,
-      "Score the session: total time, run quality after stations, breathing control, and notes for the next progression."
-    ]
-  };
-}
-
-function phaseCoachingRationale(phase: number) {
-  if (phase === 1) {
-    return "base phase builds repeatable mechanics, aerobic durability, trunk control, and station confidence before chasing intensity";
-  }
-  if (phase === 2) {
-    return "build phase increases threshold exposure, station density, and compromised running while preserving repeatable pacing";
-  }
-  if (phase === 3) {
-    return "peak phase prioritizes race-order simulations, transition discipline, doubles execution, and finish-time prediction";
-  }
-  return "taper phase lowers fatigue, keeps neuromuscular sharpness, and rehearses rhythm without creating soreness";
-}
-
-function benchmarkTitle(title: string, week: number) {
-  return `${title} - Week ${week}`;
-}
-
-function runSquatBurpeeLadder(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers, goals: string[]) {
-  const { step, scale, note } = benchmarkModifier(level, week, phase);
-  const beginnerRun = level === "absolute-beginner" ? "400m walk-jog / 200m walk-jog / 100m walk-jog" : "600m / 300m / 150m";
-  const runSet = level === "expert" ? "800m / 400m / 200m at aggressive controlled pace" : level === "moderate" ? "800m / 400m / 200m at HYROX effort" : beginnerRun;
-  const squatSet = level === "absolute-beginner" ? "20 / 12 / 8 air squats" : level === "beginner" ? "35 / 18 / 10 squats" : level === "moderate" ? "50 / 25 / 10 squats" : "50 / 30 / 15 squats, last set tempo controlled";
-  const burpeeSet = level === "absolute-beginner" ? "4 / 8 / 12 step-back burpees" : level === "beginner" ? "8 / 15 / 25 burpees" : level === "moderate" ? "10 / 25 / 50 burpees" : "12 / 30 / 55 burpees or burpee broad jump finish";
-
-  return workout(`bench-${week}-jour199`, week, phase, "Saturday", benchmarkTitle("Run-Squat-Burpee Ladder", week), "Bodyweight durability, breathing under fatigue, and side-stitch control", 45 + step * 5, scale.intensity, [
-    { title: `Benchmark Ladder - ${scale.rounds} round${scale.rounds > 1 ? "s" : ""}`, items: [`Run sequence: ${runSet}`, `Squat sequence: ${squatSet}`, `Burpee sequence: ${burpeeSet}`, `Time cap: ${scale.cap}`, "Do not sprint the first run; the workout is won by breathing control late"], timer: { mode: "countdown", durationSeconds: level === "expert" ? 2400 : 2700 } },
-    { title: "Coaching Purpose", items: ["Develop leg endurance without equipment dependence", "Practice rib-cage control before burpees", "Build confidence when breathing is already elevated", ...note] }
-  ], answers, { goals });
-}
-
-function hyroxConditioningStations(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers, goals: string[], weakness: string, partnerCue: string) {
-  const { step, scale, note } = benchmarkModifier(level, week, phase);
-  const run = level === "absolute-beginner" ? `${350 + step * 50}m walk-jog` : level === "beginner" ? `${500 + step * 50}m run` : `${650 + step * 50}m run`;
-  const wallBall = level === "absolute-beginner" ? "12 wall balls or goblet squats" : level === "beginner" ? "18-22 wall balls" : "25 wall balls";
-  const lunge = level === "absolute-beginner" ? "16 walking lunges bodyweight" : level === "beginner" ? "24 walking lunges light" : "30 walking lunges loaded";
-  const carry = level === "absolute-beginner" ? "40m farmer carry" : level === "beginner" ? "70m farmer carry" : "100m farmer carry";
-  const skiRow = level === "absolute-beginner" ? "200m ski/row or bike" : level === "beginner" ? "300m ski/row" : "400m ski/row";
-  const sled = level === "absolute-beginner" ? "10 min sled technique or incline treadmill push" : level === "beginner" ? "25m sled push + 25m sled pull" : "50m sled push + 50m sled pull";
-
-  return workout(`bench-${week}-stations`, week, phase, "Saturday", benchmarkTitle("HYROX Conditioning Stations", week), "Progression-week station flow and compromised running", 60 + step * 8, scale.intensity, [
-    { title: `Station Circuit - ${scale.rounds} rounds`, items: [`Station 1: ${run}, ${wallBall}, ${level === "absolute-beginner" ? "8 burpee step-overs" : "15 burpee over plate or box"}`, `Station 2: ${run}, ${lunge}, ${carry}`, `Station 3: ${run}, ${skiRow}, ${level === "absolute-beginner" ? "12 squat jumps or air squats" : "30 jump squats"}`, `Station 4: ${run}, ${sled}`, `Primary weakness emphasis: ${weakness}`, partnerCue], timer: { mode: "station", rounds: scale.rounds } },
-    { title: "Coaching Purpose", items: ["Practice station entry while heart rate is elevated", "Keep run pace repeatable across all stations", "Use planned breathing before sled and wall balls", ...note] }
-  ], answers, { goals });
-}
-
-function allEnginesNoBrakes(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers, goals: string[]) {
-  const { step, scale, note } = benchmarkModifier(level, week, phase);
-  const engineWindow = level === "absolute-beginner" ? "3:00 each machine, easy-moderate" : level === "beginner" ? "4:00 each machine, sustainable" : "5:00 each machine, max sustainable distance";
-  const amrapWindow = level === "absolute-beginner" ? "12 min AMRAP" : level === "beginner" ? "16 min AMRAP" : "20 min AMRAP";
-  const dbLoad = level === "absolute-beginner" ? "very light DBs or step-back burpees only" : level === "beginner" ? "light DBs" : level === "moderate" ? "moderate DBs" : "heavy but unbroken DBs";
-
-  return workout(`bench-${week}-engines`, week, phase, "Saturday", benchmarkTitle("All Engines, No Brakes", week), "Mixed-machine engine capacity and dumbbell fatigue tolerance", 55 + step * 5, scale.intensity, [
-    { title: "For Distance", items: [`SkiErg: ${engineWindow}`, `BikeErg or Assault Bike: ${engineWindow}`, `RowErg: ${engineWindow}`, `Optional fourth machine: ${engineWindow}`, "Rest 3 min before the AMRAP"], timer: { mode: "station", workSeconds: level === "absolute-beginner" ? 180 : level === "beginner" ? 240 : 300, restSeconds: 0, rounds: level === "absolute-beginner" ? 3 : 4 } },
-    { title: amrapWindow, items: [`${level === "absolute-beginner" ? "100m walk-jog" : "200m run"}`, `${level === "absolute-beginner" ? "3" : "5"} dual DB devil's press (${dbLoad})`, `${level === "absolute-beginner" ? "6" : "10"} burpee over DB`, `${level === "absolute-beginner" ? "10" : "15"} DB deadlifts`, "Move continuously; avoid early redline"], timer: { mode: "countdown", durationSeconds: level === "absolute-beginner" ? 720 : level === "beginner" ? 960 : 1200 } },
-    { title: "Coaching Purpose", items: ["Raise aerobic ceiling across modalities", "Build tolerance for breathing shifts between erg and floor work", "Record machine meters and AMRAP rounds", ...note] }
-  ], answers, { goals });
-}
-
-function gritProtocol(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers, goals: string[]) {
-  const { step, scale, note } = benchmarkModifier(level, week, phase);
-  const rounds = level === "absolute-beginner" ? 2 : level === "beginner" ? 3 : 4;
-  const calories = level === "absolute-beginner" ? "6-8 cal" : level === "beginner" ? "9-10 cal" : "12 cal";
-  const wallBalls = level === "absolute-beginner" ? "8 wall balls or squats" : level === "beginner" ? "12 wall balls" : "15 wall balls";
-  const swings = level === "absolute-beginner" ? "10 Russian KB swings" : level === "beginner" ? "12 KB swings" : "15 American KB swings";
-
-  return workout(`bench-${week}-grit`, week, phase, "Saturday", benchmarkTitle("Grit Protocol", week), "Sled repeatability, wall-ball stamina, and carry mechanics", 50 + step * 5, scale.intensity, [
-    { title: `For Time - ${rounds} rounds`, items: [`Sled pull ${level === "absolute-beginner" ? "technique 20 sec" : "30 sec"}`, `Sled push ${level === "absolute-beginner" ? "technique 20 sec" : "30 sec"}`, `${level === "absolute-beginner" ? "Ring row" : "Pull-up"} ${level === "absolute-beginner" ? "20 sec" : "30 sec"}`, "Rest 90 sec"], timer: { mode: "interval", workSeconds: level === "absolute-beginner" ? 20 : 30, restSeconds: 90, rounds } },
-    { title: `EMOM - ${rounds} rounds`, items: [`Minute 1: calories of choice ${calories}`, `Minute 2: ${wallBalls}`, `Minute 3: ${swings}`, `Minute 4: KB farmer carry ${level === "absolute-beginner" ? "25 sec" : "40 sec"}`, "Keep every minute repeatable"], timer: { mode: "emom", workSeconds: 60, rounds: rounds * 4 } },
-    { title: "Coaching Purpose", items: ["Build sled output without panic breathing", "Practice wall balls after posterior-chain fatigue", "Protect grip by relaxing hands between carries", ...note] }
-  ], answers, { goals });
-}
-
-function hyrox347Simulation(level: TrainingLevel, week: number, phase: number, answers: OnboardingAnswers, goals: string[], partnerCue: string) {
-  const { step, scale, note } = benchmarkModifier(level, week, phase);
-  const run = level === "absolute-beginner" ? "400m walk-jog" : level === "beginner" ? "700m run" : "1000m run";
-  const ski = level === "absolute-beginner" ? "250m SkiErg or bike" : level === "beginner" ? "350m SkiErg" : "500m SkiErg";
-  const row = level === "absolute-beginner" ? "250m row or bike" : level === "beginner" ? "350m row" : "500m row";
-  const wallBalls = level === "absolute-beginner" ? "12 wall balls or squats" : level === "beginner" ? "18 wall balls" : "25 wall balls";
-  const carry = level === "absolute-beginner" ? "30m farmer carry" : level === "beginner" ? "40m farmer carry" : "50m farmer carry";
-  const lunges = level === "absolute-beginner" ? "25m bodyweight lunges" : level === "beginner" ? "35m sandbag lunges" : "50m sandbag lunges";
-  const burpees = level === "absolute-beginner" ? "20m step-back burpee broad jumps" : level === "beginner" ? "35m burpee broad jumps" : "50m burpee broad jumps";
-
-  return workout(`bench-${week}-jour347`, week, phase, "Saturday", benchmarkTitle("HYROX 347 Simulation", week), "Race-specific run-station sequencing and finish prediction", 65 + step * 10, scale.intensity, [
-    { title: "Simulation Flow", items: [`${run}`, `${ski}`, `${wallBalls}`, `${run}`, `${carry}`, `${level === "absolute-beginner" ? "10 burpees to plate" : "25 burpees to plate"}`, `${run}`, `${lunges}`, `${wallBalls}`, `${run}`, `${burpees}`, `${row}`, `Time cap: ${level === "expert" ? "50 min strict" : scale.cap}`, partnerCue], timer: { mode: "station", rounds: 1 } },
-    { title: "Coaching Purpose", items: ["Rehearse race-day order without guessing", "Learn which station damages the next run", "Use finish time to update target pacing", ...note] }
-  ], answers, { goals });
-}
-
-function featuredSaturday(level: TrainingLevel, week: number, phase: number, phaseWeek: number, answers: OnboardingAnswers, goals: string[], weakness: string, partnerCue: string) {
-  const phaseSlot = ((phaseWeek - 1) % 5) + 1;
-
-  if (phase === 1) {
-    if (phaseSlot === 1) return runSquatBurpeeLadder(level, week, phase, answers, goals);
-    if (phaseSlot === 2) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
-    if (phaseSlot === 3) return allEnginesNoBrakes(level, week, phase, answers, goals);
-    if (phaseSlot === 4) return gritProtocol(level, week, phase, answers, goals);
-    return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
-  }
-
-  if (phase === 2) {
-    if (phaseSlot === 1) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
-    if (phaseSlot === 2) return gritProtocol(level, week, phase, answers, goals);
-    if (phaseSlot === 3) return allEnginesNoBrakes(level, week, phase, answers, goals);
-    if (phaseSlot === 4) return runSquatBurpeeLadder(level, week, phase, answers, goals);
-    return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
-  }
-
-  if (phase === 3) {
-    if (phaseSlot === 1) return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
-    if (phaseSlot === 2) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
-    if (phaseSlot === 3) return allEnginesNoBrakes(level, week, phase, answers, goals);
-    if (phaseSlot === 4) return gritProtocol(level, week, phase, answers, goals);
-    return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
-  }
-
-  if (phaseSlot === 1) return runSquatBurpeeLadder(level, week, phase, answers, goals);
-  if (phaseSlot === 2) return hyroxConditioningStations(level, week, phase, answers, goals, weakness, partnerCue);
-  return hyrox347Simulation(level, week, phase, answers, goals, partnerCue);
 }
 
 function workout(
-  id: string,
+  level: TrainingLevel,
+  answers: OnboardingAnswers,
   week: number,
-  phase: number,
   day: DailyWorkout["day"],
   title: string,
   focus: string,
   durationMinutes: number,
   intensity: DailyWorkout["intensity"],
   blocks: DailyWorkout["blocks"],
-  answers: OnboardingAnswers,
-  options: Partial<DailyWorkout> = {}
+  options: Partial<Pick<DailyWorkout, "targetPace" | "targetHeartRate" | "warmup" | "cooldown" | "recovery" | "nutrition" | "goals" | "scaling">> = {}
 ): DailyWorkout {
+  const meta = programMeta[level];
+  const format = answers.raceCategory.includes("doubles") ? "doubles" : "individual";
   return {
-    id,
+    id: `${level}-w${week}-${day.toLowerCase().slice(0, 3)}`,
     week,
-    phase,
+    phase: phaseForWeek(week),
     day,
     title,
     focus,
@@ -452,239 +332,469 @@ function workout(
     intensity,
     targetPace: options.targetPace,
     targetHeartRate: options.targetHeartRate,
-    warmup: options.warmup ?? sharedWarmup(answers.trainingLevel),
+    warmup: options.warmup ?? sharedWarmup(level),
     blocks,
-    cooldown: options.cooldown ?? [
-      "5-10 min easy walk or jog",
-      "Long exhale breathing reset",
-      "Stretch calves, hip flexors, glutes, adductors, and lats"
-    ],
-    recovery: options.recovery ?? sharedRecovery(answers.trainingLevel, answers),
-    nutrition: options.nutrition ?? sharedNutrition(answers.trainingLevel, answers),
+    cooldown: options.cooldown ?? sharedCooldown(),
+    recovery: options.recovery ?? recoveryProtocol,
+    nutrition: options.nutrition ?? nutritionProtocol,
     goals: options.goals ?? [
-      `Build toward ${answers.targetGoalTime || finishRanges[answers.trainingLevel].realistic}`,
-      `Improve ${answers.weakestStations[0] ?? "HYROX race execution"}`,
-      "Finish with clean mechanics and controlled breathing"
+      `Build toward ${answers.targetGoalTime || meta.goal[format]}.`,
+      "Train the fixed HYROX race format, not generic fitness.",
+      "Finish with clean mechanics, controlled breathing, and repeatable station pacing."
     ],
     scaling: options.scaling ?? [
-      "Reduce volume 20-30% if soreness, sleep, stress, or injury history demands it",
+      "Reduce volume 20-30% if soreness, sleep, stress, injury history, or running mechanics demand it.",
       ...substitutions(answers)
     ]
   };
 }
 
-function levelSessions(level: TrainingLevel, week: number, phase: number, phaseWeek: number, answers: OnboardingAnswers): DailyWorkout[] {
-  const paces = paceGuide(level, answers);
-  const weakness = stationFocus(answers, week);
-  const secondary = secondaryStation(answers, week);
-  const step = buildStep(week);
-  const isBenchmarkWeek = week % 2 === 0;
-  const benchmark = isBenchmarkWeek ? "Benchmark: record split, RPE, breathing quality, and station notes" : progressionNote(week, phase);
-  const doubles = answers.raceCategory.includes("doubles");
-  const partnerCue = doubles
-    ? `Doubles cue: run together; partner pace ${answers.partnerRunningPace || "sets the cap"}; communicate before every station`
-    : "Solo cue: preserve run rhythm and avoid station redlining";
+function absoluteBeginnerStrength(week: number) {
+  const early = week <= 4;
+  const mid = week <= 8;
+  return [
+    "Goblet squat: HYROX transfer to wall ball depth and sled push position. Cue: hold DB at chest, feet shoulder-width, squat to parallel or below, chest up.",
+    `Sets: ${early ? "3x10 light 8-12kg" : mid ? "3x12, increase weight when 3x10 feels easy" : "3x10 heavier, add goblet squat to box"}.`,
+    "DB bent-over row: transfer to SkiErg pull, sled pull, rowing drive. Cue: hinge 45 degrees, one hand on bench, pull DB to hip, pause, lower slowly.",
+    `Sets: ${early ? "3x10 each side light" : mid ? "3x10 each side moderate" : "3x8 each side heavier"}.`,
+    "DB Romanian deadlift: transfer to sled push drive, kettlebell swing, posterior chain endurance. Cue: hips back, DBs close, flat back, feel hamstring stretch.",
+    `Sets: ${early ? "3x10 light" : mid ? "3x10 adding weight" : "3x8 heavier"}.`,
+    "Seated DB shoulder press: transfer to devil press lockout and wall ball throw. Cue: start at ear level, full lockout, no back arch.",
+    `Sets: ${early ? "3x10 light" : mid ? "3x10 moderate" : "3x8 moderate-heavy"}.`,
+    `Farmer carry walk: ${early ? "3x30m moderate" : mid ? "3x50m heavier" : "3x75m heaviest available"}. Stand tall, short quick steps, no leaning.`,
+    "Dead bug: 3x8 each side all 12 weeks. Lower back stays flat; do not sacrifice position."
+  ];
+}
 
-  const baseGoals = [
-    partnerCue,
-    `Station target focus: ${stationTargets[level].slice(0, 3).join("; ")}`,
-    "Practice fast entry, calm first reps, and clean exit",
-    benchmark
+function absoluteBeginnerRun(week: number) {
+  if (week <= 3) return "Walk 2 min, jog 1 min, repeat for 20 min.";
+  if (week <= 6) return "Jog 3 min, walk 1 min, repeat for 25 min.";
+  if (week <= 9) return "Jog 5 min, walk 1 min, repeat for 25 min.";
+  if (week <= 11) return "Continuous easy jog 25 min.";
+  return "Easy 15 min jog only.";
+}
+
+function absoluteBeginnerStationIntro(week: number) {
+  if (week <= 2) return ["Row technique: legs, body, arms; recovery arms, body, legs; damper 3-4; 4x100m full rest.", "Wall ball technique: 4-6kg ball, squat depth, catch into next squat; use the weekly station progression."];
+  if (week <= 4) return ["SkiErg technique: reach fully, drive elbows down, hinge at hips; total-body pull.", "Burpee broad jump mechanics: chest to floor, stand fully, jump with soft landing; do not rush."];
+  if (week <= 6) return ["Sled push: hips low, 45 degree body angle, short powerful steps.", "Sled pull: sit slightly back, hand-over-hand rope pull, short quick steps; use cable row or battle rope pulls if no sled."];
+  if (week <= 8) return ["Farmer carry finisher: 3x50m moderate, upright posture.", "Sandbag lunge: upright torso, long stride, rear knee near floor; use dumbbells if no sandbag."];
+  return ["Combine 3-4 stations in simple circuits.", "Use basic compromised running: 2 stations, then 500m run.", "Record whether breathing stays controlled."];
+}
+
+function buildAbsoluteBeginnerWeek(answers: OnboardingAnswers, week: number): TrainingWeek {
+  const workouts: DailyWorkout[] = [
+    workout("absolute-beginner", answers, week, "Monday", "Full Body Strength A", "Strength and movement foundation", 50, "moderate", [
+      { title: "Full Body Strength", items: absoluteBeginnerStrength(week) },
+      stationBlock("absolute-beginner", week),
+      { title: "Breathing", items: breathingProtocol.slice(0, 4) }
+    ]),
+    workout("absolute-beginner", answers, week, "Wednesday", "Aerobic Engine + Station Introduction", "Build aerobic base and learn station mechanics", 55, "easy", [
+      { title: "Run / Walk-Run", items: [absoluteBeginnerRun(week), "Target pace is conversational; if you cannot speak a full sentence, slow down."] },
+      { title: "Station Technique Focus", items: absoluteBeginnerStationIntro(week) },
+      stationBlock("absolute-beginner", week)
+    ], { targetPace: { shared: "Conversational walk-jog" }, targetHeartRate: "Zone 2, below 70% max HR" })
   ];
 
-  const programs: Record<TrainingLevel, DailyWorkout[]> = {
-    "absolute-beginner": [
-      workout(`gen-${week}-1`, week, phase, "Monday", "Walk-Run Engine + Core", "Consistency, aerobic habit, side stitch prevention", 40, "easy", [
-        { title: "Walk-Run", items: [`${phase <= 1 ? `${8 + step * 2} x ${step} min jog / 2 min walk` : `${6 + step * 2} x ${step + 1} min jog / 90 sec walk`}`, `Keep ${paces.easy}`, "Nasal breathing for the first 10 min", progressionNote(week, phase)] },
-        { title: "Core Stability", items: [`Dead bugs 3x${8 + step * 2}/side`, `Bird dogs 3x${8 + step}/side`, `Side plank 3x${20 + step * 5} sec/side`, `Suitcase carry ${3 + step}x20m`] },
-        { title: "Breathing", items: ["Crocodile breathing 5 min", "Box breathing 4-4-4-4 x 4 rounds"] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-2`, week, phase, "Wednesday", "Strength Foundation", "Movement quality and structural capacity", 45, "moderate", [
-        { title: "Strength", items: [`Goblet squat ${2 + step}x8 RPE ${4 + step}`, `Dumbbell Romanian deadlift ${2 + step}x8`, `Step-up ${2 + step}x8/side`, `Incline push-up ${2 + step}x8`, `Cable row or ring row ${2 + step}x10`] },
-        { title: "HYROX Skill", items: [`Technique practice: ${weakness}`, `${10 + step * 3} min only`, `Secondary exposure: ${secondary}`, "Stop before form breaks"] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-3`, week, phase, "Friday", "Low-Impact Engine", "Aerobic work without pounding", 35, "easy", [
-        { title: "Bike/Row/Walk", items: [`${25 + step * 5} min Zone 2`, `Every ${6 - Math.min(step, 2)} min add 30 sec slightly faster`, "No breath holding"] },
-        { title: "Mobility", items: ["Hips 2 min/side", "Calves 2 min/side", "Ankles 2 min/side", "Thoracic rotation 2x8/side"] }
-      ], answers),
-      featuredSaturday(level, week, phase, phaseWeek, answers, baseGoals, weakness, partnerCue)
-    ],
-    beginner: [
-      workout(`gen-${week}-1`, week, phase, "Monday", "Aerobic Base + Core", "Running durability and trunk control", 55, "easy", [
-        { title: "Run", items: [`${30 + step * 5}-${40 + step * 5} min Zone 2`, `Hold ${paces.easy}`, `Finish with ${3 + step} x 20 sec relaxed strides`, progressionNote(week, phase)] },
-        { title: "Core", items: [`Copenhagen plank 3x${15 + step * 5} sec/side`, `Dead bugs 3x${10 + step}`, `Pallof press 3x${10 + step}/side`, `Suitcase carry ${3 + step}x30m`] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-2`, week, phase, "Tuesday", "Lower Strength + Skill", "Foundational force production", 65, "moderate", [
-        { title: "Strength", items: [`Back squat ${3 + step}x6 RPE ${5 + step}`, `Romanian deadlift ${3 + step}x8`, `Walking lunges ${2 + step}x20m`, "Tibialis raises 3x20"] },
-        { title: "Station Skill", items: [`${weakness} technique ${12 + step * 3} min`, `Secondary station: ${secondary}`, "Keep reps smooth", "Rest before failure"] }
-      ], answers),
-      workout(`gen-${week}-3`, week, phase, "Thursday", "Intro Threshold", "Controlled lactate tolerance", 55, "moderate-hard", [
-        { title: "Run", items: [`${phase <= 1 ? `${3 + step} x ${3 + step} min comfortably hard` : `${4 + step} x 800m threshold`}`, "2 min easy jog recovery", `Target: ${paces.threshold}`, isBenchmarkWeek ? "Benchmark: compare average pace to last threshold session" : "Stay controlled; last rep should be repeatable"], timer: { mode: "interval", workSeconds: phase <= 1 ? (180 + step * 60) : 300, restSeconds: 120, rounds: phase <= 1 ? 3 + step : 4 + step } },
-        { title: "Breathing", items: ["Use 3:3 rhythm early", "Shift to 2:2 only when effort rises"] }
-      ], answers),
-      featuredSaturday(level, week, phase, phaseWeek, answers, baseGoals, weakness, partnerCue),
-      workout(`gen-${week}-5`, week, phase, "Sunday", "Full Rest", "Absorb training", 20, "recovery", [
-        { title: "Recovery Only", items: ["Easy walk optional", "Mobility 10 min", "Hydration and meal prep", "No intense training"] }
-      ], answers, { warmup: [], cooldown: [] })
-    ],
-    moderate: [
-      workout(`gen-${week}-1`, week, phase, "Monday", "Recovery Engine", "Zone 2, core, and anti-side-stitch work", 70, "easy", [
-        { title: "Run", items: [`${40 + step * 5}-${50 + step * 5} min Zone 2`, `Target: ${paces.easy}`, "Nasal breathing first 15 min", progressionNote(week, phase)] },
-        { title: "Core", items: [`Copenhagen plank 3x${25 + step * 5} sec/side`, `Dead bugs 3x${10 + step}`, `Bird dogs 3x${8 + step}/side`, `Side planks 3x${35 + step * 5} sec/side`] },
-        { title: "Mobility", items: ["Hips", "Thoracic spine", "Ankles", "Calves", "Adductors"] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-2`, week, phase, "Tuesday", "Threshold + Lower Strength", "Lactate threshold and force durability", 95, "hard", [
-        { title: "Run", items: [`${phase <= 1 ? `${4 + step} x 1 km threshold` : phase === 2 ? `${2 + step} x 2 km threshold` : `${5 + step} x 1 km race pace`}`, "2-3 min jog recovery", `Target: ${paces.threshold}`, isBenchmarkWeek ? "Benchmark: record average rep pace and HR drift" : "Keep the final rep controlled, not desperate"], timer: { mode: "interval", workSeconds: phase === 2 ? 570 : 285, restSeconds: phase === 2 ? 180 : 120, rounds: phase === 2 ? 2 + step : phase === 3 ? 5 + step : 4 + step } },
-        { title: "Strength", items: [`Back squat ${3 + step}x5-6 RPE 7-8`, `Romanian deadlift ${3 + step}x8`, `Bulgarian split squat ${2 + step}x10/side`, `Walking lunges ${2 + step}x20m`, "Tibialis raises 3x20"] }
-      ], answers),
-      workout(`gen-${week}-3`, week, phase, "Wednesday", "HYROX Engine Session", "Compromised running and station rhythm", 85, "moderate-hard", [
-        { title: `${phase <= 1 ? 2 + step : 3 + step} rounds`, items: ["1 km run", `${phase <= 1 ? 500 + step * 100 : 750 + step * 100}m SkiErg`, `${25 + step * 12.5}m sled push`, `${25 + step * 12.5}m sled pull`, `${500 + step * 100}m row`, `Primary station focus: ${weakness}`, partnerCue], timer: { mode: "station", rounds: phase <= 1 ? 2 + step : 3 + step } },
-        { title: "Purpose", items: ["Smooth transitions", "No standing still", "Keep the run controlled after stations"] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-4`, week, phase, "Thursday", "Active Recovery + Mobility", "Downshift fatigue", 45, "recovery", [
-        { title: "Option", items: ["40 min cycling Zone 1-2", "Or 30-35 min easy run", "Keep breathing fully conversational"] },
-        { title: "Reset", items: ["Foam rolling", "Lacrosse ball feet release", "Hip and calf mobility", "Diaphragmatic breathing 5 min"] }
-      ], answers),
-      workout(`gen-${week}-5`, week, phase, "Friday", "Strength + Compromised Running", "Strength under fatigue", 90, "hard", [
-        { title: "Strength", items: [`Trap bar deadlift ${3 + step}x5`, `Bench press ${3 + step}x6`, `Pull-ups ${3 + step}x8`, `Push press ${2 + step}x8`, `Farmer carry ${3 + step}x40m`] },
-        { title: `Compromised Running - ${3 + step} rounds`, items: [`${400 + step * 100}m SkiErg`, `${600 + step * 200}m run at HYROX pace`, `Station focus: ${weakness}`, `Secondary station: ${secondary}`], timer: { mode: "interval", workSeconds: 360 + step * 60, restSeconds: 90, rounds: 3 + step } }
-      ], answers),
-      featuredSaturday(level, week, phase, phaseWeek, answers, [...baseGoals, ...(doubles ? doublesSplits : ["Solo strategy: never sprint transitions; win by preserving run pace"])], weakness, partnerCue)
-    ],
-    expert: [
-      workout(`gen-${week}-1`, week, phase, "Monday", "Aerobic Reset + Strides", "Absorb load while maintaining speed", 70, "easy", [
-        { title: "Run", items: [`${45 + step * 5}-${55 + step * 5} min Zone 2`, `Target: ${paces.easy}`, `${5 + step} x 20 sec relaxed strides`, "Full walk-back recovery", progressionNote(week, phase)] },
-        { title: "Core", items: [`Copenhagen plank 3x${35 + step * 5} sec/side`, `${3 + step}x10/side Pallof press`, `Suitcase carry ${4 + step}x40m`] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-2`, week, phase, "Tuesday", "Advanced Threshold", "Race engine and lactate clearance", 100, "hard", [
-        { title: "Run", items: [phase <= 1 ? `${3 + step} x 1600m threshold` : phase === 2 ? `${3 + step} x 2 km threshold` : `${2 + step} x 3 km threshold`, "2-3 min jog recovery", `Target: ${paces.threshold}`, isBenchmarkWeek ? "Benchmark: compare total threshold volume at same RPE" : "Stay submaximal until the final rep"], timer: { mode: "interval", workSeconds: phase === 3 ? 780 : phase === 2 ? 520 : 390, restSeconds: 150, rounds: phase === 3 ? 2 + step : 3 + step } },
-        { title: "Lower Strength", items: [`Back squat ${4 + step}x4 RPE 8`, `RDL ${3 + step}x6`, `Heavy walking lunge ${3 + step}x20m`, `Sled push technique ${5 + step}x12.5m`] }
-      ], answers),
-      workout(`gen-${week}-3`, week, phase, "Wednesday", "HYROX Engine + Transitions", "High-specificity station flow", 90, "hard", [
-        { title: "Engine", items: [`${4 + step} rounds`, "1 km run", `${400 + step * 100}m SkiErg`, `${15 + step * 5} burpee broad jumps`, `${400 + step * 100}m row`, `Primary station focus: ${weakness}`, "Fast but controlled transitions"], timer: { mode: "station", rounds: 4 + step } },
-        { title: "Transition Rehearsal", items: ["Station entry line", "Station exit line", "Breathing cue", `Next run first ${150 + step * 50}m controlled`] }
-      ], answers, { goals: baseGoals }),
-      workout(`gen-${week}-4`, week, phase, "Thursday", "Second Threshold / VO2", "Advanced speed reserve", 75, "hard", [
-        { title: "Run", items: [`${5 + step} x 800m at VO2 effort`, "2 min jog recovery", `Target: ${paces.vo2}`, phase === 3 ? "Peak: keep mechanics intact under high breathing demand" : "Build speed reserve without sprinting"], timer: { mode: "interval", workSeconds: 190, restSeconds: 120, rounds: 5 + step } },
-        { title: "Flush", items: ["10 min easy jog", "Mobility and diaphragm reset"] }
-      ], answers),
-      workout(`gen-${week}-5`, week, phase, "Friday", "Heavy Station Efficiency", "Force output without redlining", 90, "hard", [
-        { title: "Stations", items: [`Heavy sled push ${5 + step} x 12.5m`, `Sled pull ${5 + step} x 12.5m`, `Farmer carry ${4 + step} x 40m`, `Sandbag lunge ${3 + step} x 25m`, `Wall balls in planned sets focused on ${weakness}`] },
-        { title: "Compromised Finish", items: [`${2 + step} rounds: 500m row, ${15 + step * 5} wall balls, 400m run`, `Secondary station: ${secondary}`] }
-      ], answers),
-      featuredSaturday(level, week, phase, phaseWeek, answers, [...baseGoals, ...(doubles ? doublesSplits : ["Solo strategy: hold back through sled pull, attack from farmer carry onward"])], weakness, partnerCue),
-      workout(`gen-${week}-7`, week, phase, "Sunday", "Recovery Only", "Maintain tissue quality", 30, "recovery", [
-        { title: "Recovery", items: ["Zone 1 walk or bike only", "Mobility 20 min", "Breathing reset 5 min", "No strength loading"] }
-      ], answers, { warmup: [], cooldown: [] })
-    ]
-  };
+  if (week >= 7 && answers.availableTrainingDays >= 4) {
+    workouts.push(workout("absolute-beginner", answers, week, "Friday", "Optional Recovery Walk + Mobility", "Optional fourth day from week 7 onward", 30, "recovery", [
+      { title: "Recovery", items: ["20-30 min light walking only", "Hip 90/90, pigeon pose, thoracic rotations, ankle circles", "Crocodile breathing 5 min and box breathing 5 min"] }
+    ], { warmup: [], cooldown: [] }));
+  }
 
-  return programs[level];
+  workouts.push(workout("absolute-beginner", answers, week, "Saturday", week >= 9 ? "Simple Simulation / Long Easy Effort" : "Long Easy Effort", "Build time on feet and aerobic capacity", week <= 3 ? 30 : week <= 6 ? 40 : week <= 9 ? 55 : week <= 11 ? 45 : 30, week >= 9 ? "moderate" : "easy", [
+    { title: "Long Effort", items: [
+      week <= 3 ? "30 min easy walk with occasional jogging." : week <= 6 ? "40 min walk-jog; jog as much as feels comfortable." : week <= 9 ? "50 min easy continuous jog or 60 min walk-jog." : week <= 11 ? "45 min easy jog. Practice row 200m then run 500m." : "30 min easy jog only.",
+      "Zone 2 only. Conversational. Heart rate below 70% max."
+    ] },
+    stationBlock("absolute-beginner", week)
+  ]));
+
+  return makeWeek("absolute-beginner", week, workouts);
 }
 
-function compressForTrainingDays(workouts: DailyWorkout[], level: TrainingLevel, days: number) {
-  const limits: Record<TrainingLevel, [number, number]> = {
-    "absolute-beginner": [3, 4],
-    beginner: [4, 5],
-    moderate: [5, 6],
-    expert: [6, 7]
-  };
-  const [minDays, maxDays] = limits[level];
-  const target = Math.min(maxDays, Math.max(minDays, days || minDays));
-  return workouts.slice(0, target);
-}
-
-function applyWeekModifiers(workouts: DailyWorkout[], level: TrainingLevel, isDeload: boolean, isTaper: boolean) {
-  return workouts.map((item) => ({
-    ...item,
-    durationMinutes: isDeload ? Math.round(item.durationMinutes * 0.65) : isTaper ? Math.round(item.durationMinutes * 0.5) : item.durationMinutes,
-    intensity: isTaper ? "moderate" as const : isDeload && ["hard", "race"].includes(item.intensity) ? "moderate" as const : item.intensity,
-    blocks: item.blocks.map((block) => ({
-      ...block,
-      items: [
-        ...block.items,
-        ...(isDeload ? ["Deload: reduce total volume 35-40%, keep technique crisp"] : []),
-        ...(isTaper ? ["Taper: preserve rhythm, stop before fatigue accumulates"] : [])
-      ]
-    })),
-    recovery: [
-      ...item.recovery,
-      ...(isDeload ? ["Deload priority: sleep, mobility, and low soreness"] : []),
-      ...(isTaper ? ["Taper priority: glycogen restoration, hydration, and confidence"] : []),
-      ...(level === "expert" ? ["Monitor HRV/resting HR and cut accessories if readiness drops"] : [])
-    ]
-  }));
-}
-
-function weekIntent(level: TrainingLevel, phase: number, isDeload: boolean, isTaper: boolean) {
-  if (isTaper) return "Reduce volume, preserve sharpness, dial race-day pacing, hydration, and nutrition.";
-  if (isDeload) return "Reduce volume 35-40%, keep movement quality high, and absorb the prior block.";
-  const intents = [
-    "Build aerobic efficiency, structural resilience, breathing mechanics, and movement quality.",
-    "Increase threshold capacity, strength endurance, compromised running, and station skill.",
-    "Prioritize race-specific conditioning, simulations, transition speed, and pacing discipline.",
-    "Arrive fresh: low soreness, high confidence, full glycogen, and precise race execution."
+function beginnerLower(week: number) {
+  return [
+    week <= 4 ? "Goblet squat 3x10 moderate DB. Transfer: wall ball depth, sled push posture, running leg cycles." : week <= 8 ? "Barbell back squat 4x8 at 60-70%. Break parallel, chest up, drive through entire foot." : "Barbell back squat 4x6 at 70-80%.",
+    week <= 4 ? "DB Romanian deadlift 3x10." : week <= 8 ? "Barbell Romanian deadlift 3x10 moderate." : "Barbell Romanian deadlift 3x8 heavier.",
+    week <= 4 ? "Bulgarian split squat 3x10 each side bodyweight." : week <= 8 ? "Bulgarian split squat 3x10 each side light DBs." : "Bulgarian split squat 3x8 each side heavier DBs.",
+    week <= 6 ? "Hip thrust 3x12 bodyweight or lightly loaded." : "Hip thrust 3x10 barbell loaded.",
+    week <= 4 ? "Farmer carry finisher 3x50m heavy." : week <= 8 ? "Farmer carry finisher 3x75m heavy." : "Farmer carry finisher 3x100m heavy.",
+    "After gym: 10 min easy run or 15 min walk."
   ];
-  return `${levelLabels[level]} focus: ${intents[phase - 1]}`;
+}
+
+function beginnerUpper(week: number) {
+  return [
+    week <= 4 ? "Incline DB bench press 3x10." : week <= 8 ? "Incline DB bench press 3x8." : "Incline DB bench press 4x6.",
+    week <= 4 ? "Bent-over DB row 3x10 each side." : week <= 8 ? "Bent-over DB row 3x8 each side." : "Bent-over DB row 4x8 each side heavier.",
+    week <= 4 ? "DB shoulder press 3x10." : "DB shoulder press 3x8.",
+    "Face pulls 3x15 every week, zero exceptions.",
+    "External rotation with cable or band 3x15 each side every week."
+  ];
+}
+
+function beginnerConditioning(week: number) {
+  if (week <= 3) return ["3 rounds: 300m row -> 10 wall balls (6kg) -> 400m easy run.", "Full 3 min rest between rounds."];
+  if (week <= 6) return ["3 rounds: 400m row -> 15 wall balls (6kg) -> 500m run at moderate effort.", "2 min rest between rounds."];
+  if (week <= 9) return ["3 rounds: 500m SkiErg -> 20 wall balls (9kg) -> 500m run.", "Alternative: 500m row -> 20 burpee broad jumps -> 500m run.", "2 min rest."];
+  if (week <= 11) return ["4 rounds: 500m SkiErg or row -> 25 wall balls -> 500m at race-target pace.", "90 sec rest only."];
+  return ["Taper: skip conditioning block. Gym only, 45 min."];
+}
+
+function beginnerRun(week: number) {
+  if (week <= 3) return ["30 min continuous easy run. Walk-jog if needed until continuous running is possible.", "Conversational pace only."];
+  if (week <= 6) return ["40 min continuous Zone 2 run.", "Finish with 4x20 sec strides, faster than easy but not sprinting."];
+  if (week <= 9) return ["10 min easy warmup.", "4x4 min hard but sustainable threshold; 3 min easy jog between.", "10 min easy cooldown."];
+  if (week <= 11) return ["10 min easy.", "3x8 min at target race pace effort; 4 min easy between.", "10 min cooldown."];
+  return ["20 min easy jog only."];
+}
+
+function beginnerSaturday(week: number) {
+  if (week <= 4) return ["45-60 min easy aerobic effort: run, bike, row, or mixed low-intensity work."];
+  if (week === 5) return ["First simple simulation: 4 stations (SkiErg, sled push, burpee, row) at reduced distance with 500m run between each.", "Record total time."];
+  if (week === 6) return ["60 min run with station stops: run 1km, perform 20 wall balls, continue running.", "Do not chase race distances."];
+  if (week === 7) return ["Second simple simulation: 6 stations at 50-75% distance with 500m runs."];
+  if (week <= 9) return ["70% HYROX simulation: all 8 stations at 50-75% race distance with 1km runs between.", "Record time."];
+  if (week === 10) return ["85% simulation: stations at 75-90% race distance, 1km runs, race-format completion."];
+  if (week === 11) return ["45 min easy effort only. Let the body absorb prior work."];
+  return ["Rest."];
+}
+
+function buildBeginnerWeek(answers: OnboardingAnswers, week: number): TrainingWeek {
+  const workouts = [
+    workout("beginner", answers, week, "Monday", "Lower Body Strength + Short Run", "Leg and posterior-chain capacity for stations and running", 60, "moderate", [
+      { title: "Lower Body Strength", items: beginnerLower(week) },
+      stationBlock("beginner", week)
+    ]),
+    workout("beginner", answers, week, "Wednesday", "Upper Body Strength + HYROX Conditioning", "Upper strength and compromised running skill", week === 12 ? 45 : 85, week === 12 ? "moderate" : "moderate-hard", [
+      { title: "Upper Body Strength", items: beginnerUpper(week) },
+      { title: "HYROX Conditioning Block", items: beginnerConditioning(week), timer: { mode: "station", rounds: week <= 6 ? 3 : week <= 11 ? 4 : 1 } },
+      stationBlock("beginner", week)
+    ]),
+    workout("beginner", answers, week, "Friday", "Running Session", "Zone 2, threshold, or race-pace rehearsal", week === 12 ? 25 : 65, week <= 6 || week === 12 ? "easy" : "hard", [
+      { title: "Run", items: beginnerRun(week) },
+      { title: "Breathing Protocol", items: breathingProtocol }
+    ], { targetPace: { shared: "Beginner race target 5:45-6:30/km when prescribed" } }),
+    workout("beginner", answers, week, "Saturday", "Long Session / Simulation", "Aerobic capacity and progressive race-format practice", week <= 4 ? 55 : week === 12 ? 20 : 85, week <= 4 || week >= 11 ? "easy" : "hard", [
+      { title: "Saturday Prescription", items: beginnerSaturday(week) },
+      stationBlock("beginner", week)
+    ], { warmup: week === 12 ? [] : undefined })
+  ];
+  return makeWeek("beginner", week, workouts);
+}
+
+function moderateLower(week: number) {
+  return [
+    week <= 4 ? "Back squat 4x6 at 70%." : week <= 8 ? "Back squat 4x5 at 75-80%." : "Back squat 4x4 at 80-85%.",
+    week <= 4 ? "Romanian deadlift 3x8." : week <= 8 ? "Romanian deadlift 3x8 heavier." : "Romanian deadlift 3x6 heavy.",
+    week <= 6 ? "Bulgarian split squat 3x10 each side with DBs." : "Bulgarian split squat 3x8 each side heavier.",
+    week <= 4 ? "Hip thrust 3x10 moderate." : week <= 8 ? "Hip thrust 3x10 heavier." : "Hip thrust 3x8 heavy."
+  ];
+}
+
+function moderateSessionC(week: number) {
+  const rounds = week <= 4 ? 2 : week <= 11 ? 3 : 1;
+  return [
+    "Cash in: 1km run at target race pace.",
+    `Per round (${rounds} rounds): row erg -> wall balls -> burpee broad jumps -> kettlebell swings -> sandbag lunges -> farmer carry -> 1km compromised run with zero rest off carry.`,
+    "Cash out: 1km run at max sustainable pace.",
+    week <= 4 ? "Progressions: row 500m, wall balls 20/6kg to 30/9kg, burpees 15-25m, KB swings 15/16kg, lunges 20m/15kg, farmer carry 50m/20kg." : week <= 8 ? "Progressions: row 750m, wall balls 50/9kg, burpees 40-60m, KB swings 20/24kg, lunges 60m/20kg, farmer carry 100-150m/22-24kg." : "Progressions: row 1000m, wall balls 60-100/9kg, burpees 80m, KB swings 20/24kg, lunges 100m/20kg, farmer carry 200m/24kg."
+  ];
+}
+
+function moderateRun(week: number) {
+  if (week <= 3) return ["10 min easy warmup.", "4x5 min threshold; 3 min easy jog rest.", "10 min cooldown."];
+  if (week <= 6) return ["10 min warmup.", "3x8 min threshold; 4 min rest.", "10 min cooldown."];
+  if (week <= 8) return ["10 min warmup.", "2x12 min threshold; 5 min rest.", "10 min cooldown."];
+  if (week <= 10) return ["10 min warmup.", "6x2 min at 90-95% max effort; 2 min jog rest.", "10 min cooldown."];
+  return ["3x1km at race pace, 90 sec rest. Taper into race week."];
+}
+
+function moderateUpper(week: number) {
+  return [
+    week <= 4 ? "Barbell bent-over row 4x8." : week <= 8 ? "Barbell bent-over row 4x6." : "Barbell bent-over row 4x5.",
+    week <= 4 ? "Weighted pull-ups 4x6 bodyweight, or lat pulldown." : week <= 8 ? "Weighted pull-ups 4x5 with 5kg." : "Weighted pull-ups 4x5 with 10kg.",
+    week <= 4 ? "Incline barbell bench press 4x8." : week <= 8 ? "Incline barbell bench press 4x6." : "Incline barbell bench press 4x5.",
+    "Face pulls 3x15 every week.",
+    "External rotation 3x15 each side every week.",
+    week <= 4 ? "DB farmer carry holds 3x45 sec heavy." : "DB farmer carry holds 3x60 sec heavy."
+  ];
+}
+
+function moderateSessionB(week: number) {
+  const rounds = week <= 4 ? 2 : 3;
+  return [
+    "Cash in: 1km run at race pace target.",
+    `Per round (${rounds} rounds): SkiErg -> sled pull -> row erg -> 400m run with no rest off the rower.`,
+    "Cash out: 1km run at race pace.",
+    week <= 2 ? "Ski 300m, sled pull 60kg, row 300m, run 30-40 sec/km slower than race pace." : week <= 4 ? "Ski 400m, sled pull 80kg, row 400m, run 30-40 sec/km slower than race pace." : week <= 6 ? "Ski 500m, sled pull 103kg, row 500m, run at race pace." : week <= 8 ? "Ski 750m, sled pull 103kg, row 750m, run at race pace." : "Ski 1000m, sled pull 103kg, row 1000m, run at race pace."
+  ];
+}
+
+function moderateSessionA(week: number) {
+  const rounds = week <= 4 ? 2 : week <= 11 ? 3 : 1;
+  return [
+    "Gym primer: incline barbell bench press, weighted dips, face pulls.",
+    "Cash in: 500m assault bike or 500m row sprint.",
+    `Per round (${rounds} rounds): sled push -> burpee broad jump -> 400m run -> optional 10 devil press with moderate DBs.`,
+    "Cash out: 500m assault bike or row sprint.",
+    week <= 2 ? "Sled 80kg, BBJ 15m." : week <= 4 ? "Sled 100kg, BBJ 25m." : week <= 6 ? "Sled 120kg, BBJ 40m." : week <= 8 ? "Sled 140kg, BBJ 60m." : "Sled 152kg, BBJ 80m.",
+    week <= 6 ? "Short run after: 15 min easy Zone 2." : week <= 11 ? "Short run after: 20 min with 10 min easy + 3x30 sec strides." : "Week 12: skip the short run."
+  ];
+}
+
+function moderateSaturday(week: number) {
+  if (week <= 3) return ["45-55 min Zone 2 run, HR below 70% max."];
+  if (week === 4) return ["Deload: 40 min easy run, no intensity."];
+  if (week === 5) return ["50% HYROX simulation: all 8 stations at 50% race distance, 1km runs between."];
+  if (week === 6) return ["60 min Zone 2 run with 6x30 sec strides at the end."];
+  if (week === 7) return ["70% simulation: all stations at 70% race distance, 1km runs, record every split."];
+  if (week === 8) return ["Deload: 45 min easy Zone 2."];
+  if (week === 9) return ["90% simulation: all stations at 90% race distance, 1km runs, full race effort, record splits."];
+  if (week === 10) return ["45 min easy run + 4x1km at race pace."];
+  if (week === 11) return ["40 min easy run only. No simulation."];
+  return ["Race week: rest or 15 min walk."];
+}
+
+function buildModerateWeek(answers: OnboardingAnswers, week: number): TrainingWeek {
+  const workouts = [
+    workout("moderate", answers, week, "Monday", "Lower Body Strength + Session C", "Leg strength before full station circuit", 85, week === 4 || week === 8 || week === 12 ? "moderate" : "hard", [
+      { title: "Lower Body Strength", items: moderateLower(week) },
+      { title: "Moderate Station Circuit (Session C)", items: moderateSessionC(week), timer: { mode: "station", rounds: week <= 4 ? 2 : week <= 11 ? 3 : 1 } },
+      stationBlock("moderate", week)
+    ]),
+    workout("moderate", answers, week, "Tuesday", "Running Quality Session", "Threshold or VO2 running development", 65, week === 12 ? "moderate" : "hard", [
+      { title: "Run", items: moderateRun(week), timer: { mode: "interval", rounds: week <= 3 ? 4 : week <= 6 ? 3 : week <= 8 ? 2 : 6 } },
+      { title: "Breathing Protocol", items: breathingProtocol }
+    ], { targetPace: { shared: "Moderate race target 5:00-5:20/km" } }),
+    workout("moderate", answers, week, "Wednesday", "Upper Body Strength + Session B", "Pulling muscles before SkiErg, sled pull, and row", 85, week === 4 || week === 8 || week === 12 ? "moderate" : "hard", [
+      { title: "Upper Body Strength", items: moderateUpper(week) },
+      { title: "Session B Modified", items: moderateSessionB(week), timer: { mode: "station", rounds: week <= 4 ? 2 : 3 } },
+      stationBlock("moderate", week)
+    ]),
+    workout("moderate", answers, week, "Thursday", "Active Recovery + Mobility", "Required downshift to sustain the week", 40, "recovery", [
+      { title: "Recovery", items: ["10 min foam roll: IT band, glutes, thoracic spine, calves, hip flexors.", "10 min mobility: hip 90/90, pigeon pose, thoracic rotation, ankle circles.", "10 min breathing: crocodile breathing 5 min, box breathing 5 min.", "Optional 20 min easy walk or Zone 1 bike. Do not add intensity."] }
+    ], { warmup: [], cooldown: [] }),
+    workout("moderate", answers, week, "Friday", "Session A + Short Run", "Push muscles before sled push and burpee broad jumps", 75, week === 4 || week === 8 || week === 12 ? "moderate" : "hard", [
+      { title: "Session A", items: moderateSessionA(week), timer: { mode: "station", rounds: week <= 4 ? 2 : week <= 11 ? 3 : 1 } },
+      stationBlock("moderate", week)
+    ]),
+    workout("moderate", answers, week, "Saturday", "Long Run / Simulation", "Race-format rehearsal and aerobic base", week <= 4 || week >= 11 ? 45 : 95, week <= 4 || week >= 11 ? "easy" : "race", [
+      { title: "Saturday Prescription", items: moderateSaturday(week) },
+      stationBlock("moderate", week)
+    ])
+  ];
+  return makeWeek("moderate", week, workouts);
+}
+
+function expertChest(week: number) {
+  return [
+    week <= 4 ? "Incline barbell bench press 4x8 at about 70%." : week <= 8 ? "Incline barbell bench press 4x6 at about 80%." : "Incline barbell bench press 4x5 at about 85%.",
+    "Cue: retract scapula before unracking, bar to mid-chest, elbows 45-60 degrees, full lockout, 3 sec descent.",
+    week <= 4 ? "Weighted dips 3x10 bodyweight." : week <= 8 ? "Weighted dips 3x8 with 5kg." : "Weighted dips 3x6 with 10kg.",
+    "Cue: slight forward lean, lower until upper arm is parallel, full lockout, controlled descent.",
+    "Face pulls 3x15 every week, zero exceptions. Cable at face height, elbows high, hands beside ears."
+  ];
+}
+
+function expertSessionA(week: number) {
+  const rounds = week <= 4 ? 3 : week <= 11 ? 4 : 2;
+  return [
+    "Cash in: 500m assault bike sprint; note time every week.",
+    `Per round (${rounds} rounds): sled push -> burpee broad jump -> 400m run -> 12 devil press.`,
+    "Cash out: 500m assault bike sprint; match or beat cash-in time.",
+    week <= 2 ? "Sled 120kg, BBJ 20m, run 5:20/km, devil press 2x15kg." : week <= 4 ? "Sled 140kg, BBJ 20m, run 5:20/km, devil press 2x15kg." : week <= 8 ? "Sled 152kg, BBJ 40m, run 5:05/km, devil press 2x20kg." : week <= 10 ? "Sled 152kg, BBJ 60m, run 4:55/km, devil press 2x22.5kg." : week === 11 ? "Sled 152kg, BBJ 80m, run 4:55/km, devil press 2x22.5kg." : "Race week primer: sled push 2x20m race weight, run 4:50/km, do not fatigue.",
+    "Rest: 30 sec between rounds only."
+  ];
+}
+
+function expertBack(week: number) {
+  return [
+    week <= 4 ? "Barbell bent-over row 4x8." : week <= 8 ? "Barbell bent-over row 4x6." : "Barbell bent-over row 4x5.",
+    "Cue: hinge 45 degrees, back flat, pull to lower ribs, elbows drive back, full stretch, no momentum.",
+    week <= 4 ? "Weighted pull-ups 4x6 bodyweight." : week <= 8 ? "Weighted pull-ups 4x5 with 5kg." : "Weighted pull-ups 4x5 with 10kg.",
+    "Cue: full dead hang, drive elbows down and back, chin clears bar, 3 sec lower.",
+    week <= 4 ? "Single-arm DB row 3x10 each side." : "Single-arm DB row 3x8 each side, heavier.",
+    week <= 4 ? "Farmer carry holds 3x45 sec." : week <= 8 ? "Farmer carry holds 3x60 sec heavy." : "Farmer carry holds 3x60 sec very heavy."
+  ];
+}
+
+function expertSessionB(week: number) {
+  const rounds = week <= 4 ? 3 : 4;
+  return [
+    "Cash in: 1km run at race pace target; time it every week.",
+    `Per round (${rounds} rounds): SkiErg -> sled pull -> row erg -> 400m run with zero rest off rower.`,
+    "Cash out: 1km run at race pace.",
+    week <= 2 ? "Ski 500m technique, sled pull 80kg, row 500m at 2:10/500m, run 5:18/km." : week <= 4 ? "Ski 500m technique, sled pull 90-95kg, row 500-750m, run 5:18/km." : week <= 8 ? "Ski 750m sub-4:45/1000m effort, sled pull 103kg, row 750m at 2:04/500m, run 5:03/km." : "Ski 1000m full race distance, sled pull 103kg, row 1000m sub-2:00/500m, run 4:55/km.",
+    "Coaching note: lats and upper back are pre-warmed from the gym; that is intentional."
+  ];
+}
+
+function expertArms(week: number) {
+  return [
+    week <= 4 ? "EZ bar skullcrusher 4x10." : week <= 8 ? "EZ bar skullcrusher 4x8." : "EZ bar skullcrusher 3x8.",
+    "Cue: upper arms vertical and still, lower to forehead, full extension, elbows do not flare.",
+    week <= 4 ? "Barbell curl 4x10." : week <= 8 ? "Barbell curl 4x8." : "Barbell curl 3x8.",
+    "Hammer curl: " + (week <= 4 ? "3x12 each side." : "3x10 each side."),
+    "Reverse curl 3x12 every week for wrist extensor balance and elbow protection."
+  ];
+}
+
+function expertSessionW(week: number) {
+  if (week <= 4) return ["Wall ball / burpee pyramid: 10/10 -> 20/20 -> 30/30 -> 20/20 -> 10/10.", "6kg wall ball, 15 min."];
+  if (week <= 8) return ["Same pyramid plus 500m SkiErg between each set.", "9kg wall ball, 22 min."];
+  if (week <= 11) return ["Mini Jour 347: 500m SkiErg -> 25 wall balls -> 100m farmer carry -> 25 burpee broad jumps -> 500m row -> 1km run.", "Race weights throughout, 28-30 min."];
+  return ["Skip Session W entirely. Arms gym only plus 15 min mobility."];
+}
+
+function expertLegs(week: number) {
+  return [
+    week <= 4 ? "Back squat 4x6." : week <= 8 ? "Back squat 4x5." : "Back squat 4x4 heavy.",
+    "Cue: chest up, brace hard, knees track over toes, break parallel, drive through whole foot.",
+    week <= 4 ? "Romanian deadlift 3x8." : week <= 8 ? "Romanian deadlift 3x8 heavier." : "Romanian deadlift 3x6 heavy.",
+    week <= 4 ? "Bulgarian split squat 3x10 each side bodyweight." : week <= 8 ? "Bulgarian split squat 3x8 each side DBs." : "Bulgarian split squat 3x8 each side heavier DBs.",
+    week <= 4 ? "Hip thrust 3x10 moderate." : week <= 8 ? "Hip thrust 3x10 heavier." : "Hip thrust 3x8 heavy."
+  ];
+}
+
+function expertSessionC(week: number) {
+  const rounds = week <= 4 ? 3 : week <= 8 ? 4 : week <= 10 ? 5 : week === 11 ? 1 : 2;
+  return [
+    "Cash in: 1km run at race pace target; time it.",
+    `Per round (${rounds} rounds): row erg -> wall balls -> burpees to plate -> kettlebell swings -> sandbag lunges -> farmer carry -> 1km compromised run with zero rest off carry.`,
+    "Cash out: 1km run at maximum sustainable pace; this tells you what is left after a full session.",
+    week <= 4 ? "Progressions: row 500m, wall balls 30/6kg, burpees to plate 20, KB swings 20/24kg, lunges 20m/15kg, farmer carry 50m/20kg." : week <= 8 ? "Progressions: row 750m, wall balls 40-60/9kg, burpees 25, KB swings 20/32kg, lunges 60m/20kg, farmer carry 150m/24kg." : "Progressions: row 1000m, wall balls 80-100/9kg, burpees 30, KB swings 20/32kg, lunges 100m/20kg, farmer carry 200m/24kg.",
+    "Compromised 1km run at race pace is the most important rep of the week."
+  ];
+}
+
+function expertShoulders(week: number) {
+  return [
+    week <= 4 ? "Seated DB overhead press 4x10." : week <= 8 ? "Seated DB overhead press 4x8." : "Seated DB overhead press 4x6.",
+    week <= 4 ? "Arnold press 3x12." : week <= 8 ? "Arnold press 3x10." : "Arnold press 3x8.",
+    week <= 8 ? "Lateral raise 4x15." : "Lateral raise 4x12.",
+    week <= 8 ? "Rear delt fly 4x15." : "Rear delt fly 4x12.",
+    week <= 4 ? "Barbell shrug 3x15." : week <= 8 ? "Barbell shrug 3x12 heavy." : "Barbell shrug 3x10 heavy.",
+    "External rotation 3x15 each side every week, no exceptions.",
+    "Optional after gym: 30-40 min Zone 2 run if legs feel good; never pushed."
+  ];
+}
+
+function expertSaturday(week: number) {
+  if (week <= 3) return ["50-60 min Zone 2 run at 65-75% max HR, conversational."];
+  if (week === 4) return ["Deload: 40 min easy Zone 2. No intensity."];
+  if (week === 5) return ["50% HYROX simulation: all 8 stations at 50% race distance, full 1km runs, record splits."];
+  if (week === 6) return ["60 min Zone 2 run."];
+  if (week === 7) return ["Full HYROX Simulation: all 8 stations at race weight and distance, 1km runs between, 85% effort, record every split."];
+  if (week === 8) return ["Deload: 60 min easy Zone 2."];
+  if (week === 9) return ["90% simulation: all stations, all distances, race weight, 90-95% effort, treat like race day."];
+  if (week === 10) return ["45 min run with 4x1km at race pace."];
+  if (week === 11) return ["40 min easy run only."];
+  return ["Full rest. Carb load 6-7g/kg, confirm race kit and sled weight, sleep 8+ hours."];
+}
+
+function buildExpertWeek(answers: OnboardingAnswers, week: number): TrainingWeek {
+  const raceWeek = week === 12;
+  const workouts = [
+    workout("expert", answers, week, "Monday", "Chest Gym + Session A", "Push strength mechanically paired with sled push and burpee work", raceWeek ? 70 : 90, raceWeek ? "moderate" : "hard", [
+      { title: "Chest Gym", items: expertChest(week) },
+      { title: "Session A - Push + Sled", items: expertSessionA(week), timer: { mode: "station", rounds: week <= 4 ? 3 : week <= 11 ? 4 : 2 } },
+      stationBlock("expert", week)
+    ]),
+    workout("expert", answers, week, "Tuesday", raceWeek ? "Back Gym + Race Pace Sharpening" : "Back Gym + Session B", "Pulling strength paired with SkiErg, sled pull, row, and run-off-row", raceWeek ? 75 : 100, "hard", [
+      { title: "Back Gym", items: expertBack(week) },
+      { title: raceWeek ? "Race Week Sharpening" : "Session B - Ski + Pull + Row", items: raceWeek ? ["3x1km at 4:50/km with 90 sec rest.", "Sled pull 2x20m only. Sharpen fast-twitch; do not fatigue."] : expertSessionB(week), timer: { mode: "station", rounds: raceWeek ? 3 : week <= 4 ? 3 : 4 } },
+      stationBlock("expert", week)
+    ]),
+    workout("expert", answers, week, "Wednesday", "Arms Gym + Session W", "Triceps, biceps, forearm resilience, wall ball and burpee accumulation", raceWeek ? 60 : 70, raceWeek ? "moderate" : "moderate-hard", [
+      { title: "Arms Gym", items: expertArms(week) },
+      { title: "Session W", items: expertSessionW(week), timer: { mode: "countdown", durationSeconds: week <= 4 ? 900 : week <= 8 ? 1320 : 1800 } }
+    ]),
+    workout("expert", answers, week, "Thursday", raceWeek ? "Legs Gym + Station Walkthrough" : "Legs Gym + Session C", "Longest and hardest day: legs before full station circuit", raceWeek ? 70 : 130, raceWeek ? "moderate" : "race", [
+      { title: "Legs Gym", items: expertLegs(week) },
+      { title: raceWeek ? "Station Walkthrough" : "Session C - Full Station Circuit", items: raceWeek ? ["10 min station walkthrough at 30% effort.", "Form only, no intensity."] : expertSessionC(week), timer: { mode: "station", rounds: week <= 4 ? 3 : week <= 8 ? 4 : week <= 10 ? 5 : week === 11 ? 1 : 2 } },
+      stationBlock("expert", week)
+    ]),
+    workout("expert", answers, week, "Friday", "Full Shoulders + Optional Zone 2", "Full shoulder volume and rotator cuff integrity", 60, "moderate", [
+      { title: "Shoulders Gym", items: expertShoulders(week) },
+      { title: "Race Week Note", items: raceWeek ? ["Zero HYROX. Final CNS rest day before the race."] : ["Optional Zone 2 run only if recovering well. Conversational pace."] }
+    ]),
+    workout("expert", answers, week, "Saturday", "Zone 2 Run / Simulation", "Saturday race-specific data session or aerobic base", week <= 4 || week >= 10 ? 50 : 115, week === 7 || week === 9 ? "race" : week === 12 ? "recovery" : "hard", [
+      { title: "Saturday Prescription", items: expertSaturday(week) },
+      stationBlock("expert", week)
+    ], { warmup: week === 12 ? [] : undefined })
+  ];
+  return makeWeek("expert", week, workouts);
+}
+
+function makeWeek(level: TrainingLevel, week: number, workouts: DailyWorkout[]): TrainingWeek {
+  return {
+    week,
+    phase: phaseForWeek(week),
+    phaseTitle: phaseTitle(level, week),
+    dateRange: `Week ${week} of 12`,
+    intent: weekIntent(level, week),
+    expectedTrainingLoad: weekLoad(level, week),
+    recoveryEmphasis: week === 12
+      ? "Race week: sleep, carb load, hydration, and no soreness chasing."
+      : weekLoad(level, week) === "Reduced"
+        ? "Deload priority: reduce volume 35-40%, keep movement quality high, and arrive hungry for the next block."
+        : "Fuel hard days, keep easy days easy, protect sleep, track resting HR, and use breathing drills daily.",
+    workouts
+  };
+}
+
+function buildWeeks(level: TrainingLevel, answers: OnboardingAnswers) {
+  return Array.from({ length: 12 }, (_, index) => {
+    const week = index + 1;
+    if (level === "absolute-beginner") return buildAbsoluteBeginnerWeek(answers, week);
+    if (level === "beginner") return buildBeginnerWeek(answers, week);
+    if (level === "moderate") return buildModerateWeek(answers, week);
+    return buildExpertWeek(answers, week);
+  });
+}
+
+function formatLabel(answers: OnboardingAnswers) {
+  if (answers.raceCategory.includes("doubles")) return "Doubles";
+  if (answers.raceCategory.includes("relay")) return "Relay";
+  return "Individual";
 }
 
 export function generateTrainingPlan(answers: OnboardingAnswers): GeneratedTrainingPlan {
-  const weeks = Math.min(16, Math.max(4, weeksUntil(answers.goalRaceDate)));
   const level = answers.trainingLevel;
-  const generatedWeeks: TrainingWeek[] = Array.from({ length: weeks }, (_, index) => {
-    const weekNumber = index + 1;
-    const phase = phaseForWeek(weekNumber, weeks);
-    const isTaper = phase === 4;
-    const isDeload = isDeloadWeek(level, weekNumber, weeks);
-    const phaseWeek = phaseWeekNumber(weekNumber, weeks);
-    const rawWorkouts = levelSessions(level, weekNumber, phase, phaseWeek, answers);
-    const workouts = applyWeekModifiers(
-      compressForTrainingDays(rawWorkouts, level, answers.availableTrainingDays),
-      level,
-      isDeload,
-      isTaper
-    );
-
-    return {
-      week: weekNumber,
-      phase,
-      phaseTitle: isDeload ? `${phaseTitles[phase - 1]} Deload` : phaseTitles[phase - 1],
-      dateRange: `Week ${weekNumber} of ${weeks}`,
-      intent: weekIntent(level, phase, isDeload, isTaper),
-      expectedTrainingLoad: isTaper ? "Low" : isDeload ? "Reduced" : level === "expert" ? "High" : level === "absolute-beginner" ? "Low-moderate" : "Moderate",
-      recoveryEmphasis: isTaper
-        ? "Sleep 8-9 hours, carb emphasis, mobility, and no soreness chasing."
-        : isDeload
-          ? "Reduce volume, keep intensity controlled, and prioritize soft-tissue quality."
-          : "Fuel hard days, keep easy days easy, protect sleep, and manage stress.",
-      workouts
-    };
-  });
-
-  const range = finishRanges[level];
-  const format = answers.raceCategory.includes("doubles") ? "Doubles" : answers.raceCategory.includes("relay") ? "Relay" : "Solo";
+  const meta = programMeta[level];
+  const format = formatLabel(answers);
+  const formatKey = format === "Doubles" ? "doubles" : "individual";
+  const weeks = buildWeeks(level, answers);
 
   return {
     id: `plan-${level}-${answers.raceCategory}-${answers.goalRaceDate}`,
-    title: `${levelLabels[level]} HYROX ${format} Program`,
+    title: `${levelLabels[level]} HYROX ${format} 12-Week Program`,
     level,
     raceCategory: answers.raceCategory,
     goalRaceDate: answers.goalRaceDate,
     targetGoalTime: answers.targetGoalTime,
-    weeksUntilRace: weeks,
+    weeksUntilRace: 12,
     summary: [
-      `${weeks}-week ${levelLabels[level]} HYROX ${format} build for ${answers.name}.`,
-      `Finish time range: conservative ${range.conservative}, realistic ${range.realistic}, stretch ${range.stretch}.`,
-      `Plan adapts for ${answers.availableTrainingDays} training days/week, ${answers.weakestStations.join(", ") || "general HYROX development"}, and available equipment.`
+      `${meta.title} for ${answers.name}.`,
+      `Who it is for: ${meta.who}`,
+      `Training architecture: ${meta.days}`,
+      `Goal finish time: ${format === "Doubles" ? meta.goal.doubles : meta.goal.individual}.`,
+      meta.philosophy
     ].join(" "),
     priorities: [
-      ...levelPriorities[level],
-      `Heart-rate / pace guidance: Zone 2 ${paceGuide(level, answers).easy}; threshold ${paceGuide(level, answers).threshold}; VO2 ${paceGuide(level, answers).vo2}; race pace ${paceGuide(level, answers).race}`,
-      `Benchmarks every 2 weeks: 5K or run-walk test, 1000m Ski/Row test, weakest station technique score, and simulation split review`,
-      `Station targets: ${stationTargets[level].join("; ")}`,
-      ...(format === "Doubles" ? [`Doubles strategy: ${doublesSplits.join("; ")}`] : ["Solo strategy: control the first half, protect running pace, and finish progressively"])
+      "HYROX is a predictable fixed-format race; every session serves the 8 stations and 8 running legs.",
+      ...meta.priorities,
+      `Race goal: ${answers.targetGoalTime || meta.goal[formatKey]}.`,
+      `Running paces: ${runningPaces[level].join(" ")}`,
+      `Station progressions: SkiErg ${stationProgressions[level].ski.join(" -> ")}; Sled Push ${stationProgressions[level].sledPush.join(" -> ")}; Sled Pull ${stationProgressions[level].sledPull.join(" -> ")}; Burpee Broad Jump ${stationProgressions[level].burpee.join(" -> ")}; Row ${stationProgressions[level].row.join(" -> ")}; Farmer Carry ${stationProgressions[level].farmerCarry.join(" -> ")}; Sandbag Lunges ${stationProgressions[level].lunges.join(" -> ")}; Wall Ball ${stationProgressions[level].wallBall.join(" -> ")}.`,
+      `Breathing protocol: ${breathingProtocol.join(" ")}`,
+      `Nutrition protocol: ${nutritionProtocol.join(" ")}`,
+      `Recovery protocol: ${recoveryProtocol.join(" ")}`,
+      ...(format === "Doubles" ? [`Doubles strategy: ${doublesStrategy.join(" ")}`] : ["Solo strategy: control the first half, protect running pace, avoid Zone 5 mid-race, and finish progressively."])
     ],
-    phases: phaseTitles,
-    weeks: generatedWeeks
+    phases,
+    weeks
   };
 }

@@ -18,11 +18,11 @@ export function AuthPanel({ mode }: { mode: Mode }) {
     name: "",
     email: "",
     password: "",
-    age: "23",
-    weight: "74",
-    hyroxCategory: "Doubles Open",
-    runningPace: "4:45/km",
-    goalTime: "1:24"
+    age: "",
+    weight: "",
+    hyroxCategory: "",
+    runningPace: "",
+    goalTime: ""
   });
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -43,9 +43,14 @@ export function AuthPanel({ mode }: { mode: Mode }) {
       const payload =
         mode === "signup"
           ? {
-              ...form,
-              age: Number(form.age),
-              weight: Number(form.weight)
+              name: form.name,
+              email: form.email,
+              password: form.password,
+              ...(form.age ? { age: Number(form.age) } : {}),
+              ...(form.weight ? { weight: Number(form.weight) } : {}),
+              ...(form.hyroxCategory ? { hyroxCategory: form.hyroxCategory } : {}),
+              ...(form.runningPace ? { runningPace: form.runningPace } : {}),
+              ...(form.goalTime ? { goalTime: form.goalTime } : {})
             }
           : { email: form.email, password: form.password };
 
@@ -72,7 +77,6 @@ export function AuthPanel({ mode }: { mode: Mode }) {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <div className="chip green">HYROX Delhi 2026</div>
           <h1>Hyrox Prep Without Wasted Effort</h1>
           <div className="chip-row">
             <span className="chip">Timing target window</span>

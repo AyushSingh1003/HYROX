@@ -17,24 +17,45 @@ const levelOptions: Array<{ value: TrainingLevel; title: string; body: string }>
 const stationOptions = ["SkiErg", "Sled Push", "Sled Pull", "Burpee Broad Jump", "Row", "Farmer Carry", "Sandbag Lunges", "Wall Balls", "Running"];
 const equipmentOptions = ["Gym", "SkiErg", "RowErg", "Sled", "Wall ball", "Kettlebells", "Sandbag", "Treadmill", "Track"];
 
-const defaultAnswers: OnboardingAnswers = {
-  name: "HYROX Athlete",
-  age: 23,
-  weight: 74,
-  current5kPace: "4:45/km",
-  weeklyRunningVolume: 25,
-  strengthExperience: "Regular gym training",
-  hyroxExperience: "Completed HYROX before",
-  raceCategory: "doubles-open",
-  goalRaceDate: "2026-07-25",
-  targetGoalTime: "1:12-1:15",
-  availableTrainingDays: 5,
-  equipmentAccess: ["Gym", "SkiErg", "RowErg", "Sled", "Wall ball", "Kettlebells", "Sandbag"],
-  injuryHistory: "Side stitches in previous race; focus on breathing, hydration, and pacing.",
-  weakestStations: ["Running", "Sled Push", "Wall Balls"],
-  sleepHours: 8,
-  recoveryQuality: "Good",
-  nutritionConsistency: "Moderate",
+type OnboardingForm = Omit<OnboardingAnswers, "availableTrainingDays" | "raceCategory"> & {
+  availableTrainingDays?: number;
+  raceCategory: OnboardingAnswers["raceCategory"] | "";
+};
+
+const defaultAnswers: OnboardingForm = {
+  name: "",
+  age: undefined,
+  sex: "",
+  height: undefined,
+  weight: undefined,
+  current5kPace: "",
+  easyRunPace: "",
+  fiveKPB: "",
+  tenKPB: "",
+  currentHyroxFinishTime: "",
+  weeklyRunningVolume: undefined,
+  strengthExperience: "",
+  hyroxExperience: "",
+  restingHeartRate: undefined,
+  maximumHeartRate: undefined,
+  raceCategory: "",
+  goalRaceDate: "",
+  targetGoalTime: "",
+  availableTrainingDays: undefined,
+  equipmentAccess: [],
+  injuryHistory: "",
+  weakestStations: [],
+  strongestStations: [],
+  sleepHours: undefined,
+  recoveryQuality: "",
+  nutritionConsistency: "",
+  stressLevel: "",
+  occupationActivityLevel: "",
+  nutritionPreference: "",
+  partnerAge: undefined,
+  partnerRunningPace: "",
+  partnerStrengths: [],
+  partnerWeaknesses: [],
   trainingLevel: "moderate"
 };
 
@@ -42,24 +63,27 @@ function toggle(list: string[], item: string) {
   return list.includes(item) ? list.filter((value) => value !== item) : [...list, item];
 }
 
+function optionalNumber(value: string) {
+  return value === "" ? undefined : Number(value);
+}
+
+function toOnboardingAnswers(form: OnboardingForm): OnboardingAnswers {
+  return {
+    ...form,
+    raceCategory: form.raceCategory || "singles-open",
+    availableTrainingDays: form.availableTrainingDays ?? 4
+  };
+}
+
 export function OnboardingPage() {
   const router = useRouter();
-  const [form, setForm] = useState<OnboardingAnswers>(defaultAnswers);
+  const [form, setForm] = useState<OnboardingForm>(defaultAnswers);
   const [saved, setSaved] = useState(false);
-  const preview = useMemo(() => generateTrainingPlan(form), [form]);
+  const preview = useMemo(() => generateTrainingPlan(toOnboardingAnswers(form)), [form]);
 
   useEffect(() => {
     const session = getSession();
     if (!session) return;
-    setForm((current) => ({
-      ...current,
-      name: session.user.name || current.name,
-      age: session.user.age || current.age,
-      weight: session.user.weight || current.weight,
-      current5kPace: session.user.runningPace || current.current5kPace,
-      targetGoalTime: session.user.goalTime || current.targetGoalTime,
-      raceCategory: session.user.hyroxCategory?.toLowerCase().includes("double") ? "doubles-open" : current.raceCategory
-    }));
     apiFetch<{ onboarding?: { answers?: OnboardingAnswers } }>("/onboarding", { token: session.token })
       .then(({ onboarding }) => {
         if (onboarding?.answers) setForm({ ...defaultAnswers, ...onboarding.answers });
@@ -71,21 +95,22 @@ export function OnboardingPage() {
     event.preventDefault();
     const session = getSession();
     if (!session) return;
+    const answers = toOnboardingAnswers(form);
     const result = await apiFetch<{ plan: unknown }>("/onboarding", {
       method: "POST",
       token: session.token,
-      body: JSON.stringify(form)
+      body: JSON.stringify(answers)
     });
     setSession({
       ...session,
       user: {
         ...session.user,
-        name: form.name,
-        age: form.age,
-        weight: form.weight,
-        runningPace: form.current5kPace,
-        goalTime: form.targetGoalTime,
-        hyroxCategory: form.raceCategory
+        name: answers.name,
+        age: answers.age,
+        weight: answers.weight,
+        runningPace: answers.current5kPace,
+        goalTime: answers.targetGoalTime,
+        hyroxCategory: answers.raceCategory
       }
     });
     setSaved(Boolean(result.plan));
@@ -133,18 +158,19 @@ export function OnboardingPage() {
             <div className="section-title"><h2>Athlete details</h2></div>
             <div className="grid grid-3">
               <label className="field"><span>Name</span><input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} required /></label>
-              <label className="field"><span>Age</span><input type="number" value={form.age ?? ""} onChange={(event) => setForm({ ...form, age: Number(event.target.value) })} /></label>
-              <label className="field"><span>Weight kg</span><input type="number" value={form.weight ?? ""} onChange={(event) => setForm({ ...form, weight: Number(event.target.value) })} /></label>
+              <label className="field"><span>Age</span><input type="number" value={form.age ?? ""} onChange={(event) => setForm({ ...form, age: optionalNumber(event.target.value) })} /></label>
+              <label className="field"><span>Weight kg</span><input type="number" value={form.weight ?? ""} onChange={(event) => setForm({ ...form, weight: optionalNumber(event.target.value) })} /></label>
               <label className="field"><span>Sex / gender optional</span><input value={form.sex ?? ""} onChange={(event) => setForm({ ...form, sex: event.target.value })} /></label>
-              <label className="field"><span>Height cm optional</span><input type="number" value={form.height ?? ""} onChange={(event) => setForm({ ...form, height: Number(event.target.value) })} /></label>
-              <label className="field"><span>Sleep hours</span><input type="number" value={form.sleepHours ?? ""} onChange={(event) => setForm({ ...form, sleepHours: Number(event.target.value) })} /></label>
+              <label className="field"><span>Height cm optional</span><input type="number" value={form.height ?? ""} onChange={(event) => setForm({ ...form, height: optionalNumber(event.target.value) })} /></label>
+              <label className="field"><span>Sleep hours</span><input type="number" value={form.sleepHours ?? ""} onChange={(event) => setForm({ ...form, sleepHours: optionalNumber(event.target.value) })} /></label>
             </div>
           </section>
 
           <section className="card">
             <div className="section-title"><h2>Race goal</h2></div>
             <div className="grid grid-3">
-              <label className="field"><span>Race category</span><select value={form.raceCategory} onChange={(event) => setForm({ ...form, raceCategory: event.target.value as OnboardingAnswers["raceCategory"] })}>
+              <label className="field"><span>Race category</span><select value={form.raceCategory} onChange={(event) => setForm({ ...form, raceCategory: event.target.value as OnboardingForm["raceCategory"] })}>
+                <option value="" disabled>Select category</option>
                 <option value="singles-open">Singles Open</option>
                 <option value="singles-pro">Singles Pro</option>
                 <option value="doubles-open">Doubles Open</option>
@@ -161,11 +187,11 @@ export function OnboardingPage() {
             <div className="section-title"><h2>Training background</h2></div>
             <div className="grid grid-2">
               <label className="field"><span>Current 5K pace</span><input value={form.current5kPace ?? ""} onChange={(event) => setForm({ ...form, current5kPace: event.target.value })} /></label>
-              <label className="field"><span>Weekly running volume km</span><input type="number" value={form.weeklyRunningVolume ?? ""} onChange={(event) => setForm({ ...form, weeklyRunningVolume: Number(event.target.value) })} /></label>
+              <label className="field"><span>Weekly running volume km</span><input type="number" value={form.weeklyRunningVolume ?? ""} onChange={(event) => setForm({ ...form, weeklyRunningVolume: optionalNumber(event.target.value) })} /></label>
               <label className="field"><span>Strength training experience</span><textarea value={form.strengthExperience ?? ""} onChange={(event) => setForm({ ...form, strengthExperience: event.target.value })} /></label>
               <label className="field"><span>HYROX experience</span><textarea value={form.hyroxExperience ?? ""} onChange={(event) => setForm({ ...form, hyroxExperience: event.target.value })} /></label>
               <label className="field"><span>Injury history</span><textarea value={form.injuryHistory ?? ""} onChange={(event) => setForm({ ...form, injuryHistory: event.target.value })} /></label>
-              <label className="field"><span>Available days per week</span><input type="number" min={3} max={7} value={form.availableTrainingDays} onChange={(event) => setForm({ ...form, availableTrainingDays: Number(event.target.value) })} /></label>
+              <label className="field"><span>Available days per week</span><input type="number" min={3} max={7} value={form.availableTrainingDays ?? ""} onChange={(event) => setForm({ ...form, availableTrainingDays: optionalNumber(event.target.value) })} /></label>
             </div>
           </section>
 
