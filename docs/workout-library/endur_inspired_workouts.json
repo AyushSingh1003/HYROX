@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "status": "pending_private_assets",
+    "reason": "No Endur screenshots, screen recordings, or exported text were provided in this thread.",
+    "copyright_policy": "Do not copy Endur text verbatim. Extract only high-level workout structure, then rewrite into original app schema.",
+    "accepted_inputs": [
+      "screenshots",
+      "screen recordings",
+      "pasted/exported workout text"
+    ]
+  },
+  "import_pipeline": {
+    "screenshot_fields_to_capture": [
+      "title",
+      "objective",
+      "warmup",
+      "main set",
+      "rest",
+      "distance/reps/load",
+      "cooldown",
+      "coach notes"
+    ],
+    "normalization_steps": [
+      "OCR or manual transcription into raw notes",
+      "Map each session to category/subcategory",
+      "Rewrite in original wording",
+      "Add scaling and 4-week progression",
+      "Mark source as endur_inspired, never endur_copied"
+    ],
+    "ready_schema": [
+      "id",
+      "title",
+      "category",
+      "subcategory",
+      "goal",
+      "difficulty",
+      "duration_minutes",
+      "estimated_calories",
+      "equipment",
+      "warmup",
+      "workout",
+      "cooldown",
+      "scaling",
+      "progression",
+      "coach_notes",
+      "source_urls",
+      "inspired_by",
+      "tags"
+    ]
+  },
+  "workouts": []
+}

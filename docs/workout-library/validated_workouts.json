@@ -1,0 +1,1395 @@
+[
+  {
+    "id": "w1-mon",
+    "title": "Aerobic Recovery",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "missing_progression",
+    "difficulty": "beginner",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w1-tue",
+    "title": "Threshold + Lower Strength",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "missing_progression",
+    "difficulty": "advanced",
+    "duration_minutes": 110,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w1-wed",
+    "title": "HYROX Engine",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "missing_progression",
+    "difficulty": "intermediate",
+    "duration_minutes": 90,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w1-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "missing_progression",
+    "difficulty": "beginner",
+    "duration_minutes": 55,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w1-fri",
+    "title": "Strength + Compromised Running",
+    "category": "strength",
+    "subcategory": "strength_endurance",
+    "status": "missing_progression",
+    "difficulty": "advanced",
+    "duration_minutes": 100,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w1-sat",
+    "title": "Hybrid Endurance",
+    "category": "functional",
+    "subcategory": "wall_balls",
+    "status": "missing_progression",
+    "difficulty": "intermediate",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w1-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Link session to a 4-week progression family",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-mon",
+    "title": "Recovery Engine",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-tue",
+    "title": "Threshold Progression",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 95,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-wed",
+    "title": "Engine + Burpees",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 90,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 50,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-fri",
+    "title": "Compromised Sled Run",
+    "category": "strength",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 85,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-sat",
+    "title": "Benchmark Day",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 80,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w2-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-mon",
+    "title": "Recovery Engine",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-tue",
+    "title": "Long Threshold Repeats",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 100,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-wed",
+    "title": "HYROX Station Flow",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 95,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 50,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-fri",
+    "title": "Heavy Carry + Compromised Run",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 90,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-sat",
+    "title": "Half HYROX Simulation",
+    "category": "race_simulation",
+    "subcategory": "partial_simulation",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 95,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w3-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-mon",
+    "title": "Easy Aerobic Reset",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 50,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-tue",
+    "title": "Light Threshold Touch",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 60,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-wed",
+    "title": "Easy HYROX Flow",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 55,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-thu",
+    "title": "Recovery Day",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 40,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-fri",
+    "title": "Light Strength + Strides",
+    "category": "strength",
+    "subcategory": "strength_endurance",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 55,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-sat",
+    "title": "Easy Hybrid Aerobic",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 60,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w4-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-mon",
+    "title": "Recovery + Zone 2",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 70,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-tue",
+    "title": "Threshold Progression",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 95,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-wed",
+    "title": "Race-Specific Engine",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 95,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 45,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-fri",
+    "title": "Wall Ball Density + Race Pace",
+    "category": "functional",
+    "subcategory": "wall_balls",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 65,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-sat",
+    "title": "50% HYROX Simulation",
+    "category": "race_simulation",
+    "subcategory": "partial_simulation",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 90,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w5-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-mon",
+    "title": "Recovery Engine",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 65,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-tue",
+    "title": "VO2 Session",
+    "category": "endurance",
+    "subcategory": "intervals",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 85,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-wed",
+    "title": "Burpee Conditioning",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 45,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-fri",
+    "title": "Lunge Progression",
+    "category": "functional",
+    "subcategory": "wall_balls",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 70,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-sat",
+    "title": "70% Simulation",
+    "category": "race_simulation",
+    "subcategory": "partial_simulation",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 105,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w6-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-mon",
+    "title": "Recovery + Mobility",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 65,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-tue",
+    "title": "Threshold Progression",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 105,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-wed",
+    "title": "Sled Specialization",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 80,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 45,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-fri",
+    "title": "Full Compromised Intervals",
+    "category": "endurance",
+    "subcategory": "intervals",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 85,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-sat",
+    "title": "Full HYROX Simulation",
+    "category": "race_simulation",
+    "subcategory": "full_simulation",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 115,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w7-sun",
+    "title": "Full Rest",
+    "category": "race_simulation",
+    "subcategory": "full_simulation",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-mon",
+    "title": "Easy Zone 2",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 50,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-tue",
+    "title": "Light Threshold",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 55,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-wed",
+    "title": "Easy Stations",
+    "category": "functional",
+    "subcategory": "wall_balls",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 55,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-thu",
+    "title": "Mobility + Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 35,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-fri",
+    "title": "Short Sharp Primer",
+    "category": "strength",
+    "subcategory": "strength_endurance",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 45,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-sat",
+    "title": "Deload Hybrid Aerobic",
+    "category": "endurance",
+    "subcategory": "intervals",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 60,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w8-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-mon",
+    "title": "Recovery + Mobility",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 55,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-tue",
+    "title": "Race Pace Intervals",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 85,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-wed",
+    "title": "HYROX Transitions",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-thu",
+    "title": "Recovery Day",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 40,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-fri",
+    "title": "Wall Ball Fatigue Protocol",
+    "category": "functional",
+    "subcategory": "wall_balls",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 75,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-sat",
+    "title": "90% Simulation",
+    "category": "race_simulation",
+    "subcategory": "partial_simulation",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 115,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w9-sun",
+    "title": "Full Rest",
+    "category": "race_simulation",
+    "subcategory": "full_simulation",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-mon",
+    "title": "Recovery Engine",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 50,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-tue",
+    "title": "3 x 3 km Threshold",
+    "category": "endurance",
+    "subcategory": "threshold",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 105,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-wed",
+    "title": "Sled + Run Repeats",
+    "category": "functional",
+    "subcategory": "sled_specific",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 80,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-thu",
+    "title": "Active Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 40,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-fri",
+    "title": "Short Sharp HYROX Intervals",
+    "category": "endurance",
+    "subcategory": "intervals",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 60,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-sat",
+    "title": "Final Half Simulation",
+    "category": "race_simulation",
+    "subcategory": "partial_simulation",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 85,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w10-sun",
+    "title": "Full Rest",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 20,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-mon",
+    "title": "Easy Zone 2",
+    "category": "endurance",
+    "subcategory": "zone_2",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 45,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-tue",
+    "title": "Sharp Race Pace Session",
+    "category": "functional",
+    "subcategory": "wall_balls",
+    "status": "validated",
+    "difficulty": "intermediate",
+    "duration_minutes": 45,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language",
+      "Includes timer metadata"
+    ],
+    "improvement_notes": [
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-wed",
+    "title": "Recovery Only",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 30,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-thu",
+    "title": "Very Light Movement",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 30,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-fri",
+    "title": "Shakeout",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "validated",
+    "difficulty": "beginner",
+    "duration_minutes": 25,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-sat",
+    "title": "Race Day",
+    "category": "race_simulation",
+    "subcategory": "full_simulation",
+    "status": "validated",
+    "difficulty": "advanced",
+    "duration_minutes": 90,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  },
+  {
+    "id": "w11-sun",
+    "title": "Post-Race Recovery",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "status": "needs_improvement",
+    "difficulty": "beginner",
+    "duration_minutes": 25,
+    "strengths": [
+      "Has warmup/cooldown/recovery/nutrition fields",
+      "Uses HYROX-specific stations and pacing language"
+    ],
+    "improvement_notes": [
+      "Add precise timer/rest metadata where applicable",
+      "Normalize into library JSON schema before surfacing in workout browser"
+    ],
+    "source": "internal_training_program"
+  }
+]

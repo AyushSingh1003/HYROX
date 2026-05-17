@@ -1,0 +1,198 @@
+[
+  {
+    "id": "new-hybrid-001",
+    "title": "Ski Pull Row Negative Split",
+    "category": "functional",
+    "subcategory": "station_skill",
+    "goal": "Teach controlled pacing across pulling stations before run re-entry.",
+    "difficulty": "advanced",
+    "duration_minutes": 55,
+    "estimated_calories": 610,
+    "equipment": [
+      "SkiErg",
+      "sled",
+      "rower"
+    ],
+    "warmup": [
+      "6-8 min easy run, bike, ski, or row",
+      "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+      "2 light practice rounds of the first station movement",
+      "3 full forced exhales before starting the first run"
+    ],
+    "workout": [
+      {
+        "exercise": "SkiErg",
+        "sets": 3,
+        "reps": "",
+        "distance": "500m",
+        "time": "",
+        "rest": "0 sec",
+        "rpe": "7",
+        "notes": "Each round slightly faster."
+      },
+      {
+        "exercise": "Sled pull",
+        "sets": 3,
+        "reps": "",
+        "distance": "25m",
+        "time": "",
+        "rest": "0 sec",
+        "rpe": "8",
+        "notes": "Smooth rope rhythm."
+      },
+      {
+        "exercise": "Row",
+        "sets": 3,
+        "reps": "",
+        "distance": "500m",
+        "time": "",
+        "rest": "2 min",
+        "rpe": "7",
+        "notes": "Negative split each row."
+      },
+      {
+        "exercise": "Run",
+        "sets": 3,
+        "reps": "",
+        "distance": "400m",
+        "time": "",
+        "rest": "2 min",
+        "rpe": "6",
+        "notes": "No panic off the rower."
+      }
+    ],
+    "cooldown": [
+      "5-8 min easy walk or machine flush",
+      "Hip flexor, calf, quad, hamstring, and lat stretch",
+      "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+    ],
+    "scaling": {
+      "beginner": [
+        "Use 50-70% race load",
+        "Break reps early before form fails",
+        "Extend rest to preserve movement quality"
+      ],
+      "intermediate": [
+        "Use 75-100% race load",
+        "Plan short breaks before redline"
+      ],
+      "advanced": [
+        "Use race load or 105-110% overload",
+        "Keep transitions under 20 sec"
+      ]
+    },
+    "progression": {
+      "week_1": "3 rounds at 400m ski/row",
+      "week_2": "3 rounds at 500m",
+      "week_3": "4 rounds",
+      "week_4": "2 rounds deload"
+    },
+    "coach_notes": [
+      "Useful for athletes who overcook SkiErg and lose the row/run.",
+      "Pacing discipline matters more than peak watts."
+    ],
+    "source_urls": [
+      "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+    ],
+    "inspired_by": [
+      "Gap analysis: pulling-station cluster"
+    ],
+    "tags": [
+      "new_candidate",
+      "pulling",
+      "negative_split"
+    ]
+  },
+  {
+    "id": "new-doubles-001",
+    "title": "Doubles Handoff Speed Lab",
+    "category": "race_simulation",
+    "subcategory": "race_rehearsal",
+    "goal": "Practice doubles communication, planned workload splits, and no-dead-time station changes.",
+    "difficulty": "intermediate",
+    "duration_minutes": 50,
+    "estimated_calories": 520,
+    "equipment": [
+      "wall ball",
+      "farmer carry implements",
+      "SkiErg or rower"
+    ],
+    "warmup": [
+      "6-8 min easy run, bike, ski, or row",
+      "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+      "2 light practice rounds of the first station movement",
+      "3 full forced exhales before starting the first run"
+    ],
+    "workout": [
+      {
+        "exercise": "Ski or row relay",
+        "sets": 4,
+        "reps": "",
+        "distance": "500m total",
+        "time": "",
+        "rest": "30 sec",
+        "rpe": "7",
+        "notes": "Switch before power drops, not after."
+      },
+      {
+        "exercise": "Farmer carry relay",
+        "sets": 4,
+        "reps": "",
+        "distance": "100m total",
+        "time": "",
+        "rest": "30 sec",
+        "rpe": "7",
+        "notes": "One athlete works while the other resets breathing."
+      },
+      {
+        "exercise": "Wall ball relay",
+        "sets": 4,
+        "reps": "40 total",
+        "distance": "",
+        "time": "",
+        "rest": "60 sec",
+        "rpe": "7",
+        "notes": "Use pre-agreed sets like 15/10/10/5."
+      }
+    ],
+    "cooldown": [
+      "5-8 min easy walk or machine flush",
+      "Hip flexor, calf, quad, hamstring, and lat stretch",
+      "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+    ],
+    "scaling": {
+      "beginner": [
+        "Use 50-70% race load",
+        "Break reps early before form fails",
+        "Extend rest to preserve movement quality"
+      ],
+      "intermediate": [
+        "Use 75-100% race load",
+        "Plan short breaks before redline"
+      ],
+      "advanced": [
+        "Use race load or 105-110% overload",
+        "Keep transitions under 20 sec"
+      ]
+    },
+    "progression": {
+      "week_1": "3 rounds",
+      "week_2": "4 rounds",
+      "week_3": "5 rounds",
+      "week_4": "3 rounds deload"
+    },
+    "coach_notes": [
+      "The best doubles teams do not negotiate during stations.",
+      "Every handoff should be under 5 sec."
+    ],
+    "source_urls": [],
+    "inspired_by": [
+      "Internal doubles strategy"
+    ],
+    "tags": [
+      "new_candidate",
+      "doubles",
+      "handoff"
+    ]
+  }
+]

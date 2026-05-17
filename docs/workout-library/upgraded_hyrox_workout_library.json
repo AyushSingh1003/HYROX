@@ -1,0 +1,2810 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-17T07:55:21.883Z",
+    "schema_version": "1.0",
+    "categories": [
+      "endurance",
+      "strength",
+      "functional",
+      "race_simulation"
+    ],
+    "source_policy": "Public sources and internal workouts are paraphrased/normalized. Endur extraction is pending user-provided screenshots/export and must not copy private content verbatim."
+  },
+  "source_urls": [
+    "https://www.puregym.com/blog/hyrox-training-plan/",
+    "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+    "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+    "https://www.puregym.com/us/blog/hyrox-training-plan-a-free-workout-plan-to-get-hyrox-ready",
+    "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+  ],
+  "ranking": [
+    {
+      "id": "race-comp-001",
+      "title": "Four-Station Compromised Primer",
+      "scores": {
+        "hyrox_specificity": 4,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 5,
+        "total": 23
+      }
+    },
+    {
+      "id": "race-partial-001",
+      "title": "50 Percent HYROX Format",
+      "scores": {
+        "hyrox_specificity": 5,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 5,
+        "total": 23
+      }
+    },
+    {
+      "id": "race-full-001",
+      "title": "Controlled Full HYROX Simulation",
+      "scores": {
+        "hyrox_specificity": 5,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 5,
+        "total": 23
+      }
+    },
+    {
+      "id": "end-comp-001",
+      "title": "Run Wall Ball Repeatability",
+      "scores": {
+        "hyrox_specificity": 5,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 4,
+        "total": 22
+      }
+    },
+    {
+      "id": "str-sled-001",
+      "title": "Sled Push Pull Overload",
+      "scores": {
+        "hyrox_specificity": 5,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 4,
+        "total": 22
+      }
+    },
+    {
+      "id": "race-rehearsal-001",
+      "title": "Transition Discipline Rehearsal",
+      "scores": {
+        "hyrox_specificity": 4,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 5,
+        "total": 22
+      }
+    },
+    {
+      "id": "race-taper-001",
+      "title": "Race Week Station Primer",
+      "scores": {
+        "hyrox_specificity": 4,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 5,
+        "total": 22
+      }
+    },
+    {
+      "id": "new-doubles-001",
+      "title": "Doubles Handoff Speed Lab",
+      "scores": {
+        "hyrox_specificity": 4,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 5,
+        "total": 22
+      }
+    },
+    {
+      "id": "end-comp-002",
+      "title": "Run Erg Brick Ladder",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 4,
+        "total": 21
+      }
+    },
+    {
+      "id": "fun-lunge-001",
+      "title": "Sandbag Lunge Progression",
+      "scores": {
+        "hyrox_specificity": 5,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 21
+      }
+    },
+    {
+      "id": "end-zone2-001",
+      "title": "Conversational 5K Builder",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 3,
+        "total": 20
+      }
+    },
+    {
+      "id": "str-full-001",
+      "title": "Beginner Full Body HYROX Foundation",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 3,
+        "total": 20
+      }
+    },
+    {
+      "id": "fun-burpee-001",
+      "title": "Burpee Broad Jump Rhythm Builder",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 3,
+        "total": 20
+      }
+    },
+    {
+      "id": "fun-ski-001",
+      "title": "SkiErg Technique Density",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 3,
+        "total": 20
+      }
+    },
+    {
+      "id": "fun-station-001",
+      "title": "Eight-Station Skill Flow",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 5,
+        "race_relevance": 3,
+        "total": 20
+      }
+    },
+    {
+      "id": "end-zone2-002",
+      "title": "Long Run With Station Breathing Resets",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "end-interval-001",
+      "title": "1K Repeat Pace Lock",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "end-interval-002",
+      "title": "800m VO2 Control Set",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "end-tempo-001",
+      "title": "Steady Tempo Six",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "end-threshold-001",
+      "title": "Cruise Threshold Builder",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "str-lower-001",
+      "title": "Sled Drive Lower Strength",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "str-upper-001",
+      "title": "Pulling Engine Strength",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "str-end-001",
+      "title": "Strength-Endurance Chipper",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "fun-wall-001",
+      "title": "Wall Ball Capacity EMOM",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "fun-carry-001",
+      "title": "Carry Grip Ladder",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "fun-row-001",
+      "title": "Row Stroke Economy",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    },
+    {
+      "id": "new-hybrid-001",
+      "title": "Ski Pull Row Negative Split",
+      "scores": {
+        "hyrox_specificity": 3,
+        "coaching_quality": 5,
+        "progression_quality": 4,
+        "beginner_usability": 4,
+        "race_relevance": 3,
+        "total": 19
+      }
+    }
+  ],
+  "workouts": [
+    {
+      "id": "end-zone2-001",
+      "title": "Conversational 5K Builder",
+      "category": "endurance",
+      "subcategory": "zone_2",
+      "goal": "Build aerobic durability for the 8 HYROX running legs without accumulating station fatigue.",
+      "difficulty": "beginner",
+      "duration_minutes": 45,
+      "estimated_calories": 430,
+      "equipment": [
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "5 min brisk walk or easy jog",
+        "Dynamic calves, hips, hamstrings, and thoracic rotations",
+        "3 x 20 sec relaxed strides with walk-back recovery"
+      ],
+      "workout": [
+        {
+          "exercise": "Zone 2 run",
+          "sets": 1,
+          "reps": "",
+          "distance": "5 km",
+          "time": "",
+          "rest": "none",
+          "rpe": "4-5",
+          "notes": "Hold a pace where full sentences are possible."
+        },
+        {
+          "exercise": "Strides",
+          "sets": 4,
+          "reps": "",
+          "distance": "",
+          "time": "20 sec",
+          "rest": "walk back",
+          "rpe": "6",
+          "notes": "Smooth turnover, not a sprint."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "30 min easy",
+        "week_2": "35 min easy",
+        "week_3": "40 min easy + 4 strides",
+        "week_4": "5 km easy + 4 strides"
+      },
+      "coach_notes": [
+        "Most athletes underperform HYROX because they run too hard too early.",
+        "Zone 2 should leave you better after the session, not flattened."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: weekly easy/Zone 2 running emphasis"
+      ],
+      "tags": [
+        "aerobic_base",
+        "running",
+        "beginner"
+      ]
+    },
+    {
+      "id": "end-zone2-002",
+      "title": "Long Run With Station Breathing Resets",
+      "category": "endurance",
+      "subcategory": "zone_2",
+      "goal": "Extend time on feet while rehearsing post-station breathing control.",
+      "difficulty": "intermediate",
+      "duration_minutes": 70,
+      "estimated_calories": 720,
+      "equipment": [
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "5 min brisk walk or easy jog",
+        "Dynamic calves, hips, hamstrings, and thoracic rotations",
+        "3 x 20 sec relaxed strides with walk-back recovery"
+      ],
+      "workout": [
+        {
+          "exercise": "Zone 2 run",
+          "sets": 1,
+          "reps": "",
+          "distance": "",
+          "time": "50-60 min",
+          "rest": "",
+          "rpe": "4-5",
+          "notes": "Every 10 min, walk 30 sec and take 3 complete forced exhales."
+        },
+        {
+          "exercise": "Technique strides",
+          "sets": 6,
+          "reps": "",
+          "distance": "",
+          "time": "20 sec",
+          "rest": "60 sec walk",
+          "rpe": "6-7",
+          "notes": "Stay tall and quick, no sprinting."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "45 min",
+        "week_2": "50 min",
+        "week_3": "55 min",
+        "week_4": "60 min with 6 strides"
+      },
+      "coach_notes": [
+        "The breathing reset teaches the nervous system to downshift before the next station.",
+        "Use this after a high-stress workday instead of forcing intervals."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: long aerobic runs and transition heart-rate drops"
+      ],
+      "tags": [
+        "zone_2",
+        "breathing",
+        "race_skill"
+      ]
+    },
+    {
+      "id": "end-interval-001",
+      "title": "1K Repeat Pace Lock",
+      "category": "endurance",
+      "subcategory": "intervals",
+      "goal": "Improve repeatable 1 km pacing for HYROX running legs.",
+      "difficulty": "intermediate",
+      "duration_minutes": 65,
+      "estimated_calories": 680,
+      "equipment": [
+        "track or treadmill"
+      ],
+      "warmup": [
+        "5 min brisk walk or easy jog",
+        "Dynamic calves, hips, hamstrings, and thoracic rotations",
+        "3 x 20 sec relaxed strides with walk-back recovery"
+      ],
+      "workout": [
+        {
+          "exercise": "1 km run",
+          "sets": 6,
+          "reps": "",
+          "distance": "1 km",
+          "time": "",
+          "rest": "2 min walk/jog",
+          "rpe": "7-8",
+          "notes": "Start 5-10 sec/km slower than target, finish controlled."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "4 x 1 km",
+        "week_2": "5 x 1 km",
+        "week_3": "6 x 1 km",
+        "week_4": "4 x 1 km with 90 sec rest"
+      },
+      "coach_notes": [
+        "If rep 1 is the fastest, you missed the session objective.",
+        "The win is low split variance, not one heroic repeat."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.puregym.com/blog/hyrox-training-plan/",
+        "https://www.puregym.com/us/blog/hyrox-training-plan-a-free-workout-plan-to-get-hyrox-ready"
+      ],
+      "inspired_by": [
+        "Public programming: 1 km repeat intervals and race-pace running"
+      ],
+      "tags": [
+        "intervals",
+        "race_pace",
+        "running"
+      ]
+    },
+    {
+      "id": "end-interval-002",
+      "title": "800m VO2 Control Set",
+      "category": "endurance",
+      "subcategory": "intervals",
+      "goal": "Raise speed reserve without turning the session into a sprint workout.",
+      "difficulty": "advanced",
+      "duration_minutes": 60,
+      "estimated_calories": 650,
+      "equipment": [
+        "track or treadmill"
+      ],
+      "warmup": [
+        "5 min brisk walk or easy jog",
+        "Dynamic calves, hips, hamstrings, and thoracic rotations",
+        "3 x 20 sec relaxed strides with walk-back recovery"
+      ],
+      "workout": [
+        {
+          "exercise": "800m run",
+          "sets": 6,
+          "reps": "",
+          "distance": "800m",
+          "time": "",
+          "rest": "2 min easy jog",
+          "rpe": "8-9",
+          "notes": "5K effort, relaxed shoulders, even splits."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "5 x 800m",
+        "week_2": "6 x 800m",
+        "week_3": "7 x 800m",
+        "week_4": "5 x 800m with sharper pacing"
+      },
+      "coach_notes": [
+        "Advanced athletes need speed reserve so race pace feels economical.",
+        "Stop the set if mechanics collapse."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: VO2 and advanced interval phases"
+      ],
+      "tags": [
+        "vo2",
+        "advanced",
+        "running"
+      ]
+    },
+    {
+      "id": "end-tempo-001",
+      "title": "Steady Tempo Six",
+      "category": "endurance",
+      "subcategory": "tempo",
+      "goal": "Build sustained aerobic strength between Zone 2 and threshold.",
+      "difficulty": "intermediate",
+      "duration_minutes": 55,
+      "estimated_calories": 590,
+      "equipment": [
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "5 min brisk walk or easy jog",
+        "Dynamic calves, hips, hamstrings, and thoracic rotations",
+        "3 x 20 sec relaxed strides with walk-back recovery"
+      ],
+      "workout": [
+        {
+          "exercise": "Tempo run",
+          "sets": 1,
+          "reps": "",
+          "distance": "6 km",
+          "time": "",
+          "rest": "none",
+          "rpe": "6",
+          "notes": "Controlled pressure: short phrases are possible, full conversation is not."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "4 km tempo",
+        "week_2": "5 km tempo",
+        "week_3": "6 km tempo",
+        "week_4": "5 km tempo + 4 strides"
+      },
+      "coach_notes": [
+        "Tempo is where many HYROX runs live after station fatigue.",
+        "Do not drift into threshold unless prescribed."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: tempo run progression"
+      ],
+      "tags": [
+        "tempo",
+        "aerobic_strength"
+      ]
+    },
+    {
+      "id": "end-threshold-001",
+      "title": "Cruise Threshold Builder",
+      "category": "endurance",
+      "subcategory": "threshold",
+      "goal": "Build lactate clearance for race-pace running under fatigue.",
+      "difficulty": "intermediate",
+      "duration_minutes": 70,
+      "estimated_calories": 740,
+      "equipment": [
+        "track or treadmill"
+      ],
+      "warmup": [
+        "5 min brisk walk or easy jog",
+        "Dynamic calves, hips, hamstrings, and thoracic rotations",
+        "3 x 20 sec relaxed strides with walk-back recovery"
+      ],
+      "workout": [
+        {
+          "exercise": "Threshold interval",
+          "sets": 3,
+          "reps": "",
+          "distance": "",
+          "time": "8 min",
+          "rest": "4 min easy jog",
+          "rpe": "7-8",
+          "notes": "Hard but repeatable; no rep should feel like a race finish."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "4 x 5 min",
+        "week_2": "3 x 8 min",
+        "week_3": "2 x 12 min",
+        "week_4": "3 x 1 km race pace taper"
+      },
+      "coach_notes": [
+        "Threshold work is the bridge between pure running fitness and HYROX durability.",
+        "Hold rhythm before chasing pace."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+      ],
+      "inspired_by": [
+        "Public programming: threshold blocks and race-pace emphasis"
+      ],
+      "tags": [
+        "threshold",
+        "lactate",
+        "running"
+      ]
+    },
+    {
+      "id": "end-comp-001",
+      "title": "Run Wall Ball Repeatability",
+      "category": "endurance",
+      "subcategory": "compromised_runs",
+      "goal": "Practice returning to target pace after quad and breathing fatigue.",
+      "difficulty": "intermediate",
+      "duration_minutes": 60,
+      "estimated_calories": 700,
+      "equipment": [
+        "wall ball",
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Run",
+          "sets": 4,
+          "reps": "",
+          "distance": "1 km",
+          "time": "",
+          "rest": "0 sec before wall balls",
+          "rpe": "6-7",
+          "notes": "First 200m controlled; settle after breathing normalizes."
+        },
+        {
+          "exercise": "Wall balls",
+          "sets": 4,
+          "reps": "20-25",
+          "distance": "",
+          "time": "",
+          "rest": "2 min after wall balls",
+          "rpe": "7",
+          "notes": "Break before misses; breathe on every catch."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "3 rounds, 15 wall balls",
+        "week_2": "4 rounds, 20 wall balls",
+        "week_3": "4 rounds, 25 wall balls",
+        "week_4": "3 rounds at race pace"
+      },
+      "coach_notes": [
+        "This is a race-skill session, not a wall-ball max test.",
+        "The run after wall balls should look like running, not survival."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/"
+      ],
+      "inspired_by": [
+        "Public programming: run + station repeats"
+      ],
+      "tags": [
+        "compromised_running",
+        "wall_balls",
+        "race_pace"
+      ]
+    },
+    {
+      "id": "end-comp-002",
+      "title": "Run Erg Brick Ladder",
+      "category": "endurance",
+      "subcategory": "compromised_runs",
+      "goal": "Build tolerance to machine fatigue before running.",
+      "difficulty": "beginner",
+      "duration_minutes": 50,
+      "estimated_calories": 520,
+      "equipment": [
+        "row erg",
+        "ski erg or bike",
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Run",
+          "sets": 3,
+          "reps": "",
+          "distance": "600m",
+          "time": "",
+          "rest": "0 sec",
+          "rpe": "5-6",
+          "notes": "Easy enough to protect form."
+        },
+        {
+          "exercise": "Row",
+          "sets": 3,
+          "reps": "",
+          "distance": "300m",
+          "time": "",
+          "rest": "60 sec",
+          "rpe": "6",
+          "notes": "Legs first, then body, then arms."
+        },
+        {
+          "exercise": "SkiErg or bike",
+          "sets": 3,
+          "reps": "",
+          "distance": "250m ski or 12 cal bike",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "6",
+          "notes": "Smooth strokes, not max watts."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "3 rounds",
+        "week_2": "4 rounds",
+        "week_3": "4 rounds with 500m row",
+        "week_4": "3 rounds deload"
+      },
+      "coach_notes": [
+        "Beginners need exposure to the feeling of running after work before they need race loads.",
+        "Keep the first month non-threatening."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+      ],
+      "inspired_by": [
+        "Public programming: beginner bricks"
+      ],
+      "tags": [
+        "beginner",
+        "brick",
+        "erg"
+      ]
+    },
+    {
+      "id": "str-lower-001",
+      "title": "Sled Drive Lower Strength",
+      "category": "strength",
+      "subcategory": "lower_body",
+      "goal": "Build squat, hinge, and unilateral strength that transfers to sled push and lunges.",
+      "difficulty": "intermediate",
+      "duration_minutes": 60,
+      "estimated_calories": 430,
+      "equipment": [
+        "barbell",
+        "dumbbells",
+        "sled optional"
+      ],
+      "warmup": [
+        "5 min easy bike or row",
+        "Glute bridges x 12, bodyweight squats x 10, inchworms x 5",
+        "2 progressive warmup sets before the first loaded lift"
+      ],
+      "workout": [
+        {
+          "exercise": "Back squat",
+          "sets": 4,
+          "reps": "5-6",
+          "distance": "",
+          "time": "",
+          "rest": "2-3 min",
+          "rpe": "7-8",
+          "notes": "Brace hard, whole foot pressure, break parallel."
+        },
+        {
+          "exercise": "Romanian deadlift",
+          "sets": 3,
+          "reps": "8",
+          "distance": "",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "7",
+          "notes": "Hips back, bar close, flat back."
+        },
+        {
+          "exercise": "Bulgarian split squat",
+          "sets": 3,
+          "reps": "8/side",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7",
+          "notes": "Front shin stable, torso tall."
+        },
+        {
+          "exercise": "Farmer carry",
+          "sets": 4,
+          "reps": "",
+          "distance": "40m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7-8",
+          "notes": "Tall posture, quiet shoulders."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "4x6 squat",
+        "week_2": "4x5 heavier",
+        "week_3": "4x4 heavier",
+        "week_4": "3x5 deload"
+      },
+      "coach_notes": [
+        "This strength day should make station work smoother, not destroy the next run session.",
+        "Leave one rep in reserve on all main lifts."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Internal program: lower strength + carries"
+      ],
+      "tags": [
+        "lower_body",
+        "sled_transfer",
+        "strength"
+      ]
+    },
+    {
+      "id": "str-upper-001",
+      "title": "Pulling Engine Strength",
+      "category": "strength",
+      "subcategory": "upper_body",
+      "goal": "Develop lats, upper back, and grip for SkiErg, sled pull, row, and farmer carry.",
+      "difficulty": "intermediate",
+      "duration_minutes": 55,
+      "estimated_calories": 390,
+      "equipment": [
+        "barbell",
+        "pull-up bar",
+        "dumbbells",
+        "cable or band"
+      ],
+      "warmup": [
+        "5 min easy bike or row",
+        "Glute bridges x 12, bodyweight squats x 10, inchworms x 5",
+        "2 progressive warmup sets before the first loaded lift"
+      ],
+      "workout": [
+        {
+          "exercise": "Barbell bent-over row",
+          "sets": 4,
+          "reps": "6-8",
+          "distance": "",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "7-8",
+          "notes": "Pull to lower ribs; no torso swing."
+        },
+        {
+          "exercise": "Pull-up or lat pulldown",
+          "sets": 4,
+          "reps": "5-8",
+          "distance": "",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "7-8",
+          "notes": "Full reach and strong elbow drive."
+        },
+        {
+          "exercise": "Single-arm dumbbell row",
+          "sets": 3,
+          "reps": "8/side",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7",
+          "notes": "Pull to hip; do not rotate."
+        },
+        {
+          "exercise": "Farmer hold",
+          "sets": 3,
+          "reps": "",
+          "distance": "",
+          "time": "45-60 sec",
+          "rest": "90 sec",
+          "rpe": "8",
+          "notes": "Use heavy DBs; posture stays tall."
+        },
+        {
+          "exercise": "Face pull",
+          "sets": 3,
+          "reps": "15",
+          "distance": "",
+          "time": "",
+          "rest": "60 sec",
+          "rpe": "5",
+          "notes": "Shoulder health, not max load."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "4x8 rows",
+        "week_2": "4x6 heavier",
+        "week_3": "4x5 heavier + longer holds",
+        "week_4": "3x8 deload"
+      },
+      "coach_notes": [
+        "Grip usually fails before fitness on carries and pulls.",
+        "Train shoulder health every week."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Internal expert plan: back + Session B logic"
+      ],
+      "tags": [
+        "upper_body",
+        "grip",
+        "pulling"
+      ]
+    },
+    {
+      "id": "str-full-001",
+      "title": "Beginner Full Body HYROX Foundation",
+      "category": "strength",
+      "subcategory": "full_body",
+      "goal": "Teach squat, hinge, pull, press, carry, and trunk control for new HYROX athletes.",
+      "difficulty": "beginner",
+      "duration_minutes": 50,
+      "estimated_calories": 360,
+      "equipment": [
+        "dumbbells",
+        "bench optional"
+      ],
+      "warmup": [
+        "5 min easy bike or row",
+        "Glute bridges x 12, bodyweight squats x 10, inchworms x 5",
+        "2 progressive warmup sets before the first loaded lift"
+      ],
+      "workout": [
+        {
+          "exercise": "Goblet squat",
+          "sets": 3,
+          "reps": "10-12",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "5-6",
+          "notes": "Chest tall, thighs to parallel or below."
+        },
+        {
+          "exercise": "Dumbbell Romanian deadlift",
+          "sets": 3,
+          "reps": "10-12",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "5-6",
+          "notes": "Feel hamstrings, never round the back."
+        },
+        {
+          "exercise": "One-arm dumbbell row",
+          "sets": 3,
+          "reps": "10/side",
+          "distance": "",
+          "time": "",
+          "rest": "60 sec",
+          "rpe": "6",
+          "notes": "Pull to hip."
+        },
+        {
+          "exercise": "Seated dumbbell press",
+          "sets": 3,
+          "reps": "10",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "6",
+          "notes": "Full lockout, ribs down."
+        },
+        {
+          "exercise": "Farmer carry",
+          "sets": 3,
+          "reps": "",
+          "distance": "30-50m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "6",
+          "notes": "Short, quick steps."
+        },
+        {
+          "exercise": "Dead bug",
+          "sets": 3,
+          "reps": "8/side",
+          "distance": "",
+          "time": "",
+          "rest": "45 sec",
+          "rpe": "4",
+          "notes": "Lower back stays flat."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "3x10 light",
+        "week_2": "3x10 slightly heavier",
+        "week_3": "3x12",
+        "week_4": "3x10 deload"
+      },
+      "coach_notes": [
+        "Beginners need frequency and confidence more than volume.",
+        "This session should be repeatable three times per week if needed."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+      ],
+      "inspired_by": [
+        "Internal absolute beginner plan"
+      ],
+      "tags": [
+        "beginner",
+        "full_body",
+        "foundation"
+      ]
+    },
+    {
+      "id": "str-end-001",
+      "title": "Strength-Endurance Chipper",
+      "category": "strength",
+      "subcategory": "strength_endurance",
+      "goal": "Build muscular endurance across HYROX-relevant movement patterns.",
+      "difficulty": "intermediate",
+      "duration_minutes": 55,
+      "estimated_calories": 540,
+      "equipment": [
+        "barbell",
+        "dumbbells",
+        "wall ball"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Barbell push press",
+          "sets": 1,
+          "reps": "25",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7",
+          "notes": "Moderate load, crisp lockout."
+        },
+        {
+          "exercise": "Burpee over bar",
+          "sets": 1,
+          "reps": "20",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7-8",
+          "notes": "Step down if breathing spikes too early."
+        },
+        {
+          "exercise": "Bent-over row",
+          "sets": 1,
+          "reps": "25",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7",
+          "notes": "Use load you can move cleanly."
+        },
+        {
+          "exercise": "Wall balls",
+          "sets": 1,
+          "reps": "50",
+          "distance": "",
+          "time": "",
+          "rest": "as needed",
+          "rpe": "8",
+          "notes": "Use planned sets, never fail reps."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "20 reps per strength move",
+        "week_2": "25 reps",
+        "week_3": "30 reps",
+        "week_4": "20 reps deload"
+      },
+      "coach_notes": [
+        "This style builds local fatigue resistance, but it must not replace race-specific running.",
+        "Keep the load moderate and standards clean."
+      ],
+      "source_urls": [
+        "https://www.puregym.com/blog/hyrox-training-plan/",
+        "https://www.puregym.com/us/blog/hyrox-training-plan-a-free-workout-plan-to-get-hyrox-ready"
+      ],
+      "inspired_by": [
+        "Public programming: strength endurance circuits"
+      ],
+      "tags": [
+        "strength_endurance",
+        "chipper"
+      ]
+    },
+    {
+      "id": "str-sled-001",
+      "title": "Sled Push Pull Overload",
+      "category": "strength",
+      "subcategory": "sled_specific",
+      "goal": "Improve sled mechanics, force production, and recovery between sled efforts.",
+      "difficulty": "advanced",
+      "duration_minutes": 55,
+      "estimated_calories": 520,
+      "equipment": [
+        "sled",
+        "turf lane"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "Sled push",
+          "sets": 6,
+          "reps": "",
+          "distance": "12-15m",
+          "time": "",
+          "rest": "walk back + 60 sec",
+          "rpe": "8",
+          "notes": "Use race load to 110% race load; short powerful steps."
+        },
+        {
+          "exercise": "Sled pull",
+          "sets": 6,
+          "reps": "",
+          "distance": "12-15m",
+          "time": "",
+          "rest": "walk back + 60 sec",
+          "rpe": "8",
+          "notes": "Lean back, rope organized, hand-over-hand rhythm."
+        },
+        {
+          "exercise": "Easy run flush",
+          "sets": 6,
+          "reps": "",
+          "distance": "200m",
+          "time": "",
+          "rest": "as needed",
+          "rpe": "4-5",
+          "notes": "Run immediately after each push/pull pair."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "6 x 10m at 90%",
+        "week_2": "6 x 12m at 100%",
+        "week_3": "6 x 15m at 105-110%",
+        "week_4": "4 x 10m at 80%"
+      },
+      "coach_notes": [
+        "Sled gains come from clean force application, not panic pushing.",
+        "The easy run teaches you to restore mechanics after heavy leg drive."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/"
+      ],
+      "inspired_by": [
+        "Public programming: sled EMOM/overload concepts"
+      ],
+      "tags": [
+        "sled",
+        "overload",
+        "race_specific"
+      ]
+    },
+    {
+      "id": "fun-wall-001",
+      "title": "Wall Ball Capacity EMOM",
+      "category": "functional",
+      "subcategory": "wall_balls",
+      "goal": "Build repeatable wall-ball sets without failed reps.",
+      "difficulty": "intermediate",
+      "duration_minutes": 35,
+      "estimated_calories": 330,
+      "equipment": [
+        "wall ball",
+        "target"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "Wall balls",
+          "sets": 12,
+          "reps": "10-15 per min",
+          "distance": "",
+          "time": "EMOM 12 min",
+          "rest": "remainder of each minute",
+          "rpe": "7",
+          "notes": "Choose a number you can repeat without no-reps."
+        },
+        {
+          "exercise": "Easy jog",
+          "sets": 1,
+          "reps": "",
+          "distance": "",
+          "time": "8 min",
+          "rest": "",
+          "rpe": "4",
+          "notes": "Flush quads and restore breathing."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "10/min",
+        "week_2": "12/min",
+        "week_3": "15/min",
+        "week_4": "8-10/min deload"
+      },
+      "coach_notes": [
+        "Wall-ball readiness is repeatability, not one huge set.",
+        "Break before your squat depth disappears."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: wall-ball volume accumulation"
+      ],
+      "tags": [
+        "wall_balls",
+        "emom",
+        "capacity"
+      ]
+    },
+    {
+      "id": "fun-carry-001",
+      "title": "Carry Grip Ladder",
+      "category": "functional",
+      "subcategory": "farmer_carries",
+      "goal": "Develop grip endurance and posture for the 200m carry.",
+      "difficulty": "intermediate",
+      "duration_minutes": 40,
+      "estimated_calories": 360,
+      "equipment": [
+        "dumbbells or kettlebells"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "Farmer carry",
+          "sets": 4,
+          "reps": "",
+          "distance": "50m",
+          "time": "",
+          "rest": "60 sec",
+          "rpe": "7",
+          "notes": "No drops, tall posture."
+        },
+        {
+          "exercise": "Farmer carry",
+          "sets": 3,
+          "reps": "",
+          "distance": "75m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "8",
+          "notes": "Use same load; relax jaw and shoulders."
+        },
+        {
+          "exercise": "Farmer hold",
+          "sets": 2,
+          "reps": "",
+          "distance": "",
+          "time": "max quality hold",
+          "rest": "2 min",
+          "rpe": "8-9",
+          "notes": "Stop before posture collapses."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "50m repeats",
+        "week_2": "75m repeats",
+        "week_3": "100m repeats",
+        "week_4": "50m deload"
+      },
+      "coach_notes": [
+        "Grip work should build confidence, not tear your hands before pull sessions.",
+        "Fast walking with no drops beats reckless jogging."
+      ],
+      "source_urls": [
+        "https://www.puregym.com/blog/hyrox-training-plan/",
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+      ],
+      "inspired_by": [
+        "Public programming: grip and carry emphasis"
+      ],
+      "tags": [
+        "farmer_carry",
+        "grip"
+      ]
+    },
+    {
+      "id": "fun-burpee-001",
+      "title": "Burpee Broad Jump Rhythm Builder",
+      "category": "functional",
+      "subcategory": "burpees",
+      "goal": "Build sustainable burpee broad jump rhythm and soft landings.",
+      "difficulty": "beginner",
+      "duration_minutes": 35,
+      "estimated_calories": 360,
+      "equipment": [
+        "floor space"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "Burpee broad jumps",
+          "sets": 5,
+          "reps": "8-12",
+          "distance": "",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "6-7",
+          "notes": "Stand fully, jump only as far as you can repeat, land soft."
+        },
+        {
+          "exercise": "Easy run",
+          "sets": 5,
+          "reps": "",
+          "distance": "200m",
+          "time": "",
+          "rest": "walk 60 sec",
+          "rpe": "5",
+          "notes": "Start the run controlled after each set."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "5x8",
+        "week_2": "5x10",
+        "week_3": "5x12",
+        "week_4": "4x8 deload"
+      },
+      "coach_notes": [
+        "Small repeatable jumps beat early hero jumps.",
+        "The first 50m after burpees is where form discipline matters."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.puregym.com/blog/hyrox-training-plan/"
+      ],
+      "inspired_by": [
+        "Public programming: burpee broad jump bricks"
+      ],
+      "tags": [
+        "burpees",
+        "movement_quality"
+      ]
+    },
+    {
+      "id": "fun-lunge-001",
+      "title": "Sandbag Lunge Progression",
+      "category": "functional",
+      "subcategory": "lunges",
+      "goal": "Prepare legs and trunk for the 100m sandbag lunge station.",
+      "difficulty": "intermediate",
+      "duration_minutes": 45,
+      "estimated_calories": 420,
+      "equipment": [
+        "sandbag or dumbbells"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "Sandbag walking lunges",
+          "sets": 4,
+          "reps": "",
+          "distance": "25m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "7",
+          "notes": "Torso upright, rear knee controlled, breathe every rep."
+        },
+        {
+          "exercise": "Easy run",
+          "sets": 4,
+          "reps": "",
+          "distance": "400m",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "5-6",
+          "notes": "No surging after lunges."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "4x20m",
+        "week_2": "4x25m",
+        "week_3": "3x40m",
+        "week_4": "2x25m deload"
+      },
+      "coach_notes": [
+        "Lunges punish rushed breathing and sloppy trunk position.",
+        "Race-day success is stable reps, not fast no-reps."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: lunge progression and station density"
+      ],
+      "tags": [
+        "lunges",
+        "sandbag",
+        "compromised_running"
+      ]
+    },
+    {
+      "id": "fun-ski-001",
+      "title": "SkiErg Technique Density",
+      "category": "functional",
+      "subcategory": "ski_erg",
+      "goal": "Improve efficient SkiErg strokes under mild fatigue.",
+      "difficulty": "beginner",
+      "duration_minutes": 35,
+      "estimated_calories": 330,
+      "equipment": [
+        "SkiErg"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "SkiErg",
+          "sets": 6,
+          "reps": "",
+          "distance": "250m",
+          "time": "",
+          "rest": "75 sec",
+          "rpe": "5-6",
+          "notes": "Long reach, lats first, hinge as handles pass face."
+        },
+        {
+          "exercise": "Plank",
+          "sets": 6,
+          "reps": "",
+          "distance": "",
+          "time": "30 sec",
+          "rest": "30 sec",
+          "rpe": "5",
+          "notes": "Brace without breath holding."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "6x250m",
+        "week_2": "5x300m",
+        "week_3": "4x400m",
+        "week_4": "4x250m deload"
+      },
+      "coach_notes": [
+        "Technique beats brute force on the SkiErg.",
+        "Watch stroke power fade; switch or rest before the movement becomes arms-only."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/"
+      ],
+      "inspired_by": [
+        "Public programming: SkiErg technique and calories"
+      ],
+      "tags": [
+        "ski_erg",
+        "technique"
+      ]
+    },
+    {
+      "id": "fun-row-001",
+      "title": "Row Stroke Economy",
+      "category": "functional",
+      "subcategory": "row_erg",
+      "goal": "Build row efficiency so the station does not damage the next run.",
+      "difficulty": "intermediate",
+      "duration_minutes": 40,
+      "estimated_calories": 390,
+      "equipment": [
+        "RowErg"
+      ],
+      "warmup": [
+        "5 min easy machine flush",
+        "Station-specific technique reps at 30-40% effort",
+        "Nasal breathing for the final 2 min before the main set"
+      ],
+      "workout": [
+        {
+          "exercise": "Row",
+          "sets": 5,
+          "reps": "",
+          "distance": "500m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "6-7",
+          "notes": "Legs-body-arms; recover arms-body-legs. Keep strokes long."
+        },
+        {
+          "exercise": "Run",
+          "sets": 5,
+          "reps": "",
+          "distance": "200m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "5",
+          "notes": "Stand tall before running; no panic first 50m."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "5x400m",
+        "week_2": "5x500m",
+        "week_3": "3x750m",
+        "week_4": "4x400m deload"
+      },
+      "coach_notes": [
+        "The row is not won in the first 250m.",
+        "A controlled exit matters as much as the split."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.puregym.com/blog/hyrox-training-plan/"
+      ],
+      "inspired_by": [
+        "Public programming: row/run alternation"
+      ],
+      "tags": [
+        "row_erg",
+        "technique",
+        "run_off_row"
+      ]
+    },
+    {
+      "id": "fun-station-001",
+      "title": "Eight-Station Skill Flow",
+      "category": "functional",
+      "subcategory": "station_skill",
+      "goal": "Practice all HYROX movement patterns at low pressure.",
+      "difficulty": "beginner",
+      "duration_minutes": 50,
+      "estimated_calories": 460,
+      "equipment": [
+        "SkiErg",
+        "sled",
+        "rower",
+        "wall ball",
+        "sandbag",
+        "dumbbells"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "SkiErg",
+          "sets": 1,
+          "reps": "",
+          "distance": "250m",
+          "time": "",
+          "rest": "",
+          "rpe": "5",
+          "notes": "Technique only."
+        },
+        {
+          "exercise": "Sled push",
+          "sets": 1,
+          "reps": "",
+          "distance": "15m",
+          "time": "",
+          "rest": "",
+          "rpe": "5",
+          "notes": "Light load, clean body angle."
+        },
+        {
+          "exercise": "Sled pull",
+          "sets": 1,
+          "reps": "",
+          "distance": "15m",
+          "time": "",
+          "rest": "",
+          "rpe": "5",
+          "notes": "Rope organized."
+        },
+        {
+          "exercise": "Burpee broad jump",
+          "sets": 1,
+          "reps": "",
+          "distance": "20m",
+          "time": "",
+          "rest": "",
+          "rpe": "5-6",
+          "notes": "Soft landings."
+        },
+        {
+          "exercise": "Row",
+          "sets": 1,
+          "reps": "",
+          "distance": "250m",
+          "time": "",
+          "rest": "",
+          "rpe": "5",
+          "notes": "Long strokes."
+        },
+        {
+          "exercise": "Farmer carry",
+          "sets": 1,
+          "reps": "",
+          "distance": "50m",
+          "time": "",
+          "rest": "",
+          "rpe": "6",
+          "notes": "No drops."
+        },
+        {
+          "exercise": "Sandbag lunges",
+          "sets": 1,
+          "reps": "",
+          "distance": "20m",
+          "time": "",
+          "rest": "",
+          "rpe": "6",
+          "notes": "Upright torso."
+        },
+        {
+          "exercise": "Wall balls",
+          "sets": 1,
+          "reps": "20",
+          "distance": "",
+          "time": "",
+          "rest": "",
+          "rpe": "6",
+          "notes": "Break before misses."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "1 round",
+        "week_2": "1 round + 200m runs between 4 stations",
+        "week_3": "2 rounds reduced",
+        "week_4": "1 round deload"
+      },
+      "coach_notes": [
+        "This is the safest way to teach the full race menu.",
+        "Technique exposure reduces race-day anxiety."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: station technique phases"
+      ],
+      "tags": [
+        "station_skill",
+        "beginner",
+        "all_stations"
+      ]
+    },
+    {
+      "id": "race-comp-001",
+      "title": "Four-Station Compromised Primer",
+      "category": "race_simulation",
+      "subcategory": "compromised",
+      "goal": "Introduce race order without full simulation cost.",
+      "difficulty": "beginner",
+      "duration_minutes": 60,
+      "estimated_calories": 640,
+      "equipment": [
+        "SkiErg",
+        "sled",
+        "rower",
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Run + SkiErg",
+          "sets": 1,
+          "reps": "",
+          "distance": "500m run + 500m ski",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "6",
+          "notes": "Control transitions."
+        },
+        {
+          "exercise": "Run + Sled push",
+          "sets": 1,
+          "reps": "",
+          "distance": "500m run + 25m push",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "6-7",
+          "notes": "Light to moderate load."
+        },
+        {
+          "exercise": "Run + Burpee broad jump",
+          "sets": 1,
+          "reps": "",
+          "distance": "500m run + 30m BBJ",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "6-7",
+          "notes": "Small repeatable jumps."
+        },
+        {
+          "exercise": "Run + Row",
+          "sets": 1,
+          "reps": "",
+          "distance": "500m run + 500m row",
+          "time": "",
+          "rest": "cooldown",
+          "rpe": "6",
+          "notes": "Record total time."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "500m runs and 50% station volume",
+        "week_2": "750m runs",
+        "week_3": "1km runs",
+        "week_4": "repeat week 2 faster"
+      },
+      "coach_notes": [
+        "This is a confidence builder.",
+        "Record transition time, not just station time."
+      ],
+      "source_urls": [
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.puregym.com/blog/hyrox-training-plan/",
+        "https://www.puregym.com/us/blog/hyrox-training-plan-a-free-workout-plan-to-get-hyrox-ready"
+      ],
+      "inspired_by": [
+        "Public programming: half simulation and first four stations"
+      ],
+      "tags": [
+        "partial_order",
+        "simulation_intro"
+      ]
+    },
+    {
+      "id": "race-partial-001",
+      "title": "50 Percent HYROX Format",
+      "category": "race_simulation",
+      "subcategory": "partial_simulation",
+      "goal": "Run the full race order at half station volume to learn pacing and transitions.",
+      "difficulty": "intermediate",
+      "duration_minutes": 85,
+      "estimated_calories": 950,
+      "equipment": [
+        "full HYROX station setup"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "HYROX race order",
+          "sets": 1,
+          "reps": "",
+          "distance": "8 x 1km runs + all 8 stations at 50% volume",
+          "time": "",
+          "rest": "transition only",
+          "rpe": "7",
+          "notes": "Use race order; record every split."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "50% volume",
+        "week_2": "60% volume",
+        "week_3": "70% volume",
+        "week_4": "50% deload"
+      },
+      "coach_notes": [
+        "Half-volume simulations reveal pacing mistakes without crushing recovery.",
+        "If transitions are messy here, they will be worse on race day."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://fitnessdrum.com/12-week-hyrox-training-plan-for-beginners/",
+        "https://www.puregym.com/blog/hyrox-training-plan/"
+      ],
+      "inspired_by": [
+        "Public programming: partial simulations"
+      ],
+      "tags": [
+        "partial_simulation",
+        "race_order",
+        "splits"
+      ]
+    },
+    {
+      "id": "race-full-001",
+      "title": "Controlled Full HYROX Simulation",
+      "category": "race_simulation",
+      "subcategory": "full_simulation",
+      "goal": "Complete all 8 stations and 8 running legs under controlled race rules.",
+      "difficulty": "advanced",
+      "duration_minutes": 120,
+      "estimated_calories": 1400,
+      "equipment": [
+        "full HYROX station setup"
+      ],
+      "warmup": [
+        "10 min easy jog",
+        "Dynamic prep: hips, ankles, thoracic spine, shoulders",
+        "One 30% effort practice set for each station",
+        "Race shoes, fuel, hydration, and transitions exactly as planned"
+      ],
+      "workout": [
+        {
+          "exercise": "Full HYROX simulation",
+          "sets": 1,
+          "reps": "",
+          "distance": "8 x 1km runs + all 8 stations",
+          "time": "",
+          "rest": "transition only",
+          "rpe": "8-9",
+          "notes": "Target 85-90% race effort unless this is the final benchmark."
+        }
+      ],
+      "cooldown": [
+        "10 min continuous walk",
+        "Protein + carbohydrates within 45 min",
+        "Legs elevated 20 min",
+        "Record splits, transition delays, fueling notes, and weakest station"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "70% simulation",
+        "week_2": "full simulation at 85%",
+        "week_3": "90% simulation",
+        "week_4": "taper, no full simulation"
+      },
+      "coach_notes": [
+        "Do not prove fitness every weekend; full simulations are expensive.",
+        "One high-quality full simulation beats several sloppy maximal rehearsals."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.puregym.com/blog/hyrox-training-plan/",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: full simulation timing and taper placement"
+      ],
+      "tags": [
+        "full_simulation",
+        "advanced",
+        "race_rehearsal"
+      ]
+    },
+    {
+      "id": "race-rehearsal-001",
+      "title": "Transition Discipline Rehearsal",
+      "category": "race_simulation",
+      "subcategory": "race_rehearsal",
+      "goal": "Reduce wasted time and heart-rate spikes between stations.",
+      "difficulty": "intermediate",
+      "duration_minutes": 50,
+      "estimated_calories": 520,
+      "equipment": [
+        "SkiErg",
+        "rower",
+        "wall ball",
+        "farmer carry implements"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Run to station entry",
+          "sets": 6,
+          "reps": "",
+          "distance": "300m",
+          "time": "",
+          "rest": "0 sec",
+          "rpe": "6",
+          "notes": "Last 30m includes nasal breathing and visualizing station split."
+        },
+        {
+          "exercise": "Station micro-dose",
+          "sets": 6,
+          "reps": "10-15 reps or 100-200m",
+          "distance": "",
+          "time": "",
+          "rest": "0 sec",
+          "rpe": "6-7",
+          "notes": "Rotate ski, row, wall ball, carry."
+        },
+        {
+          "exercise": "Exit run",
+          "sets": 6,
+          "reps": "",
+          "distance": "200m",
+          "time": "",
+          "rest": "90 sec",
+          "rpe": "6",
+          "notes": "First 50m controlled, then settle to target rhythm."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Reduce run distance 20-40%",
+          "Use conversational run-walk intervals",
+          "Keep RPE below 6 until mechanics are stable"
+        ],
+        "intermediate": [
+          "Use prescribed distance and RPE",
+          "Cap pace fade at 5-8% across repeats"
+        ],
+        "advanced": [
+          "Hold race pace or slightly faster",
+          "Reduce rest before increasing speed"
+        ]
+      },
+      "progression": {
+        "week_1": "4 transitions",
+        "week_2": "6 transitions",
+        "week_3": "8 transitions",
+        "week_4": "4 transitions deload"
+      },
+      "coach_notes": [
+        "Free speed comes from knowing what happens before you arrive.",
+        "Never let both doubles athletes stand still at the same time."
+      ],
+      "source_urls": [
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan",
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+      ],
+      "inspired_by": [
+        "Public programming: transition practice and heart-rate drops"
+      ],
+      "tags": [
+        "transitions",
+        "race_rehearsal"
+      ]
+    },
+    {
+      "id": "race-taper-001",
+      "title": "Race Week Station Primer",
+      "category": "race_simulation",
+      "subcategory": "taper_sessions",
+      "goal": "Stay sharp without creating soreness in race week.",
+      "difficulty": "intermediate",
+      "duration_minutes": 35,
+      "estimated_calories": 280,
+      "equipment": [
+        "SkiErg",
+        "wall ball",
+        "sled optional",
+        "running route or treadmill"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Easy run",
+          "sets": 1,
+          "reps": "",
+          "distance": "2-3 km",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "4",
+          "notes": "Finish fresher than you started."
+        },
+        {
+          "exercise": "Station flow",
+          "sets": 2,
+          "reps": "10 cal ski + 10 wall balls + 10m sled push optional",
+          "distance": "",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "5",
+          "notes": "Everything smooth, no strain."
+        },
+        {
+          "exercise": "Strides",
+          "sets": 4,
+          "reps": "",
+          "distance": "",
+          "time": "20 sec",
+          "rest": "walk back",
+          "rpe": "6",
+          "notes": "Light and elastic."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "Not used",
+        "week_2": "Not used",
+        "week_3": "Not used",
+        "week_4": "Race-week primer only"
+      },
+      "coach_notes": [
+        "The taper goal is confidence, not fitness gain.",
+        "If you feel tempted to add work, go home."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide",
+        "https://www.vpa.com.au/blogs/supplements/hyrox-training-plan"
+      ],
+      "inspired_by": [
+        "Public programming: race-week taper and light station primers"
+      ],
+      "tags": [
+        "taper",
+        "race_week",
+        "primer"
+      ]
+    },
+    {
+      "id": "new-hybrid-001",
+      "title": "Ski Pull Row Negative Split",
+      "category": "functional",
+      "subcategory": "station_skill",
+      "goal": "Teach controlled pacing across pulling stations before run re-entry.",
+      "difficulty": "advanced",
+      "duration_minutes": 55,
+      "estimated_calories": 610,
+      "equipment": [
+        "SkiErg",
+        "sled",
+        "rower"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "SkiErg",
+          "sets": 3,
+          "reps": "",
+          "distance": "500m",
+          "time": "",
+          "rest": "0 sec",
+          "rpe": "7",
+          "notes": "Each round slightly faster."
+        },
+        {
+          "exercise": "Sled pull",
+          "sets": 3,
+          "reps": "",
+          "distance": "25m",
+          "time": "",
+          "rest": "0 sec",
+          "rpe": "8",
+          "notes": "Smooth rope rhythm."
+        },
+        {
+          "exercise": "Row",
+          "sets": 3,
+          "reps": "",
+          "distance": "500m",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "7",
+          "notes": "Negative split each row."
+        },
+        {
+          "exercise": "Run",
+          "sets": 3,
+          "reps": "",
+          "distance": "400m",
+          "time": "",
+          "rest": "2 min",
+          "rpe": "6",
+          "notes": "No panic off the rower."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "3 rounds at 400m ski/row",
+        "week_2": "3 rounds at 500m",
+        "week_3": "4 rounds",
+        "week_4": "2 rounds deload"
+      },
+      "coach_notes": [
+        "Useful for athletes who overcook SkiErg and lose the row/run.",
+        "Pacing discipline matters more than peak watts."
+      ],
+      "source_urls": [
+        "https://www.bodyspec.com/blog/post/the_ultimate_hyrox_training_guide"
+      ],
+      "inspired_by": [
+        "Gap analysis: pulling-station cluster"
+      ],
+      "tags": [
+        "new_candidate",
+        "pulling",
+        "negative_split"
+      ]
+    },
+    {
+      "id": "new-doubles-001",
+      "title": "Doubles Handoff Speed Lab",
+      "category": "race_simulation",
+      "subcategory": "race_rehearsal",
+      "goal": "Practice doubles communication, planned workload splits, and no-dead-time station changes.",
+      "difficulty": "intermediate",
+      "duration_minutes": 50,
+      "estimated_calories": 520,
+      "equipment": [
+        "wall ball",
+        "farmer carry implements",
+        "SkiErg or rower"
+      ],
+      "warmup": [
+        "6-8 min easy run, bike, ski, or row",
+        "Dynamic hips, ankles, thoracic rotations, leg swings, and arm circles",
+        "2 light practice rounds of the first station movement",
+        "3 full forced exhales before starting the first run"
+      ],
+      "workout": [
+        {
+          "exercise": "Ski or row relay",
+          "sets": 4,
+          "reps": "",
+          "distance": "500m total",
+          "time": "",
+          "rest": "30 sec",
+          "rpe": "7",
+          "notes": "Switch before power drops, not after."
+        },
+        {
+          "exercise": "Farmer carry relay",
+          "sets": 4,
+          "reps": "",
+          "distance": "100m total",
+          "time": "",
+          "rest": "30 sec",
+          "rpe": "7",
+          "notes": "One athlete works while the other resets breathing."
+        },
+        {
+          "exercise": "Wall ball relay",
+          "sets": 4,
+          "reps": "40 total",
+          "distance": "",
+          "time": "",
+          "rest": "60 sec",
+          "rpe": "7",
+          "notes": "Use pre-agreed sets like 15/10/10/5."
+        }
+      ],
+      "cooldown": [
+        "5-8 min easy walk or machine flush",
+        "Hip flexor, calf, quad, hamstring, and lat stretch",
+        "5 deep belly breaths: 4 sec inhale, 2 sec hold, 6 sec exhale"
+      ],
+      "scaling": {
+        "beginner": [
+          "Use 50-70% race load",
+          "Break reps early before form fails",
+          "Extend rest to preserve movement quality"
+        ],
+        "intermediate": [
+          "Use 75-100% race load",
+          "Plan short breaks before redline"
+        ],
+        "advanced": [
+          "Use race load or 105-110% overload",
+          "Keep transitions under 20 sec"
+        ]
+      },
+      "progression": {
+        "week_1": "3 rounds",
+        "week_2": "4 rounds",
+        "week_3": "5 rounds",
+        "week_4": "3 rounds deload"
+      },
+      "coach_notes": [
+        "The best doubles teams do not negotiate during stations.",
+        "Every handoff should be under 5 sec."
+      ],
+      "source_urls": [],
+      "inspired_by": [
+        "Internal doubles strategy"
+      ],
+      "tags": [
+        "new_candidate",
+        "doubles",
+        "handoff"
+      ]
+    }
+  ]
+}

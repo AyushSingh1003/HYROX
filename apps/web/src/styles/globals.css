@@ -29,6 +29,7 @@
 html {
   min-height: 100%;
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -42,6 +43,7 @@ body {
     linear-gradient(180deg, #060706 0%, #050505 44%, #080a08 100%);
   font-family: Inter, Satoshi, "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -321,6 +323,8 @@ button {
   color: var(--muted);
   font-size: 12px;
   font-weight: 700;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .chip.green {
@@ -354,6 +358,7 @@ button {
   padding: 10px 14px;
   font-weight: 800;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  max-width: 100%;
 }
 
 .btn:hover {
@@ -409,6 +414,7 @@ button {
   background: rgba(255, 255, 255, 0.06);
   padding: 10px 12px;
   outline: none;
+  min-width: 0;
 }
 
 .field textarea {
@@ -476,6 +482,7 @@ button {
 
 .auth-panel {
   padding: 24px;
+  min-width: 0;
 }
 
 .auth-panel h2 {
@@ -524,6 +531,7 @@ button {
 .block strong {
   display: block;
   margin-bottom: 8px;
+  overflow-wrap: anywhere;
 }
 
 .block ul {
@@ -746,6 +754,7 @@ summary {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 12px;
+  min-width: 0;
 }
 
 .level-card {
@@ -869,7 +878,7 @@ summary {
   }
 
   .main {
-    padding: 18px 18px 84px;
+    padding: 18px 18px calc(84px + env(safe-area-inset-bottom));
   }
 
   .mobile-nav {
@@ -886,6 +895,7 @@ summary {
     background: rgba(5, 5, 5, 0.92);
     backdrop-filter: blur(18px);
     padding: 8px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
   }
 
   .mobile-nav a {
@@ -918,15 +928,46 @@ summary {
 
   .auth-screen {
     padding: 14px;
+    gap: 14px;
+    align-items: stretch;
   }
 
   .auth-visual {
-    min-height: 420px;
+    min-height: auto;
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .auth-visual h1 {
+    font-size: clamp(34px, 12vw, 52px);
+    line-height: 1;
+    margin: 10px 0 14px;
+  }
+
+  .track-visual {
+    min-height: 124px;
+  }
+
+  .auth-panel {
+    padding: 18px;
   }
 
   .topbar {
     align-items: flex-start;
     flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .topbar h1,
+  .page-title {
+    font-size: clamp(30px, 10vw, 42px);
+    line-height: 1.04;
+  }
+
+  .topbar-actions,
+  .topbar .chip-row {
+    width: 100%;
   }
 
   .timer-controls {
@@ -941,5 +982,171 @@ summary {
 
   .table-wrap {
     overflow-x: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 56px 56px,
+      linear-gradient(180deg, rgba(255,255,255,0.025) 1px, transparent 1px) 0 0 / 56px 56px,
+      linear-gradient(180deg, #060706 0%, #050505 48%, #080a08 100%);
+  }
+
+  .main {
+    padding: 14px 12px calc(86px + env(safe-area-inset-bottom));
+  }
+
+  .card,
+  .workout-card,
+  .table-wrap,
+  .metric,
+  .block {
+    padding: 14px;
+  }
+
+  .metric {
+    min-height: 104px;
+  }
+
+  .section-title,
+  .workout-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-title h2 {
+    font-size: 19px;
+    line-height: 1.15;
+  }
+
+  .chip-row,
+  .workout-meta {
+    gap: 6px;
+  }
+
+  .chip {
+    min-height: 28px;
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .topbar-actions .btn {
+    width: 100%;
+  }
+
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+    min-width: 44px;
+  }
+
+  .phase-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 8px;
+  }
+
+  .phase-row .chip {
+    width: fit-content;
+  }
+
+  .timer-face {
+    width: min(100%, 220px);
+    border-width: 8px;
+  }
+
+  .timer-time {
+    font-size: clamp(40px, 15vw, 58px);
+  }
+
+  .progress-ring {
+    width: 112px;
+    height: 112px;
+  }
+
+  .progress-ring strong {
+    font-size: 26px;
+  }
+
+  .meter-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .auth-screen {
+    min-height: auto;
+    align-items: start;
+    padding: 12px;
+  }
+
+  .auth-visual {
+    display: none;
+  }
+
+  .auth-panel {
+    padding: 16px;
+  }
+
+  .auth-panel h2 {
+    font-size: 25px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand > div:last-child {
+    min-width: 0;
+  }
+
+  .brand-title,
+  .brand-subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .video-frame {
+    margin: 8px 0;
+  }
+
+  .split-table th,
+  .split-table td,
+  .calendar-table th,
+  .calendar-table td {
+    padding: 10px;
+  }
+
+  .calendar-cell {
+    min-width: 128px;
+  }
+
+  .mobile-nav {
+    left: 8px;
+    right: 8px;
+    padding: 7px;
+  }
+
+  .mobile-nav a {
+    min-height: 40px;
   }
 }
