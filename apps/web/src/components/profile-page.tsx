@@ -4,6 +4,7 @@ import { Activity, Droplets, Save, Target, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { apiFetch } from "../lib/api";
 import { competitionCategories, eventSubtitle } from "../lib/athlete-display";
+import { goalTimeOptions, optionsWithCurrent, runningPaceOptions } from "../lib/form-options";
 import { getSession, setSession, type Session } from "../lib/local-session";
 
 function dateInputValue(value?: string | Date | null) {
@@ -153,7 +154,12 @@ export function ProfilePage() {
             </label>
             <label className="field">
               <span>Running pace</span>
-              <input value={user.runningPace ?? ""} onChange={(event) => update("runningPace", event.target.value)} />
+              <select value={user.runningPace ?? ""} onChange={(event) => update("runningPace", event.target.value)}>
+                <option value="">Select running pace</option>
+                {optionsWithCurrent(runningPaceOptions, user.runningPace).map((pace) => (
+                  <option key={pace} value={pace}>{pace}</option>
+                ))}
+              </select>
             </label>
             <label className="field">
               <span>Threshold pace</span>
@@ -161,7 +167,12 @@ export function ProfilePage() {
             </label>
             <label className="field">
               <span>Goal time</span>
-              <input value={user.goalTime ?? ""} onChange={(event) => update("goalTime", event.target.value)} />
+              <select value={user.goalTime ?? ""} onChange={(event) => update("goalTime", event.target.value)}>
+                <option value="">Select goal time</option>
+                {optionsWithCurrent(goalTimeOptions, user.goalTime).map((time) => (
+                  <option key={time} value={time}>{time}</option>
+                ))}
+              </select>
             </label>
             <label className="field">
               <span>Hydration target ml</span>

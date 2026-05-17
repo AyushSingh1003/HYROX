@@ -19,10 +19,7 @@ export function AuthPanel({ mode }: { mode: Mode }) {
     email: "",
     password: "",
     age: "",
-    weight: "",
-    hyroxCategory: "",
-    runningPace: "",
-    goalTime: ""
+    weight: ""
   });
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -47,10 +44,7 @@ export function AuthPanel({ mode }: { mode: Mode }) {
               email: form.email,
               password: form.password,
               ...(form.age ? { age: Number(form.age) } : {}),
-              ...(form.weight ? { weight: Number(form.weight) } : {}),
-              ...(form.hyroxCategory ? { hyroxCategory: form.hyroxCategory } : {}),
-              ...(form.runningPace ? { runningPace: form.runningPace } : {}),
-              ...(form.goalTime ? { goalTime: form.goalTime } : {})
+              ...(form.weight ? { weight: Number(form.weight) } : {})
             }
           : { email: form.email, password: form.password };
 
@@ -103,7 +97,7 @@ export function AuthPanel({ mode }: { mode: Mode }) {
         <h2>{mode === "signup" ? "Create athlete profile" : "Welcome back"}</h2>
         <p className="muted">
           {mode === "signup"
-            ? "Set editable race, pace, and nutrition targets for the Delhi doubles build."
+            ? "Create your account. Your training details are saved once and reused across the platform."
             : mode === "forgot"
               ? "Request a secure password reset handoff."
               : "Sign in to continue the race build."}
@@ -151,18 +145,6 @@ export function AuthPanel({ mode }: { mode: Mode }) {
               <label className="field">
                 <span>Weight kg</span>
                 <input type="number" value={form.weight} onChange={(event) => setForm({ ...form, weight: event.target.value })} />
-              </label>
-              <label className="field">
-                <span>Category</span>
-                <input value={form.hyroxCategory} onChange={(event) => setForm({ ...form, hyroxCategory: event.target.value })} />
-              </label>
-              <label className="field">
-                <span>Running pace</span>
-                <input value={form.runningPace} onChange={(event) => setForm({ ...form, runningPace: event.target.value })} />
-              </label>
-              <label className="field">
-                <span>Goal time</span>
-                <input value={form.goalTime} onChange={(event) => setForm({ ...form, goalTime: event.target.value })} />
               </label>
             </div>
           ) : mode === "login" ? (

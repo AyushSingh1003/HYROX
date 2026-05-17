@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { asJson, onboardingSchema, prisma, requireUser, saveGeneratedPlan, unauthorized } from "../../../lib/server-api";
+import { asJson, onboardingSchema, prisma, publicUser, requireUser, saveGeneratedPlan, unauthorized } from "../../../lib/server-api";
 
 export async function GET(req: NextRequest) {
   const user = await requireUser(req);
@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     prisma.raceGoal.findFirst({ where: { userId: user.id }, orderBy: { createdAt: "desc" } }),
     prisma.trainingPlan.findFirst({ where: { userId: user.id, active: true }, orderBy: { createdAt: "desc" } })
   ]);
-  return NextResponse.json({ onboarding, profile, raceGoal, activePlan });
+  return NextResponse.json({ onboarding, profile, raceGoal, activePlan, user: publicUser(user) });
 }
 
 export async function POST(req: NextRequest) {

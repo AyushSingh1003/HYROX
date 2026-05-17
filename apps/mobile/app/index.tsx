@@ -21,12 +21,6 @@ export default function AuthScreen() {
           {mode === "signup" ? <TextInput placeholder="Name" placeholderTextColor={colors.muted} style={styles.input} /> : null}
           <TextInput placeholder="Email" placeholderTextColor={colors.muted} style={styles.input} autoCapitalize="none" />
           <TextInput placeholder="Password" placeholderTextColor={colors.muted} style={styles.input} secureTextEntry />
-          {mode === "signup" ? (
-            <>
-              <TextInput placeholder="Running pace" placeholderTextColor={colors.muted} style={styles.input} />
-              <TextInput placeholder="Goal time" placeholderTextColor={colors.muted} style={styles.input} />
-            </>
-          ) : null}
           <Link href="/(tabs)" asChild>
             <Pressable style={styles.primary}>
               <Text style={styles.primaryText}>{mode === "login" ? "Enter dashboard" : "Create profile"}</Text>
@@ -55,4 +49,3 @@ const styles = StyleSheet.create({
   primaryText: { color: colors.bg, fontWeight: "900" },
   switch: { color: colors.lime, textAlign: "center", fontWeight: "800" }
 });
-
